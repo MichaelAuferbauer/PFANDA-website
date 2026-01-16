@@ -5,8 +5,8 @@
 /* CSS Variables for Theme */
 :root {
   /* Colors */
-  --color-primary: #2d8659;
-  --color-primary-dark: #1f5d3f;
+  --color-primary: #2a6e4a; /* Dunkles Grün - etwas heller */
+  --color-primary-dark: #1e5a3a;
   --color-primary-light: #4da878;
   --color-accent: #52c48a;
   --color-text: #1a1a1a;
@@ -66,6 +66,9 @@
 
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 body {
@@ -85,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.3;
   letter-spacing: -0.02em;
   margin-bottom: var(--spacing-md);
-  color: var(--color-text);
+  color: #2a6e4a; /* Dunkles Grün - etwas heller */
 }
 
 h1 {
@@ -152,12 +155,12 @@ a:focus-visible {
   padding: 0 var(--spacing-md);
 }
 
-/* Navigation */
+/* Navigation - Header Design exakt wie Screenshot */
 .navbar {
   position: sticky;
   top: 0;
-  background-color: var(--color-white);
-  border-bottom: 1px solid var(--color-border);
+  background-color: #153d26 !important; /* Noch dunkleres Grün */
+  border-bottom: none;
   z-index: 1000;
   box-shadow: var(--shadow-sm);
 }
@@ -166,16 +169,46 @@ a:focus-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-md) var(--spacing-md);
+  padding: 0.7rem var(--spacing-md) !important; /* Noch etwas dickerer Header */
   max-width: var(--max-width);
   margin: 0 auto;
+  height: 58px !important; /* Feste Höhe - leicht dicker */
+  min-height: 58px !important;
+  max-height: 58px !important;
+  overflow: visible; /* Logo darf über Header hinausragen */
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem !important; /* Kompakter Abstand - Logo kann über Header hinausragen */
+  text-decoration: none;
+  line-height: 1;
+  height: 100%;
+  position: relative;
+}
+
+.brand-logo,
+.brand img,
+.brand .brand-logo {
+  height: 55px !important; /* Großes Logo - kann über Header hinausragen */
+  width: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+  max-height: 55px !important;
+  position: relative;
+  z-index: 1;
 }
 
 .logo {
-  font-size: var(--font-size-xl);
+  font-size: 1.5rem !important; /* Etwas kleinere Schrift für schmaleren Header */
   font-weight: 700;
-  color: var(--color-primary);
+  color: #ffffff !important; /* Weiß */
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap; /* Verhindert Zeilenumbruch */
+  line-height: 1;
 }
 
 .nav-menu {
@@ -186,18 +219,19 @@ a:focus-visible {
 }
 
 .nav-menu a {
-  color: var(--color-text);
+  color: #ffffff !important; /* Weiß - exakt wie Screenshot */
   font-weight: 500;
   padding: var(--spacing-xs) 0;
   position: relative;
 }
 
 .nav-menu a:hover {
-  color: var(--color-primary);
+  color: rgba(255, 255, 255, 0.8) !important; /* Leicht transparentes Weiß beim Hover */
 }
 
 .nav-menu a.active {
-  color: var(--color-primary);
+  color: #ffffff !important; /* Weiß für aktiven Link */
+  opacity: 1;
 }
 
 .nav-menu a.active::after {
@@ -207,7 +241,7 @@ a:focus-visible {
   left: 0;
   right: 0;
   height: 2px;
-  background-color: var(--color-primary);
+  background-color: rgba(255, 255, 255, 0.8); /* Weiße Unterstreichung für aktiven Link */
 }
 
 /* Mobile Menu Toggle */
@@ -215,20 +249,22 @@ a:focus-visible {
   display: block;
   background: none;
   border: none;
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-base);
   cursor: pointer;
-  color: var(--color-text);
+  color: #ffffff !important; /* Weiß - exakt wie Screenshot */
   padding: var(--spacing-xs);
   min-width: 44px; /* Touch-Target: Mindestgröße für Touch-Bedienung */
   min-height: 44px;
   border-radius: var(--border-radius);
   transition: var(--transition);
-  -webkit-tap-highlight-color: rgba(45, 134, 89, 0.2); /* Touch-Feedback */
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2); /* Touch-Feedback */
   touch-action: manipulation; /* Verhindert Doppel-Tap-Zoom */
+  font-weight: 500;
 }
 
 .menu-toggle:hover {
-  background-color: var(--color-bg-light);
+  color: rgba(255, 255, 255, 0.8) !important;
+  background-color: rgba(255, 255, 255, 0.1); /* Dezenter Hover-Effekt */
 }
 
 .menu-toggle:focus-visible {
@@ -238,25 +274,44 @@ a:focus-visible {
 
 /* Hero Section - Conversion Optimized */
 .hero {
-  min-height: 80vh;
+  min-height: 100vh !important; /* Größere vertikale Höhe - mehr vom Bild sichtbar */
+  height: 100vh !important;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  text-align: left;
   padding: var(--spacing-xxl) var(--spacing-md);
-  /* Dezenter Farbverlauf: helles Off-White → sehr helles Grün */
-  background: linear-gradient(180deg, #fafafa 0%, #f0f7f4 100%);
+  /* Hintergrundbild */
+  background-image: url('../img/website-start-bild (2).png');
+  background-size: cover; /* Füllt die gesamte Breite aus */
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
+  width: 100%;
+  overflow: hidden; /* Verhindert graue Ränder */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+  z-index: 0;
 }
 
 .hero-content {
-  max-width: 800px;
-  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  max-width: 50%;
+  margin-left: var(--spacing-xl);
 }
 
 .hero h1 {
   margin-bottom: var(--spacing-md);
-  color: var(--color-primary);
+  color: #ffffff !important; /* Weiß */
   font-size: clamp(2rem, 5vw, var(--font-size-4xl));
   font-weight: 700;
   line-height: 1.2;
@@ -264,7 +319,7 @@ a:focus-visible {
 
 .hero .value-proposition {
   font-size: var(--font-size-xl);
-  color: var(--color-text);
+  color: #ffffff !important; /* Weiß */
   font-weight: 500;
   margin-bottom: var(--spacing-sm);
   line-height: 1.4;
@@ -272,18 +327,40 @@ a:focus-visible {
 
 .hero .subheadline {
   font-size: var(--font-size-lg);
-  color: var(--color-text-light);
+  color: #ffffff !important; /* Weiß */
   max-width: 600px;
-  margin: 0 auto var(--spacing-xl);
+  margin: 0 0 var(--spacing-xl) 0; /* Links ausgerichtet */
   line-height: 1.6;
 }
 
 .hero-cta {
   display: flex;
   gap: var(--spacing-md);
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-top: var(--spacing-xl);
+}
+
+.hero-cta .btn {
+  background-color: #ffffff;
+  color: var(--color-primary);
+  border: 2px solid #ffffff;
+}
+
+.hero-cta .btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--color-primary-dark);
+}
+
+.hero-cta .btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.hero-cta .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
 /* Buttons - Polished mit Accessibility & Touch Support */
@@ -351,7 +428,16 @@ a:focus-visible {
 /* Wartelisten-Sektion */
 .waitlist-section {
   padding: var(--spacing-xxl) var(--spacing-md);
-  background-color: var(--color-bg-light);
+  background-image: url('../img/Background-Tafel.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.waitlist-section .container {
+  position: relative;
+  z-index: 1;
 }
 
 .waitlist-card {
@@ -755,6 +841,73 @@ body.no-scroll {
   overflow: hidden;
 }
 
+/* Mockup Cards - Einheitliche Darstellung */
+.mockup-images-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.mockup-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: auto;
+  transition: var(--transition);
+}
+
+.mockup-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.mockup-card-title {
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.mockup-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Sicherstellen, dass mockup-description nicht angezeigt wird */
+.mockup-description {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.mockup-image {
+  width: 100%;
+  max-width: 100%;
+  max-height: 450px;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  border-radius: var(--border-radius);
+}
+
+.mockup-image-large {
+  max-height: 500px;
+}
+
 /* Trust & Safety Sektion */
 .trust-safety {
   background-color: var(--color-bg);
@@ -912,28 +1065,29 @@ body.no-scroll {
   display: block;
 }
 
-.nav-menu {
-  position: fixed;
-  top: 60px;
-  left: -100%;
-  flex-direction: column;
-  background-color: var(--color-white);
-  width: 100%;
-  text-align: center;
-  transition: var(--transition);
-  box-shadow: var(--shadow-lg);
-  padding: var(--spacing-lg) 0;
-  gap: var(--spacing-md);
-}
+  .nav-menu {
+    position: fixed;
+    top: 58px;
+    left: -100%;
+    flex-direction: column;
+    background-color: #153d26; /* Dunkles Grün - konsistent mit Header */
+    width: 100%;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-lg) 0;
+    gap: var(--spacing-md);
+  }
 
 .nav-menu.active {
   left: 0;
 }
 
-.hero {
-  min-height: 70vh;
-  padding: var(--spacing-xl) var(--spacing-md);
-}
+  .hero {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
 
 .hero-cta {
   flex-direction: column;
@@ -1024,7 +1178,8 @@ p {
   }
 
   .hero {
-    min-height: 80vh;
+    min-height: 100vh !important;
+    height: 100vh !important;
     padding: var(--spacing-xxl) var(--spacing-md);
   }
 
@@ -1041,6 +1196,48 @@ p {
 
   .section {
     padding: var(--spacing-xxl) var(--spacing-md);
+  }
+
+  /* Desktop: Kompakteres Wartelisten-Formular */
+  .waitlist-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    background-image: url('../img/Background-Tafel.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+  
+  .waitlist-card {
+    padding: var(--spacing-lg);
+    max-width: 550px;
+  }
+  
+  .waitlist-card .section-title {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-2xl);
+  }
+  
+  .waitlist-card .waitlist-intro {
+    margin-bottom: var(--spacing-md) !important;
+    font-size: var(--font-size-base);
+  }
+  
+  .waitlist-card .form-group {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .waitlist-card .form-label {
+    margin-bottom: 0.25rem;
+    font-size: var(--font-size-sm);
+  }
+  
+  .waitlist-card .form-input,
+  .waitlist-card .form-select {
+    padding: 0.6rem;
+    min-height: 40px;
+  }
+  
+  .waitlist-card button[type="submit"] {
+    margin-top: var(--spacing-md);
   }
 
   /* Desktop: Grid mit mehreren Spalten */
@@ -1121,5 +1318,27 @@ p {
 
   .grid-3 {
     grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Mockup-Bilder nebeneinander auf Desktop */
+  .mockup-images-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--spacing-xxl) !important;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .mockup-card {
+    min-height: auto;
+    padding: var(--spacing-md);
+  }
+  
+  .mockup-image {
+    max-height: 500px;
+  }
+  
+  .mockup-image-large {
+    max-height: 550px;
   }
 }

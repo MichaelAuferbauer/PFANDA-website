@@ -20,14 +20,17 @@
     <meta property="twitter:description" content="PFANDA - Die moderne Lösung für Pfandflaschen. Einfach, nachhaltig und profitabel für alle.">
     
     <title>PFANDA - Die moderne Pfandlösung</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css?v=41">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="navbar-content">
-            <a href="index.html" class="logo">PFANDA</a>
-            <button class="menu-toggle" aria-label="Menü öffnen">☰</button>
+            <a href="index.html" class="brand">
+                <img src="assets/img/PFANDA LOGO 2.png" alt="PFANDA Logo" class="brand-logo">
+                <span class="logo">PFANDA</span>
+            </a>
+            <button class="menu-toggle" aria-label="Menü öffnen">Menu [+]</button>
             <ul class="nav-menu">
                 <li><a href="index.html">Start</a></li>
                 <li><a href="geber.html">Pfandgeber</a></li>
@@ -40,25 +43,28 @@
 
     <!-- Hero Section - Conversion Optimized -->
     <!-- Full-width Hero mit min. 80vh, vertikal zentriert, dezenter Farbverlauf -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" style="background-image: url('assets/img/website-start-bild (2).png'); background-size: cover; background-position: center; width: 100%; min-height: 100vh !important; height: 100vh !important;">
         <div class="hero-content">
-            <!-- Große, klare Headline -->
-            <h1>PFANDA</h1>
-            
-            <!-- Value Proposition: Kurz erklären, welchen konkreten Nutzen PFANDA für Privatpersonen bringt -->
-            <p class="value-proposition">
-                [PLATZHALTER: Kurz erklären, welchen konkreten Nutzen PFANDA für Privatpersonen bringt – z. B. Pfand einfach abgeben lassen]
+            <!-- Eyebrow (klein) -->
+            <p class="value-proposition" style="font-size: 1.2rem; margin-bottom: var(--spacing-md); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9;">
+                Recycling verbindet
             </p>
             
-            <!-- Subheadline: Ergänzende Erklärung, für wen PFANDA ist und warum es bequem/sicher ist -->
-            <p class="subheadline">
-                [PLATZHALTER: Ergänzende Erklärung, für wen PFANDA ist und warum es bequem/sicher ist]
+            <!-- Headline -->
+            <h1 style="margin-bottom: var(--spacing-lg); font-size: 3rem; line-height: 1.2;">
+                Pfand abholen lassen.<br>
+                Einfach. Sicher. Lokal.
+            </h1>
+            
+            <!-- Subheadline -->
+            <p class="subheadline" style="font-size: 1.25rem; line-height: 1.7; max-width: 600px;">
+                PFANDA verbindet Menschen, die ihr Pfand bequem loswerden wollen, mit Abholern in der Nähe – transparent und organisiert per App.
             </p>
             
             <!-- CTA Buttons: Primary (Warteliste) + Secondary (So funktioniert's) -->
             <!-- Buttons sind klar visuell unterscheidbar: Primary = gefüllt, Secondary = Outline -->
             <div class="hero-cta">
-                <a href="#warteliste" class="btn">Warteliste</a>
+                <a href="#warteliste" class="btn">Frühzeitig informieren</a>
                 <a href="#so-funktionierts" class="btn btn-secondary">So funktioniert's</a>
             </div>
         </div>
@@ -66,86 +72,65 @@
 
     <!-- Wartelisten-Sektion -->
     <!-- Ruhige Card-Optik mit abgesetztem Hintergrund für bessere Conversion -->
-    <section class="waitlist-section" id="warteliste">
+    <section class="waitlist-section" id="warteliste" style="background-image: url('assets/img/Background-Tafel.png'); background-size: cover; background-position: center;">
         <div class="container">
             <div class="waitlist-card">
                 <!-- Überschrift: Kurz & motivierend -->
-                <h2 class="section-title">[PLATZHALTER: Kurz & motivierend, z. B. 'Sei von Anfang an dabei']</h2>
+                <h2 class="section-title">Sei beim Start dabei.</h2>
                 
                 <!-- Text: Erklärung, warum sich Eintragung lohnt -->
-                <p style="text-align: center; color: var(--color-text-light); margin-bottom: var(--spacing-lg);">
-                    [PLATZHALTER: Erklärung, warum sich Eintragung lohnt – z. B. Early Access, Pilotregion]
+                <p class="waitlist-intro" style="text-align: center; color: var(--color-text-light); margin-bottom: var(--spacing-lg);">
+                    Trag dich ein und wir melden uns, sobald PFANDA in deiner Region verfügbar ist.
                 </p>
                 
-                <!-- Formular: Name (optional) + E-Mail (Pflicht) -->
+                <!-- Formular -->
                 <form class="waitlist-form" id="waitlistForm">
+                    <!-- Feld: Rolle (Pflicht) -->
                     <div class="form-group">
-                        <label for="waitlist-name" class="form-label">Name</label>
-                        <input type="text" id="waitlist-name" name="name" class="form-input" placeholder="Ihr Name (optional)">
+                        <label for="waitlist-role" class="form-label">Ich bin… *</label>
+                        <select id="waitlist-role" name="role" class="form-select" required>
+                            <option value="">Bitte wählen</option>
+                            <option value="pfandgeber">Pfandgeber (Ich möchte Pfand abholen lassen)</option>
+                            <option value="abholer">Abholer (Ich möchte Pfand abholen)</option>
+                        </select>
                     </div>
                     
+                    <!-- Feld: PLZ (Pflicht) -->
+                    <div class="form-group">
+                        <label for="waitlist-plz" class="form-label">PLZ *</label>
+                        <input type="text" id="waitlist-plz" name="plz" class="form-input" placeholder="z. B. 1010" required pattern="[0-9]{4,5}" maxlength="5">
+                        <small style="color: var(--color-text-light); font-size: var(--font-size-sm); display: block; margin-top: var(--spacing-xs);">
+                            Damit wir wissen, wo PFANDA zuerst startet.
+                        </small>
+                    </div>
+                    
+                    <!-- Feld: Name (optional) -->
+                    <div class="form-group">
+                        <label for="waitlist-name" class="form-label">Name (optional)</label>
+                        <input type="text" id="waitlist-name" name="name" class="form-input" placeholder="Ihr Name">
+                    </div>
+                    
+                    <!-- Feld: E-Mail (Pflicht) -->
                     <div class="form-group">
                         <label for="waitlist-email" class="form-label">E-Mail *</label>
-                        <input type="email" id="waitlist-email" name="email" class="form-input" placeholder="ihre@email.de" required>
+                        <input type="email" id="waitlist-email" name="email" class="form-input" placeholder="ihre@email.at" required>
                     </div>
                     
-                    <button type="submit" class="btn" style="width: 100%;">Auf Warteliste setzen</button>
+                    <button type="submit" class="btn" style="width: 100%;">Auf die Warteliste</button>
+                    
+                    <!-- Hinweis unter dem Button -->
+                    <p style="text-align: center; font-size: var(--font-size-sm); color: var(--color-text-light); margin-top: var(--spacing-md);">
+                        Wir senden dir nur Updates zu PFANDA. Kein Spam.<br>
+                        <a href="datenschutz.html" style="color: var(--color-primary);">Datenschutz</a>
+                    </p>
                 </form>
                 
                 <!-- Success-Message: Wird nach erfolgreichem Submit angezeigt -->
                 <div class="waitlist-success" id="waitlistSuccess">
-                    <h3 style="color: var(--color-primary); margin-bottom: var(--spacing-sm);">✓ Erfolgreich angemeldet!</h3>
+                    <h3 style="color: var(--color-primary); margin-bottom: var(--spacing-sm);">✓ Danke!</h3>
                     <p style="color: var(--color-text-light);">
-                        [PLATZHALTER: Danke-Nachricht + Hinweis, dass man informiert wird]
+                        Wir melden uns, sobald PFANDA in deiner Region startet.
                     </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Zielgruppen-Sektion: Pfandgeber / Abholer -->
-    <!-- Zwei gleich große Karten nebeneinander (untereinander auf Mobile) -->
-    <section class="target-groups section">
-        <div class="container">
-            <div class="grid grid-2">
-                <!-- Karte für Pfandgeber -->
-                <div class="target-group-card">
-                    <h3>Für Pfandgeber</h3>
-                    
-                    <!-- Kurzbeschreibung: 1–2 Sätze, was diese Zielgruppe davon hat -->
-                    <p class="description">
-                        [PLATZHALTER: 1–2 Sätze, was diese Zielgruppe davon hat]
-                    </p>
-                    
-                    <!-- Bullet-Points: 3 Benefits -->
-                    <ul class="target-group-benefits">
-                        <li>[PLATZHALTER: Benefit 1]</li>
-                        <li>[PLATZHALTER: Benefit 2]</li>
-                        <li>[PLATZHALTER: Benefit 3]</li>
-                    </ul>
-                    
-                    <!-- CTA-Link: Verlinkt auf geber.html -->
-                    <a href="geber.html" class="btn btn-secondary">Mehr für Pfandgeber</a>
-                </div>
-                
-                <!-- Karte für Abholer -->
-                <div class="target-group-card">
-                    <h3>Für Abholer</h3>
-                    
-                    <!-- Kurzbeschreibung: 1–2 Sätze, was diese Zielgruppe davon hat -->
-                    <p class="description">
-                        [PLATZHALTER: 1–2 Sätze, was diese Zielgruppe davon hat]
-                    </p>
-                    
-                    <!-- Bullet-Points: 3 Benefits -->
-                    <ul class="target-group-benefits">
-                        <li>[PLATZHALTER: Benefit 1]</li>
-                        <li>[PLATZHALTER: Benefit 2]</li>
-                        <li>[PLATZHALTER: Benefit 3]</li>
-                    </ul>
-                    
-                    <!-- CTA-Link: Verlinkt auf abholer.html -->
-                    <a href="abholer.html" class="btn btn-secondary">Mehr für Abholer</a>
                 </div>
             </div>
         </div>
@@ -153,68 +138,58 @@
 
     <!-- "So funktioniert's" Sektion -->
     <!-- Scroll-Anker für Secondary CTA Button -->
-    <section class="section" id="so-funktionierts" style="background-color: var(--color-bg-light);">
+    <section class="section" id="so-funktionierts" style="background-color: #e6f4ed;">
         <div class="container">
-            <h2 class="section-title">So funktioniert's</h2>
+            <h2 class="section-title" style="margin-bottom: var(--spacing-md);">So funktioniert PFANDA</h2>
             <div class="grid grid-2">
                 <div class="card">
                     <h3 class="card-title">Für Pfandgeber</h3>
                     <ol style="padding-left: var(--spacing-lg); color: var(--color-text-light);">
-                        <li style="margin-bottom: var(--spacing-xs);">Sammeln Sie Ihre Pfandflaschen</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Melden Sie die Anzahl an</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Warten Sie auf einen Abholer</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Erhalten Sie Ihr Geld</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Pfand sammeln</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Abholung in der App anlegen</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Ein Abholer in deiner Nähe nimmt den Auftrag an</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Pfand übergeben & deinen Anteil erhalten</li>
                     </ol>
-                    <a href="geber.html" class="btn" style="margin-top: var(--spacing-sm);">Mehr erfahren</a>
+                    <a href="geber.html" class="btn" style="margin-top: var(--spacing-sm);">So gebe ich Pfand ab</a>
                 </div>
                 <div class="card">
                     <h3 class="card-title">Für Abholer</h3>
                     <ol style="padding-left: var(--spacing-lg); color: var(--color-text-light);">
-                        <li style="margin-bottom: var(--spacing-xs);">Registrieren Sie sich als Abholer</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Finden Sie verfügbare Pfandflaschen</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Vereinbaren Sie einen Abholtermin</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Verdienen Sie Geld</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Als Abholer registrieren</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Aufträge in deiner Nähe finden</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Pfand abholen</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Pfand einlösen & Geld verdienen</li>
                     </ol>
-                    <a href="abholer.html" class="btn" style="margin-top: var(--spacing-sm);">Mehr erfahren</a>
+                    <a href="abholer.html" class="btn" style="margin-top: var(--spacing-sm);">So werde ich Abholer</a>
+                </div>
+            </div>
+            
+            <!-- Mockup-Bilder unter den Karten -->
+            <div class="mockup-images-container" style="margin-top: var(--spacing-lg);">
+                <!-- Mockup-DetailView für Pfandgeber -->
+                <div class="mockup-card">
+                    <div class="mockup-image-wrapper">
+                        <img src="assets/img/Mockup-DetailView.png?v=2" 
+                             alt="PFANDA App Detail-Ansicht" 
+                             class="mockup-image">
+                    </div>
+                </div>
+                
+                <!-- Mockup-Map für Abholer -->
+                <div class="mockup-card">
+                    <div class="mockup-image-wrapper">
+                        <img src="assets/img/Mockup-Map.png?v=1" 
+                             alt="PFANDA App Karten-Ansicht" 
+                             class="mockup-image mockup-image-large">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Vertrauen & Sicherheit Sektion -->
-    <section class="trust-safety section">
+    <!-- Transparenter Ablauf Sektion -->
+    <section class="section" style="background-color: var(--color-bg);">
         <div class="container">
-            <!-- Überschrift: Kurz & sachlich -->
-            <h2 class="section-title">[PLATZHALTER: Kurz & sachlich, z. B. „Vertrauen & Sicherheit"]</h2>
-            
-            <!-- Einleitender Kurztext: Warum Sicherheit wichtig ist -->
-            <p class="trust-intro" style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-xl); color: var(--color-text-light);">
-                [PLATZHALTER: Warum Sicherheit bei PFANDA wichtig ist – neutral, nicht werbend]
-            </p>
-
-            <!-- Missbrauchsreduktion: 3 Punkte als Cards -->
-            <div class="grid grid-3" style="margin-bottom: var(--spacing-xxl);">
-                <div class="card trust-feature">
-                    <h3 class="card-title">[PLATZHALTER: Adresse erst nach Annahme sichtbar]</h3>
-                    <p style="color: var(--color-text-light);">
-                        [PLATZHALTER: 1 kurzer Erklärungssatz dazu]
-                    </p>
-                </div>
-                <div class="card trust-feature">
-                    <h3 class="card-title">[PLATZHALTER: Kommunikation über integrierten Chat]</h3>
-                    <p style="color: var(--color-text-light);">
-                        [PLATZHALTER: 1 kurzer Erklärungssatz dazu]
-                    </p>
-                </div>
-                <div class="card trust-feature">
-                    <h3 class="card-title">[PLATZHALTER: Abholung muss aktiv bestätigt werden]</h3>
-                    <p style="color: var(--color-text-light);">
-                        [PLATZHALTER: 1 kurzer Erklärungssatz dazu]
-                    </p>
-                </div>
-            </div>
-
-            <!-- Transparenter Ablauf: 3-Step Timeline -->
             <div class="trust-timeline">
                 <h3 style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-primary);">Transparenter Ablauf</h3>
                 <div class="timeline-steps">
@@ -242,13 +217,6 @@
                         </p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Pilot-Hinweis: Dezenter Infotext am Ende -->
-            <div class="trust-pilot-note">
-                <p style="text-align: center; font-size: var(--font-size-sm); color: var(--color-text-light); margin-top: var(--spacing-xl);">
-                    [PLATZHALTER: Hinweis auf Pilotregion / Coming soon, sachlich, ohne Hype]
-                </p>
             </div>
         </div>
     </section>
@@ -298,13 +266,48 @@
                 waitlistForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Einfache E-Mail-Validierung
+                    // Validierung
+                    const roleInput = document.getElementById('waitlist-role');
+                    const plzInput = document.getElementById('waitlist-plz');
                     const emailInput = document.getElementById('waitlist-email');
-                    const email = emailInput.value.trim();
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     
-                    if (!emailRegex.test(email)) {
-                        alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                    const role = roleInput.value.trim();
+                    const plz = plzInput.value.trim();
+                    const email = emailInput.value.trim();
+                    
+                    // Error Messages
+                    let errorMessage = '';
+                    
+                    if (!role) {
+                        errorMessage = 'Bitte Rolle auswählen.';
+                        roleInput.style.borderColor = '#dc3545';
+                    } else {
+                        roleInput.style.borderColor = '';
+                    }
+                    
+                    if (!plz) {
+                        errorMessage = 'Bitte PLZ eingeben.';
+                        plzInput.style.borderColor = '#dc3545';
+                    } else if (!/^[0-9]{4,5}$/.test(plz)) {
+                        errorMessage = 'Bitte eine gültige PLZ eingeben (4-5 Ziffern).';
+                        plzInput.style.borderColor = '#dc3545';
+                    } else {
+                        plzInput.style.borderColor = '';
+                    }
+                    
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!email) {
+                        errorMessage = 'Bitte E-Mail eingeben.';
+                        emailInput.style.borderColor = '#dc3545';
+                    } else if (!emailRegex.test(email)) {
+                        errorMessage = 'Bitte eine gültige E-Mail eingeben.';
+                        emailInput.style.borderColor = '#dc3545';
+                    } else {
+                        emailInput.style.borderColor = '';
+                    }
+                    
+                    if (errorMessage) {
+                        alert(errorMessage);
                         return;
                     }
                     
@@ -320,6 +323,8 @@
                     
                     // Console-Log für Debugging (später entfernen)
                     console.log('Wartelisten-Anmeldung:', {
+                        role: role,
+                        plz: plz,
                         name: document.getElementById('waitlist-name').value,
                         email: email
                     });
