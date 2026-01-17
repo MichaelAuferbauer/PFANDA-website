@@ -10,7 +10,7 @@
   --color-primary-light: #4da878;
   --color-accent: #52c48a;
   --color-text: #1a1a1a;
-  --color-text-light: #666666;
+  --color-text-light: #1a1a1a; /* Schwarz statt grau */
   --color-bg: #ffffff;
   --color-bg-light: #f8f9fa;
   --color-bg-dark: #f0f0f0;
@@ -169,13 +169,14 @@ a:focus-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem var(--spacing-md) !important; /* Noch etwas dickerer Header */
-  max-width: var(--max-width);
+  padding: 1rem var(--spacing-sm) !important; /* Kompakteres Padding auf Mobile */
+  max-width: 100% !important; /* Nutzt volle Breite */
+  width: 100%;
   margin: 0 auto;
-  height: 58px !important; /* Feste Höhe - leicht dicker */
-  min-height: 58px !important;
-  max-height: 58px !important;
+  min-height: 75px !important; /* Variable Höhe - Basis */
+  height: auto !important;
   overflow: visible; /* Logo darf über Header hinausragen */
+  gap: var(--spacing-md); /* Abstand zwischen Logo und Navigation */
 }
 
 .brand {
@@ -191,17 +192,17 @@ a:focus-visible {
 .brand-logo,
 .brand img,
 .brand .brand-logo {
-  height: 55px !important; /* Großes Logo - kann über Header hinausragen */
+  height: 65px !important; /* Größeres Logo */
   width: auto !important;
   display: block !important;
   object-fit: contain !important;
-  max-height: 55px !important;
+  max-height: 65px !important;
   position: relative;
   z-index: 1;
 }
 
 .logo {
-  font-size: 1.5rem !important; /* Etwas kleinere Schrift für schmaleren Header */
+  font-size: 1.875rem !important; /* Größere Schrift */
   font-weight: 700;
   color: #ffffff !important; /* Weiß */
   text-decoration: none;
@@ -214,12 +215,13 @@ a:focus-visible {
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-sm); /* Kompakterer Abstand auf Mobile */
   align-items: center;
 }
 
 .nav-menu a {
   color: #ffffff !important; /* Weiß - exakt wie Screenshot */
+  font-size: 1.125rem; /* Größere Schrift */
   font-weight: 500;
   padding: var(--spacing-xs) 0;
   position: relative;
@@ -309,6 +311,52 @@ a:focus-visible {
   margin-left: var(--spacing-xl);
 }
 
+/* Mobile: Hero-Anpassungen */
+@media (max-width: 767px) {
+  .hero-content {
+    max-width: 75% !important;
+    margin-left: var(--spacing-md) !important;
+    margin-right: var(--spacing-md) !important;
+    padding: var(--spacing-md);
+    margin-top: 15vh !important; /* Text beginnt weiter oben (ca. Schuhhöhe) */
+    align-self: flex-start !important;
+  }
+  
+  .hero {
+    align-items: flex-start !important;
+    padding-top: var(--spacing-lg) !important;
+  }
+  
+  .hero .value-proposition {
+    font-size: 0.9rem !important;
+    opacity: 1 !important;
+    margin-bottom: var(--spacing-xs) !important;
+  }
+  
+  .hero h1 {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: var(--spacing-sm) !important;
+  }
+  
+  .hero .subheadline {
+    font-size: 1rem !important;
+    max-width: 100% !important;
+    line-height: 1.5 !important;
+    margin-bottom: var(--spacing-md) !important;
+  }
+  
+  .hero-cta {
+    margin-top: var(--spacing-md) !important;
+    gap: var(--spacing-sm) !important;
+  }
+  
+  .hero-cta .btn {
+    font-size: 1rem !important;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+  }
+}
+
 .hero h1 {
   margin-bottom: var(--spacing-md);
   color: #ffffff !important; /* Weiß */
@@ -345,6 +393,9 @@ a:focus-visible {
   background-color: #ffffff;
   color: var(--color-primary);
   border: 2px solid #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: var(--spacing-md) var(--spacing-xl);
 }
 
 .hero-cta .btn:hover {
@@ -356,6 +407,9 @@ a:focus-visible {
   background-color: transparent;
   color: #ffffff;
   border: 2px solid #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: var(--spacing-md) var(--spacing-xl);
 }
 
 .hero-cta .btn-secondary:hover {
@@ -388,6 +442,7 @@ a:focus-visible {
 
 .btn:hover {
   background-color: var(--color-primary-dark);
+  color: var(--color-white) !important; /* Schrift bleibt weiß beim Hover */
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -547,8 +602,13 @@ a:focus-visible {
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1) !important; /* Intensiverer Schatten */
   transition: var(--transition);
+}
+
+/* Cards in "So funktioniert's" Sektion mit leichtem Grün */
+#so-funktionierts .card {
+  background-color: #e6f4ed;
 }
 
 .card:hover {
@@ -560,6 +620,59 @@ a:focus-visible {
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
   line-height: 1.3;
+}
+
+/* Größere Schriftgrößen für "So funktioniert's" Sektion */
+#so-funktionierts .card-title {
+  font-size: 2rem !important;
+  font-weight: 700;
+}
+
+#so-funktionierts .feature-card .btn {
+  font-size: 1.125rem !important;
+  font-weight: 700;
+  padding: var(--spacing-md) var(--spacing-xl);
+}
+
+#so-funktionierts .feature-card .btn:hover {
+  color: var(--color-white) !important; /* Schrift bleibt weiß beim Hover */
+  background-color: var(--color-primary-dark) !important;
+}
+
+/* Flasche-Bilder unter Buttons */
+.flasche-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--spacing-md);
+}
+
+.flasche-image {
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive Größen für Flasche-Bilder */
+@media (min-width: 768px) {
+  .flasche-image {
+    max-width: 180px;
+    max-height: 180px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flasche-image {
+    max-width: 200px;
+    max-height: 200px;
+  }
+}
+
+#so-funktionierts .section-title {
+  font-size: 2.75rem !important;
+  margin-bottom: 5rem !important; /* Noch größerer Abstand bis zu den Feldern */
 }
 
 /* Grid - Mobile First (Standard: 1 Spalte) */
@@ -679,8 +792,9 @@ a:focus-visible {
   margin-top: var(--spacing-sm);
 }
 
-/* Sticky CTA Button */
+/* Sticky CTA Button - DEAKTIVIERT */
 .sticky-cta {
+  display: none !important; /* Button komplett versteckt */
   position: fixed;
   bottom: var(--spacing-md);
   right: var(--spacing-md);
@@ -854,7 +968,7 @@ body.no-scroll {
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-md);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1) !important; /* Intensiverer Schatten */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -866,6 +980,28 @@ body.no-scroll {
 .mockup-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+}
+
+/* Mockup-Cards in "So funktioniert's" ohne Felder */
+#so-funktionierts .mockup-card {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+#so-funktionierts .mockup-card:hover {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Größere Mockup-Bilder in "So funktioniert's" */
+#so-funktionierts .mockup-image {
+  max-height: 550px !important;
+}
+
+#so-funktionierts .mockup-image-large {
+  max-height: 600px !important;
 }
 
 .mockup-card-title {
@@ -908,6 +1044,101 @@ body.no-scroll {
   max-height: 500px;
 }
 
+/* Feature Row: Text + Mockup nebeneinander */
+.feature-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  align-items: stretch;
+}
+
+.feature-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.feature-mockup {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: -2rem; /* Mockups leicht anheben */
+}
+
+/* Mission Sektion */
+.mission-section {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: stretch;
+}
+
+.mission-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  min-height: 500px;
+}
+
+.mission-text {
+  background-color: var(--color-white);
+  padding: var(--spacing-xxl) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mission-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.3;
+}
+
+.mission-content {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  max-width: 100%;
+  margin: 0;
+}
+
+.mission-image {
+  background-image: url('../img/Background-Tafel.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mission-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-xl);
+}
+
+.mission-logo {
+  max-width: 300px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
 /* Trust & Safety Sektion */
 .trust-safety {
   background-color: var(--color-bg);
@@ -934,6 +1165,85 @@ body.no-scroll {
   padding: var(--spacing-xl) 0;
 }
 
+/* Transparency Container: Wie Mission - vollständige Breite */
+.transparency-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  min-height: 500px;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.transparency-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  background-color: transparent;
+}
+
+.flaschensack-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-xl);
+}
+
+.flaschensack-image {
+  max-width: 100%;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--border-radius-lg);
+}
+
+.transparency-text {
+  background-color: var(--color-white);
+  padding: var(--spacing-lg) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.transparency-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.3;
+}
+
+.transparency-content {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Flaschenübergabe Bild */
+.flaschenuebergabe-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--spacing-xxl);
+  padding: var(--spacing-lg) 0;
+}
+
+.flaschenuebergabe-image {
+  max-width: 100%;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+}
+
 .timeline-steps {
   display: flex;
   justify-content: space-between;
@@ -947,18 +1257,19 @@ body.no-scroll {
   flex: 1;
   text-align: center;
   position: relative;
+  padding: var(--spacing-md);
 }
 
 .timeline-number {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: var(--color-primary);
   color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-xl);
+  font-size: 1.5rem;
   font-weight: 700;
   margin: 0 auto var(--spacing-md);
 }
@@ -992,8 +1303,8 @@ body.no-scroll {
 
 /* Footer */
 .footer {
-  background-color: var(--color-bg-light);
-  border-top: 1px solid var(--color-border);
+  background-color: #153d26 !important; /* Gleiche Hintergrundfarbe wie Header */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Leicht transparente weiße Linie */
   padding: var(--spacing-xl) var(--spacing-md);
   margin-top: var(--spacing-xxl);
 }
@@ -1008,7 +1319,17 @@ body.no-scroll {
 .footer-section h3 {
   font-size: var(--font-size-lg);
   margin-bottom: var(--spacing-sm);
-  color: var(--color-primary);
+  color: #ffffff !important; /* Weiß */
+}
+
+.footer-section h3 sup {
+  font-size: 0.85em;
+  vertical-align: super;
+  font-weight: normal;
+}
+
+.footer-section p {
+  color: #ffffff !important; /* Weiß */
 }
 
 .footer-links {
@@ -1020,20 +1341,26 @@ body.no-scroll {
 }
 
 .footer-links a {
-  color: var(--color-text-light);
+  color: #ffffff !important; /* Weiß */
   transition: var(--transition);
 }
 
 .footer-links a:hover {
-  color: var(--color-primary);
+  color: rgba(255, 255, 255, 0.8) !important; /* Leicht transparentes Weiß beim Hover */
 }
 
 .footer-bottom {
   text-align: center;
   padding-top: var(--spacing-md);
-  border-top: 1px solid var(--color-border);
-  color: var(--color-text-light);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Leicht transparente weiße Linie */
+  color: #ffffff !important; /* Weiß */
   font-size: var(--font-size-sm);
+}
+
+.footer-bottom sup {
+  font-size: 0.85em;
+  vertical-align: super;
+  font-weight: normal;
 }
 
 /* Utility Classes */
@@ -1094,14 +1421,34 @@ body.no-scroll {
   align-items: stretch;
 }
 
-.hero-cta .btn {
-  width: 100%;
-  margin: 0;
-}
+  .hero-cta .btn {
+    width: 100%;
+    margin: 0;
+  }
 
-.section {
-  padding: var(--spacing-xl) var(--spacing-md);
-}
+  .section {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  
+  /* Mission Sektion: Mobile - untereinander */
+  .mission-container {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .mission-text {
+    padding: var(--spacing-xl) var(--spacing-md);
+    min-height: 400px;
+  }
+  
+  .mission-image {
+    min-height: 400px;
+  }
+  
+  .mission-logo {
+    max-width: 200px;
+    max-height: 200px;
+  }
 
 .footer-content {
   grid-template-columns: 1fr;
@@ -1145,7 +1492,29 @@ p {
 }
 
 .navbar-content {
-  padding: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-sm) !important;
+  min-height: 65px !important; /* Kleinere Höhe auf Mobile */
+  gap: var(--spacing-sm) !important; /* Sehr kompakter Abstand auf Mobile */
+}
+
+/* Mobile: Kleinere Logo-Größe */
+.brand-logo,
+.brand img,
+.brand .brand-logo {
+  height: 55px !important;
+  max-height: 55px !important;
+}
+
+.logo {
+  font-size: 1.65rem !important;
+}
+
+.nav-menu {
+  gap: var(--spacing-xs) !important; /* Sehr kompakter Abstand zwischen Nav-Links auf Mobile */
+}
+
+.nav-menu a {
+  font-size: 1rem !important;
 }
 
 .hero h1 {
@@ -1192,6 +1561,86 @@ p {
   .hero-cta .btn {
     width: auto;
     margin: 0;
+  }
+  
+  /* Tablet: Mittlere Header-Höhe und Abstände */
+  .navbar-content {
+    padding: 1.1rem var(--spacing-md) !important;
+    min-height: 75px !important;
+    gap: var(--spacing-lg) !important; /* Mehr Abstand zwischen Logo und Navigation */
+  }
+  
+  .brand-logo,
+  .brand img,
+  .brand .brand-logo {
+    height: 70px !important;
+    max-height: 70px !important;
+  }
+  
+  .logo {
+    font-size: 1.95rem !important;
+  }
+  
+  .nav-menu {
+    gap: var(--spacing-md) !important; /* Mehr Abstand zwischen Nav-Links */
+  }
+  
+  .nav-menu a {
+    font-size: 1.15rem !important;
+  }
+  
+  /* Mission Sektion: Tablet - nebeneinander */
+  .mission-container {
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+  
+  .mission-text {
+    padding: var(--spacing-xxl) var(--spacing-xl);
+  }
+  
+  .mission-image {
+    min-height: 600px;
+  }
+  
+  .mission-logo {
+    max-width: 250px;
+    max-height: 250px;
+  }
+  
+  /* Transparency Container: Tablet - nebeneinander */
+  .transparency-container {
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+  
+  .transparency-image {
+    padding: var(--spacing-xl);
+  }
+  
+  .flaschensack-image {
+    max-height: 550px;
+  }
+  
+  .transparency-text {
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+  
+  .transparency-title {
+    font-size: 2.5rem;
+  }
+  
+  .transparency-content {
+    font-size: 1.125rem;
+  }
+  
+  /* Größere Mockup-Bilder in "So funktioniert's" auf Tablet */
+  #so-funktionierts .mockup-image {
+    max-height: 600px !important;
+  }
+  
+  #so-funktionierts .mockup-image-large {
+    max-height: 650px !important;
   }
 
   .section {
@@ -1270,6 +1719,17 @@ p {
   .timeline-steps {
     flex-direction: row;
     justify-content: space-between;
+    max-width: 1200px;
+  }
+  
+  .timeline-step {
+    padding: var(--spacing-lg);
+  }
+  
+  .timeline-number {
+    width: 70px;
+    height: 70px;
+    font-size: 1.75rem;
   }
 
   .timeline-connector {
@@ -1300,7 +1760,89 @@ p {
   }
 
   .navbar-content {
-    padding: var(--spacing-md) var(--spacing-md);
+    padding: 1.25rem var(--spacing-xl) !important; /* Mehr horizontales Padding auf Desktop */
+    min-height: 85px !important; /* Größere Höhe auf Desktop */
+    gap: var(--spacing-xxl) !important; /* Sehr viel Abstand zwischen Logo und Navigation */
+    max-width: 100% !important; /* Nutzt volle Breite auf Desktop */
+    padding-left: clamp(2rem, 5vw, 4rem) !important; /* Responsives Padding */
+    padding-right: clamp(2rem, 5vw, 4rem) !important;
+  }
+  
+  .brand-logo,
+  .brand img,
+  .brand .brand-logo {
+    height: 75px !important; /* Größeres Logo auf Desktop */
+    max-height: 75px !important;
+  }
+  
+  .logo {
+    font-size: 2rem !important; /* Größere Schrift auf Desktop */
+  }
+  
+  .nav-menu {
+    gap: var(--spacing-xxl) !important; /* Sehr viel Abstand zwischen Nav-Links auf Desktop */
+  }
+  
+  .nav-menu a {
+    font-size: 1.25rem !important; /* Größere Navigation auf Desktop */
+  }
+  
+  /* Mission Sektion: Desktop - nebeneinander mit größeren Abständen */
+  .mission-container {
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+  }
+  
+  .mission-text {
+    padding: var(--spacing-xxl) clamp(2rem, 5vw, 4rem);
+  }
+  
+  .mission-title {
+    font-size: 3rem;
+  }
+  
+  .mission-content {
+    font-size: 1.25rem;
+  }
+  
+  .mission-image {
+    min-height: 700px;
+  }
+  
+  .mission-logo {
+    max-width: 350px;
+    max-height: 350px;
+  }
+  
+  /* Flaschenübergabe Bild responsive */
+  .flaschenuebergabe-image {
+    max-height: 600px;
+  }
+  
+  /* Transparency Container: Desktop - nebeneinander mit größerem Bild */
+  .transparency-container {
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+  }
+  
+  .transparency-image {
+    padding: var(--spacing-xl);
+  }
+  
+  .flaschensack-image {
+    max-height: 650px;
+  }
+  
+  .transparency-text {
+    padding: var(--spacing-lg) clamp(2rem, 5vw, 4rem);
+  }
+  
+  .transparency-title {
+    font-size: 3rem;
+  }
+  
+  .transparency-content {
+    font-size: 1.125rem;
   }
 
   .hero h1 {
@@ -1340,5 +1882,61 @@ p {
   
   .mockup-image-large {
     max-height: 550px;
+  }
+  
+  /* Größere Mockup-Bilder in "So funktioniert's" auf Desktop */
+  #so-funktionierts .mockup-image {
+    max-height: 650px !important;
+  }
+  
+  #so-funktionierts .mockup-image-large {
+    max-height: 700px !important;
+  }
+  
+  /* Feature Row: Desktop - nebeneinander */
+  .feature-row {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+  }
+  
+  .feature-row-reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .feature-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px; /* Gleiche Mindesthöhe */
+  }
+  
+  .feature-mockup {
+    flex: 1;
+    min-height: 500px; /* Gleiche Mindesthöhe wie feature-card */
+    margin-top: -2rem; /* Mockups leicht anheben */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   Sehr große Desktop Screens (ab 1440px)
+   ============================================ */
+@media (min-width: 1440px) {
+  .navbar-content {
+    gap: 5rem !important; /* Sehr großer Abstand zwischen Logo und Navigation */
+    padding-left: clamp(3rem, 8vw, 6rem) !important; /* Noch mehr Padding */
+    padding-right: clamp(3rem, 8vw, 6rem) !important;
+  }
+  
+  .nav-menu {
+    gap: 3rem !important; /* Sehr großer Abstand zwischen Nav-Links */
+  }
+  
+  .brand {
+    gap: 0.5rem !important; /* Mehr Abstand zwischen Logo und Text */
   }
 }

@@ -13,7 +13,19 @@
     <meta property="og:description" content="Häufig gestellte Fragen zu PFANDA. Finden Sie Antworten zu Pfandgebern, Abholern und dem Service.">
     
     <title>FAQ - PFANDA</title>
-    <link rel="stylesheet" href="assets/css/styles.css?v=12">
+    <link rel="stylesheet" href="assets/css/styles.css?v=106">
+    <style>
+        .section:last-of-type .container,
+        .section:last-of-type .container p,
+        .section:last-of-type .container h2 {
+            text-align: center !important;
+        }
+        .section:last-of-type .container {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -33,14 +45,6 @@
             </ul>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Häufig gestellte Fragen</h1>
-            <p>Finden Sie Antworten auf die häufigsten Fragen zu PFANDA.</p>
-        </div>
-    </section>
 
     <!-- FAQ Section -->
     <section class="section">
@@ -165,13 +169,15 @@
     </section>
 
     <!-- Contact CTA -->
-    <section class="section" style="background-color: var(--color-bg-light);">
-        <div class="container text-center">
-            <h2 class="section-title">Weitere Fragen?</h2>
-            <p style="font-size: var(--font-size-lg); color: var(--color-text-light); margin-bottom: var(--spacing-lg);">
+    <section class="section" style="background-color: var(--color-bg-light); text-align: center !important;">
+        <div class="container" style="text-align: center !important; max-width: 100% !important;">
+            <h2 style="text-align: center !important; margin-bottom: var(--spacing-lg); color: var(--color-primary);">Weitere Fragen?</h2>
+            <p style="font-size: var(--font-size-lg); color: var(--color-text-light); margin-bottom: var(--spacing-lg); text-align: center !important; width: 100%; margin-left: auto; margin-right: auto;">
                 Wenn Sie weitere Fragen haben, kontaktieren Sie uns gerne.
             </p>
-            <a href="contact.html" class="btn">Kontakt aufnehmen</a>
+            <div style="text-align: center !important; width: 100%; display: flex; justify-content: center;">
+                <a href="contact.html" class="btn">Kontakt aufnehmen</a>
+            </div>
         </div>
     </section>
 
@@ -180,8 +186,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>PFANDA</h3>
-                    <p style="color: var(--color-text-light);">Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und profitabel.</p>
+                    <h3>PFANDA<sup>®</sup></h3>
+                    <p style="color: #ffffff;">Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Navigation</h3>
@@ -202,7 +208,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 PFANDA. Alle Rechte vorbehalten.</p>
+                <p>2026 PFANDA<sup>®</sup>. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>

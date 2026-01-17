@@ -16,7 +16,8 @@
     initActiveNavItem();
     initSmoothScroll();
     initFAQAccordion();
-    initStickyCTA();
+    // initStickyCTA(); // Deaktiviert - Warteliste Button entfernt
+    removeStickyCTA(); // Entferne Button falls vorhanden
     initBackToTop();
     initLightbox();
     initFormValidation();
@@ -186,11 +187,18 @@
   }
 
   // ============================================
-  // 5. Sticky CTA Button ("Warteliste")
+  // 5. Sticky CTA Button ("Warteliste") - ENTFERNT
   // ============================================
-  // Button ist initial unsichtbar
-  // Wird sichtbar ab 25% Scroll-Tiefe
-  // Klick scrollt zur Wartelisten-Sektion
+  // Entfernt den Sticky CTA Button falls er bereits im DOM existiert
+  function removeStickyCTA() {
+    const stickyCTA = document.querySelector('.sticky-cta');
+    if (stickyCTA) {
+      stickyCTA.remove();
+    }
+  }
+
+  // Alte Funktion deaktiviert - Button wurde entfernt
+  /*
   function initStickyCTA() {
     // Erstelle Button, falls er nicht existiert
     let stickyCTA = document.querySelector('.sticky-cta');
@@ -234,6 +242,7 @@
       }
     });
   }
+  */
 
   // ============================================
   // 6. Back-to-Top Button
@@ -259,13 +268,13 @@
       if (scrollPercent >= 40) {
         backToTop.classList.add('is-visible');
         
-        // Position anpassen, wenn Sticky CTA auch sichtbar ist
-        const stickyCTA = document.querySelector('.sticky-cta.is-visible');
-        if (stickyCTA) {
-          backToTop.style.bottom = 'calc(var(--spacing-lg) + 60px)';
-        } else {
+        // Position anpassen, wenn Sticky CTA auch sichtbar ist (deaktiviert)
+        // const stickyCTA = document.querySelector('.sticky-cta.is-visible');
+        // if (stickyCTA) {
+        //   backToTop.style.bottom = 'calc(var(--spacing-lg) + 60px)';
+        // } else {
           backToTop.style.bottom = '';
-        }
+        // }
       } else {
         backToTop.classList.remove('is-visible');
       }
@@ -294,18 +303,18 @@
       }
     });
     
-    // Beobachte Sticky CTA für Position-Anpassung
-    const stickyCTA = document.querySelector('.sticky-cta');
-    if (stickyCTA) {
-      const observer = new MutationObserver(function() {
-        if (stickyCTA.classList.contains('is-visible') && backToTop.classList.contains('is-visible')) {
-          backToTop.style.bottom = 'calc(var(--spacing-lg) + 60px)';
-        } else {
-          backToTop.style.bottom = '';
-        }
-      });
-      observer.observe(stickyCTA, { attributes: true, attributeFilter: ['class'] });
-    }
+    // Beobachte Sticky CTA für Position-Anpassung (deaktiviert)
+    // const stickyCTA = document.querySelector('.sticky-cta');
+    // if (stickyCTA) {
+    //   const observer = new MutationObserver(function() {
+    //     if (stickyCTA.classList.contains('is-visible') && backToTop.classList.contains('is-visible')) {
+    //       backToTop.style.bottom = 'calc(var(--spacing-lg) + 60px)';
+    //     } else {
+    //       backToTop.style.bottom = '';
+    //     }
+    //   });
+    //   observer.observe(stickyCTA, { attributes: true, attributeFilter: ['class'] });
+    // }
   }
 
   // ============================================

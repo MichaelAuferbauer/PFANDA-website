@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PFANDA - Die moderne Lösung für Pfandflaschen. Einfach, nachhaltig und profitabel für alle.">
+    <meta name="description" content="PFANDA - Die moderne Lösung für Pfandflaschen. Einfach, nachhaltig und fair für alle.">
     <meta name="keywords" content="Pfand, Pfandflaschen, Recycling, Nachhaltigkeit, Umweltschutz">
     <meta name="author" content="PFANDA">
     
@@ -11,16 +11,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pfanda.github.io/">
     <meta property="og:title" content="PFANDA - Die moderne Pfandlösung">
-    <meta property="og:description" content="PFANDA - Die moderne Lösung für Pfandflaschen. Einfach, nachhaltig und profitabel für alle.">
+    <meta property="og:description" content="PFANDA - Die moderne Lösung für Pfandflaschen. Einfach, nachhaltig und fair für alle.">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://pfanda.github.io/">
     <meta property="twitter:title" content="PFANDA - Die moderne Pfandlösung">
-    <meta property="twitter:description" content="PFANDA - Die moderne Lösung für Pfandflaschen. Einfach, nachhaltig und profitabel für alle.">
+    <meta property="twitter:description" content="PFANDA - Die moderne Lösung für Pfandflaschen. Einfach, nachhaltig und fair für alle.">
     
     <title>PFANDA - Die moderne Pfandlösung</title>
-    <link rel="stylesheet" href="assets/css/styles.css?v=41">
+    <link rel="stylesheet" href="assets/css/styles.css?v=99">
 </head>
 <body>
     <!-- Navigation -->
@@ -46,26 +46,82 @@
     <section class="hero" id="hero" style="background-image: url('assets/img/website-start-bild (2).png'); background-size: cover; background-position: center; width: 100%; min-height: 100vh !important; height: 100vh !important;">
         <div class="hero-content">
             <!-- Eyebrow (klein) -->
-            <p class="value-proposition" style="font-size: 1.2rem; margin-bottom: var(--spacing-md); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9;">
+            <p class="value-proposition" style="font-size: 1.5rem; margin-bottom: var(--spacing-md); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9;">
                 Recycling verbindet
             </p>
             
             <!-- Headline -->
-            <h1 style="margin-bottom: var(--spacing-lg); font-size: 3rem; line-height: 1.2;">
+            <h1 style="margin-bottom: var(--spacing-lg); font-size: 4rem; line-height: 1.2;">
                 Pfand abholen lassen.<br>
                 Einfach. Sicher. Lokal.
             </h1>
             
             <!-- Subheadline -->
-            <p class="subheadline" style="font-size: 1.25rem; line-height: 1.7; max-width: 600px;">
+            <p class="subheadline" style="font-size: 1.5rem; line-height: 1.7; max-width: 600px;">
                 PFANDA verbindet Menschen, die ihr Pfand bequem loswerden wollen, mit Abholern in der Nähe – transparent und organisiert per App.
             </p>
             
             <!-- CTA Buttons: Primary (Warteliste) + Secondary (So funktioniert's) -->
             <!-- Buttons sind klar visuell unterscheidbar: Primary = gefüllt, Secondary = Outline -->
             <div class="hero-cta">
-                <a href="#warteliste" class="btn">Frühzeitig informieren</a>
                 <a href="#so-funktionierts" class="btn btn-secondary">So funktioniert's</a>
+                <a href="#warteliste" class="btn">Frühzeitig informieren</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- "So funktioniert's" Sektion -->
+    <!-- Scroll-Anker für Secondary CTA Button -->
+    <section class="section" id="so-funktionierts" style="background-color: var(--color-white);">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: var(--spacing-md);">So funktioniert PFANDA</h2>
+            
+            <!-- Pfandgeber: Text links, Mockup rechts -->
+            <div class="feature-row">
+                <div class="card feature-card">
+                    <h3 class="card-title">Für Pfandgeber</h3>
+                    <ol style="padding-left: var(--spacing-lg); color: var(--color-text);">
+                        <li style="margin-bottom: var(--spacing-xs);">Pfand sammeln</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Abholung in der App anlegen</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Ein Abholer in deiner Nähe nimmt den Auftrag an</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Pfand übergeben & deinen Anteil erhalten</li>
+                    </ol>
+                    <a href="geber.html" class="btn" style="margin-top: var(--spacing-sm);">So gebe ich Pfand ab</a>
+                    <div class="flasche-image-wrapper">
+                        <img src="assets/img/Flasche-rechts.png" alt="Flasche rechts" class="flasche-image">
+                    </div>
+                </div>
+                <div class="mockup-card feature-mockup">
+                    <div class="mockup-image-wrapper">
+                        <img src="assets/img/Mockup-DetailView.png?v=2" 
+                             alt="PFANDA App Detail-Ansicht" 
+                             class="mockup-image">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Abholer: Text links, Mockup rechts -->
+            <div class="feature-row feature-row-reverse">
+                <div class="card feature-card">
+                    <h3 class="card-title">Für Abholer</h3>
+                    <ol style="padding-left: var(--spacing-lg); color: var(--color-text);">
+                        <li style="margin-bottom: var(--spacing-xs);">Als Abholer registrieren</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Aufträge in deiner Nähe finden</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Pfand abholen</li>
+                        <li style="margin-bottom: var(--spacing-xs);">Pfand einlösen & Geld verdienen</li>
+                    </ol>
+                    <a href="abholer.html" class="btn" style="margin-top: var(--spacing-sm);">So werde ich Abholer</a>
+                    <div class="flasche-image-wrapper">
+                        <img src="assets/img/Flasche-links.png" alt="Flasche links" class="flasche-image">
+                    </div>
+                </div>
+                <div class="mockup-card feature-mockup">
+                    <div class="mockup-image-wrapper">
+                        <img src="assets/img/Mockup-Map.png?v=1" 
+                             alt="PFANDA App Karten-Ansicht" 
+                             class="mockup-image mockup-image-large">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -136,52 +192,24 @@
         </div>
     </section>
 
-    <!-- "So funktioniert's" Sektion -->
-    <!-- Scroll-Anker für Secondary CTA Button -->
-    <section class="section" id="so-funktionierts" style="background-color: #e6f4ed;">
-        <div class="container">
-            <h2 class="section-title" style="margin-bottom: var(--spacing-md);">So funktioniert PFANDA</h2>
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3 class="card-title">Für Pfandgeber</h3>
-                    <ol style="padding-left: var(--spacing-lg); color: var(--color-text-light);">
-                        <li style="margin-bottom: var(--spacing-xs);">Pfand sammeln</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Abholung in der App anlegen</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Ein Abholer in deiner Nähe nimmt den Auftrag an</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Pfand übergeben & deinen Anteil erhalten</li>
-                    </ol>
-                    <a href="geber.html" class="btn" style="margin-top: var(--spacing-sm);">So gebe ich Pfand ab</a>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Für Abholer</h3>
-                    <ol style="padding-left: var(--spacing-lg); color: var(--color-text-light);">
-                        <li style="margin-bottom: var(--spacing-xs);">Als Abholer registrieren</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Aufträge in deiner Nähe finden</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Pfand abholen</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Pfand einlösen & Geld verdienen</li>
-                    </ol>
-                    <a href="abholer.html" class="btn" style="margin-top: var(--spacing-sm);">So werde ich Abholer</a>
-                </div>
+    <!-- Mission Sektion -->
+    <section class="mission-section" id="mission">
+        <div class="mission-container">
+            <!-- Linke Seite: Missionstext -->
+            <div class="mission-text">
+                <h2 class="mission-title" style="color: var(--color-primary);">Unsere Mission</h2>
+                <p class="mission-content">
+                    PFANDA ist eine mobile App, die das Zurückgeben und Recyclen von Pfandflaschen vereinfacht. 
+                    Wir verbinden Menschen, die ihre Pfandflaschen bequem loswerden möchten, mit Abholern in ihrer Nähe 
+                    und organisieren den gesamten Prozess digital. Unser Ziel ist es, Recycling zugänglicher zu machen 
+                    und einen positiven Beitrag zur Umwelt zu leisten – lokal, bequem und nachhaltig.
+                </p>
             </div>
             
-            <!-- Mockup-Bilder unter den Karten -->
-            <div class="mockup-images-container" style="margin-top: var(--spacing-lg);">
-                <!-- Mockup-DetailView für Pfandgeber -->
-                <div class="mockup-card">
-                    <div class="mockup-image-wrapper">
-                        <img src="assets/img/Mockup-DetailView.png?v=2" 
-                             alt="PFANDA App Detail-Ansicht" 
-                             class="mockup-image">
-                    </div>
-                </div>
-                
-                <!-- Mockup-Map für Abholer -->
-                <div class="mockup-card">
-                    <div class="mockup-image-wrapper">
-                        <img src="assets/img/Mockup-Map.png?v=1" 
-                             alt="PFANDA App Karten-Ansicht" 
-                             class="mockup-image mockup-image-large">
-                    </div>
+            <!-- Rechte Seite: Tafel mit Logo -->
+            <div class="mission-image">
+                <div class="mission-logo-wrapper">
+                    <img src="assets/img/PFANDA logo only.png" alt="PFANDA Logo" class="mission-logo">
                 </div>
             </div>
         </div>
@@ -189,33 +217,64 @@
 
     <!-- Transparenter Ablauf Sektion -->
     <section class="section" style="background-color: var(--color-bg);">
+        <!-- 2-Spalten-Layout: Flaschensack links, Text rechts (wie Mission) -->
+        <div class="transparency-container">
+            <!-- Linke Seite: Flaschensack Bild -->
+            <div class="transparency-image">
+                <div class="flaschensack-wrapper">
+                    <img src="assets/img/Flaschensack.png" alt="Flaschensack" class="flaschensack-image">
+                </div>
+            </div>
+            
+            <!-- Rechte Seite: Text-Block -->
+            <div class="transparency-text">
+                <h3 class="transparency-title">Faire Aufteilung des Pfandbetrags</h3>
+                <p class="transparency-content">
+                    Beim Erstellen eines Auftrags legt der Pfandgeber fest,<br>
+                    welchen Anteil des Pfandbetrags der Abholer erhält.
+                </p>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="trust-timeline">
-                <h3 style="text-align: center; margin-bottom: var(--spacing-xl); color: var(--color-primary);">Transparenter Ablauf</h3>
+                <!-- Hauptüberschrift -->
+                <h3 style="text-align: center; margin-bottom: var(--spacing-xl); margin-top: var(--spacing-lg); color: var(--color-primary); font-size: 2.75rem;">Transparenter Ablauf</h3>
+                
+                <!-- Timeline Steps -->
                 <div class="timeline-steps">
                     <div class="timeline-step">
                         <div class="timeline-number">1</div>
-                        <h4 style="margin-bottom: var(--spacing-xs); color: var(--color-text);">Reservierung</h4>
-                        <p style="color: var(--color-text-light); font-size: var(--font-size-sm);">
-                            [PLATZHALTER: Was hier technisch passiert]
+                        <h4 style="margin-bottom: var(--spacing-sm); color: var(--color-primary); font-size: 1.5rem;">Auftragsannahme & Reservierung</h4>
+                        <p style="color: var(--color-text); font-size: 1.125rem; line-height: 1.7;">
+                            Sobald ein Abholer einen Auftrag annimmt, wird der vereinbarte Betrag bei ihm reserviert.<br>
+                            So ist sichergestellt, dass die Auszahlung nach der Abholung garantiert ist.
                         </p>
                     </div>
                     <div class="timeline-connector"></div>
                     <div class="timeline-step">
                         <div class="timeline-number">2</div>
-                        <h4 style="margin-bottom: var(--spacing-xs); color: var(--color-text);">Abholung</h4>
-                        <p style="color: var(--color-text-light); font-size: var(--font-size-sm);">
-                            [PLATZHALTER: Wer bestätigt was]
+                        <h4 style="margin-bottom: var(--spacing-sm); color: var(--color-primary); font-size: 1.5rem;">Abholung</h4>
+                        <p style="color: var(--color-text); font-size: 1.125rem; line-height: 1.7;">
+                            <br>
+                            Der Abholer holt das Pfand zum vereinbarten Zeitpunkt ab.<br>
+                            Währenddessen bleibt der Betrag reserviert.
                         </p>
                     </div>
                     <div class="timeline-connector"></div>
                     <div class="timeline-step">
                         <div class="timeline-number">3</div>
-                        <h4 style="margin-bottom: var(--spacing-xs); color: var(--color-text);">Bestätigung</h4>
-                        <p style="color: var(--color-text-light); font-size: var(--font-size-sm);">
-                            [PLATZHALTER: Abschluss / Sicherheitspunkt]
+                        <h4 style="margin-bottom: var(--spacing-sm); color: var(--color-primary); font-size: 1.5rem;">Bestätigung & Auszahlung</h4>
+                        <p style="color: var(--color-text); font-size: 1.125rem; line-height: 1.7;">
+                            Nach der bestätigten Abholung wird der reservierte Betrag freigegeben<br>
+                            und entsprechend der festgelegten Aufteilung ausgezahlt.
                         </p>
                     </div>
+                </div>
+                
+                <!-- Flaschenübergabe Bild -->
+                <div class="flaschenuebergabe-wrapper" style="display: flex; justify-content: center; margin-top: var(--spacing-xxl);">
+                    <img src="assets/img/Flaschenübergabe.png" alt="Flaschenübergabe" class="flaschenuebergabe-image">
                 </div>
             </div>
         </div>
@@ -226,8 +285,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>PFANDA</h3>
-                    <p style="color: var(--color-text-light);">Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und profitabel.</p>
+                    <h3>PFANDA<sup>®</sup></h3>
+                    <p style="color: #ffffff;">Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Navigation</h3>
@@ -248,7 +307,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 PFANDA. Alle Rechte vorbehalten.</p>
+                <p>2026 PFANDA<sup>®</sup>. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
