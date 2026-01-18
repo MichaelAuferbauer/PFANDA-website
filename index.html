@@ -312,16 +312,40 @@
         </div>
     </footer>
 
-    <!-- Supabase CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- Supabase Configuration -->
-    <script src="/assets/js/supabase-config.js"></script>
+    <!-- Supabase Configuration - direkter REST API Zugriff -->
+    <script>
+        // Supabase Configuration für direkte REST API Aufrufe
+        const SUPABASE_URL = 'https://vyjlmtmyrsrmefeszode.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5amxtdG15cnNybWVmZXN6b2RlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwNzM3ODksImV4cCI6MjA3NDY0OTc4OX0.44wZXXHAwjeT7khvkKIaPHfarNFUJLzcL53SWq_5dn4';
+        
+        // Funktion für direkten Supabase REST API Aufruf
+        async function insertToSupabase(table, data) {
+            const response = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                    'Prefer': 'return=representation'
+                },
+                body: JSON.stringify(data)
+            });
+            
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ message: response.statusText }));
+                throw { code: response.status, message: errorData.message || errorData.error_description || 'Unknown error', response };
+            }
+            
+            return await response.json();
+        }
+        
+        console.log('Supabase REST API bereit');
+    </script>
     <!-- Main JavaScript -->
     <script src="/assets/js/main.js"></script>
     <!-- Wartelisten-Formular JavaScript -->
     <script>
-        // Wartelisten-Formular: Simuliere Submit mit JavaScript
-        // TODO: Später echtes Backend / Newsletter-Tool anschließen
+        // Wartelisten-Formular: Verbunden mit Supabase
         (function() {
             const waitlistForm = document.getElementById('waitlistForm');
             const waitlistSuccess = document.getElementById('waitlistSuccess');
@@ -375,23 +399,65 @@
                         return;
                     }
                     
-                    // Simuliere erfolgreichen Submit
-                    // Formular ausblenden
-                    waitlistForm.classList.add('hidden');
+                    // Konvertiere Rolle zu Datenbank-Format (Pfandgeber/Abholer)
+                    const roleDb = role === 'pfandgeber' ? 'Pfandgeber' : 'Abholer';
+                    const nameValue = document.getElementById('waitlist-name').value.trim() || null;
                     
-                    // Success-Message anzeigen
-                    waitlistSuccess.classList.add('active');
+                    // Daten in Supabase speichern - direkter REST API Aufruf
+                    async function submitToSupabase() {
+                        try {
+                            // Zeige Loading-State
+                            const submitButton = waitlistForm.querySelector('button[type="submit"]');
+                            const originalButtonText = submitButton.textContent;
+                            submitButton.disabled = true;
+                            submitButton.textContent = 'Wird gespeichert...';
+                            
+                            // Direkter REST API Aufruf
+                            const data = await insertToSupabase('waitlist_signups', {
+                                role: roleDb,
+                                postal_code: plz,
+                                name: nameValue,
+                                email: email
+                            });
+                            
+                            // Erfolgreich gespeichert
+                            console.log('Erfolgreich in Supabase gespeichert:', data);
+                            
+                            // Formular ausblenden
+                            waitlistForm.classList.add('hidden');
+                            
+                            // Success-Message anzeigen
+                            waitlistSuccess.classList.add('active');
+                            
+                            // Scroll zu Success-Message für bessere UX
+                            waitlistSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            
+                            // Formular zurücksetzen (optional)
+                            waitlistForm.reset();
+                            
+                        } catch (err) {
+                            console.error('Supabase Error:', err);
+                            
+                            // Button zurücksetzen
+                            const submitButton = waitlistForm.querySelector('button[type="submit"]');
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'Auf die Warteliste';
+                            
+                            // Spezielle Fehlermeldungen basierend auf Error-Code
+                            if (err.code === 409 || (err.message && err.message.includes('duplicate'))) {
+                                alert('Diese E-Mail-Adresse ist bereits registriert.');
+                            } else if (err.code === 400 || err.code === 422) {
+                                alert('Ungültige Eingabe. Bitte überprüfen Sie Ihre Angaben.');
+                            } else if (err.code === 404) {
+                                alert('Die Datenbank-Tabelle wurde nicht gefunden. Bitte überprüfen Sie die Migration.');
+                            } else {
+                                alert('Fehler beim Speichern: ' + (err.message || 'Bitte versuchen Sie es später erneut.'));
+                            }
+                        }
+                    }
                     
-                    // Optional: Scroll zu Success-Message für bessere UX
-                    waitlistSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                    // Console-Log für Debugging (später entfernen)
-                    console.log('Wartelisten-Anmeldung:', {
-                        role: role,
-                        plz: plz,
-                        name: document.getElementById('waitlist-name').value,
-                        email: email
-                    });
+                    // Supabase Submit aufrufen
+                    submitToSupabase();
                 });
             }
         })();
