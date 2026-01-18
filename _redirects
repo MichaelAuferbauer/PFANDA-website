@@ -1,0 +1,7 @@
+# Redirects für alte URLs zu neuen clean URLs
+/geber.html /pfandgeber/ 301
+/abholer.html /abholer/ 301
+/faq.html /faq/ 301
+/contact.html /kontakt/ 301
+/impressum.html /impressum/ 301
+/datenschutz.html /datenschutz/ 301

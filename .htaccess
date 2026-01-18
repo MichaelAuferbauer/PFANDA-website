@@ -1,0 +1,13 @@
+# Redirects für alte URLs zu neuen clean URLs (für Apache Server)
+RewriteEngine On
+
+# Redirect alte .html URLs zu neuen Ordner-URLs
+RedirectMatch 301 ^/geber\.html$ /pfandgeber/
+RedirectMatch 301 ^/abholer\.html$ /abholer/
+RedirectMatch 301 ^/faq\.html$ /faq/
+RedirectMatch 301 ^/contact\.html$ /kontakt/
+RedirectMatch 301 ^/impressum\.html$ /impressum/
+RedirectMatch 301 ^/datenschutz\.html$ /datenschutz/
+
+# Stelle sicher, dass Ordner auf index.html zeigen
+DirectoryIndex index.html
