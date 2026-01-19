@@ -312,15 +312,18 @@
         </div>
     </footer>
 
-    <!-- Supabase Configuration - direkter REST API Zugriff -->
+    <!-- Supabase Configuration - Direkter REST API Zugriff (ohne Auth, RLS deaktiviert) -->
     <script>
-        // Supabase Configuration für direkte REST API Aufrufe
+        // Supabase Configuration für direkten REST API Aufruf
         const SUPABASE_URL = 'https://qbmykhvivrfswuglkwkv.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibXlraHZpdnJmc3d1Z2xrd2t2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3Mzg3MzcsImV4cCI6MjA4NDMxNDczN30.QknWaZcfRtBCNtrKOVh0dswBy7GEHzPfeUhvrrohGdg';
         
         // Funktion für direkten Supabase REST API Aufruf
         async function insertToSupabase(table, data) {
-            const response = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+            const url = `${SUPABASE_URL}/rest/v1/${table}`;
+            console.log('Supabase Insert:', { url, data });
+            
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -331,12 +334,31 @@
                 body: JSON.stringify(data)
             });
             
+            console.log('Supabase Response Status:', response.status);
+            
             if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ message: response.statusText }));
-                throw { code: response.status, message: errorData.message || errorData.error_description || 'Unknown error', response };
+                const errorText = await response.text();
+                let errorData;
+                try {
+                    errorData = JSON.parse(errorText);
+                } catch (e) {
+                    errorData = { message: errorText || response.statusText };
+                }
+                console.error('Supabase Error:', { 
+                    status: response.status, 
+                    statusText: response.statusText,
+                    errorData 
+                });
+                throw { 
+                    code: response.status, 
+                    message: errorData.message || errorData.error_description || errorData.hint || 'Unknown error',
+                    details: errorData
+                };
             }
             
-            return await response.json();
+            const result = await response.json();
+            console.log('Supabase Success:', result);
+            return result;
         }
         
         console.log('Supabase REST API bereit');
@@ -403,7 +425,7 @@
                     const roleDb = role === 'pfandgeber' ? 'Pfandgeber' : 'Abholer';
                     const nameValue = document.getElementById('waitlist-name').value.trim() || null;
                     
-                    // Daten in Supabase speichern - direkter REST API Aufruf
+                    // Daten in Supabase speichern - direkter REST API Aufruf (RLS deaktiviert)
                     async function submitToSupabase() {
                         try {
                             // Zeige Loading-State
@@ -412,7 +434,7 @@
                             submitButton.disabled = true;
                             submitButton.textContent = 'Wird gespeichert...';
                             
-                            // Direkter REST API Aufruf
+                            // Direkter REST API Aufruf (RLS ist deaktiviert, sollte funktionieren)
                             const data = await insertToSupabase('waitlist_signups', {
                                 role: roleDb,
                                 postal_code: plz,
@@ -437,6 +459,7 @@
                             
                         } catch (err) {
                             console.error('Supabase Error:', err);
+                            console.error('Error Details:', err.details);
                             
                             // Button zurücksetzen
                             const submitButton = waitlistForm.querySelector('button[type="submit"]');
@@ -444,14 +467,14 @@
                             submitButton.textContent = 'Auf die Warteliste';
                             
                             // Spezielle Fehlermeldungen basierend auf Error-Code
-                            if (err.code === 409 || (err.message && err.message.includes('duplicate'))) {
-                                alert('Diese E-Mail-Adresse ist bereits registriert.');
+                            if (err.code === 409 || err.code === '23505' || (err.message && err.message.includes('duplicate'))) {
+                                alert('Diese E-Mail-Adresse ist bereits auf der Warteliste. Vielen Dank für dein Interesse!');
                             } else if (err.code === 400 || err.code === 422) {
-                                alert('Ungültige Eingabe. Bitte überprüfen Sie Ihre Angaben.');
+                                alert('Ungültige Eingabe. Bitte überprüfe deine Angaben.\n\nFehler: ' + (err.message || ''));
                             } else if (err.code === 404) {
-                                alert('Die Datenbank-Tabelle wurde nicht gefunden. Bitte überprüfen Sie die Migration.');
+                                alert('Die Datenbank-Tabelle wurde nicht gefunden. Bitte überprüfe die Migration.');
                             } else {
-                                alert('Fehler beim Speichern: ' + (err.message || 'Bitte versuchen Sie es später erneut.'));
+                                alert('Fehler beim Speichern: ' + (err.message || 'Bitte versuche es später erneut.'));
                             }
                         }
                     }

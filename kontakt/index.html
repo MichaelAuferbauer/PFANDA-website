@@ -39,12 +39,17 @@
         <div class="container">
             <div class="grid grid-2">
                 <div>
-                    <h2>Schreiben Sie uns</h2>
+                    <h2>Schreibe uns</h2>
                     <p style="color: var(--color-text-light); margin-bottom: var(--spacing-lg);">
-                        Füllen Sie das Kontaktformular aus und wir melden uns schnellstmöglich bei Ihnen zurück.
+                        Fülle das Kontaktformular aus und wir melden uns schnellstmöglich bei dir zurück.
                     </p>
                     
-                    <form action="#" method="post" style="margin-top: var(--spacing-lg);">
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" style="margin-top: var(--spacing-lg);">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                        <input type="hidden" name="subject" value="Kontaktanfrage von PFANDA Website">
+                        <input type="hidden" name="from_name" value="PFANDA Kontaktformular">
+                        <input type="hidden" name="to_email" value="info@pfanda.io">
+                        
                         <div class="form-group">
                             <label for="name" class="form-label">Name *</label>
                             <input type="text" id="name" name="name" class="form-input" required>
@@ -57,13 +62,13 @@
                         
                         <div class="form-group">
                             <label for="subject" class="form-label">Betreff *</label>
-                            <select id="subject" name="subject" class="form-select" required>
-                                <option value="">Bitte wählen Sie ein Thema</option>
-                                <option value="pfandgeber">Frage als Pfandgeber</option>
-                                <option value="abholer">Frage als Abholer</option>
-                                <option value="allgemein">Allgemeine Frage</option>
-                                <option value="technisch">Technisches Problem</option>
-                                <option value="sonstiges">Sonstiges</option>
+                            <select id="subject" name="subject_select" class="form-select" required>
+                                <option value="">Bitte wähle ein Thema</option>
+                                <option value="Frage als Pfandgeber">Frage als Pfandgeber</option>
+                                <option value="Frage als Abholer">Frage als Abholer</option>
+                                <option value="Allgemeine Frage">Allgemeine Frage</option>
+                                <option value="Technisches Problem">Technisches Problem</option>
+                                <option value="Sonstiges">Sonstiges</option>
                             </select>
                         </div>
                         
@@ -72,7 +77,9 @@
                             <textarea id="message" name="message" class="form-textarea" required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn">Nachricht senden</button>
+                        <div id="formMessage" style="display: none; margin-bottom: var(--spacing-md); padding: var(--spacing-sm); border-radius: 4px;"></div>
+                        
+                        <button type="submit" class="btn" id="submitBtn">Nachricht senden</button>
                     </form>
                 </div>
                 
@@ -80,26 +87,18 @@
                     <div class="card">
                         <h3 class="card-title">Kontaktinformationen</h3>
                         <p style="color: var(--color-text-light); margin-bottom: var(--spacing-md);">
-                            Sie können uns auch direkt kontaktieren:
+                            Du kannst uns auch direkt kontaktieren:
                         </p>
                         <div style="margin-bottom: var(--spacing-md);">
                             <strong>E-Mail:</strong><br>
-                            <a href="mailto:michael.auferbauer@gmx.at">michael.auferbauer@gmx.at</a>
-                        </div>
-                        <div>
-                            <strong>Adresse:</strong><br>
-                            <span style="color: var(--color-text-light);">
-                                Froschzeile 6/23<br>
-                                2000 Stockerau<br>
-                                Österreich
-                            </span>
+                            <a href="mailto:info@pfanda.io">info@pfanda.io</a>
                         </div>
                     </div>
                     
                     <div class="card" style="margin-top: var(--spacing-md);">
                         <h3 class="card-title">Häufige Fragen</h3>
                         <p style="color: var(--color-text-light); margin-bottom: var(--spacing-sm);">
-                            Vielleicht finden Sie die Antwort auf Ihre Frage bereits in unserem FAQ-Bereich.
+                            Vielleicht findest du die Antwort auf deine Frage bereits in unserem FAQ-Bereich.
                         </p>
                         <a href="/faq/" class="btn btn-secondary">FAQ ansehen</a>
                     </div>
@@ -141,5 +140,87 @@
     </footer>
 
     <script src="/assets/js/main.js"></script>
+    <script>
+        // Kontaktformular-Verarbeitung
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (!contactForm) return;
+            
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Prüfe ob Access Key gesetzt ist
+                const accessKeyInput = contactForm.querySelector('input[name="access_key"]');
+                if (!accessKeyInput || accessKeyInput.value === 'YOUR_ACCESS_KEY') {
+                    showMessage('Bitte konfiguriere zuerst den Web3Forms Access Key. Siehe Anleitung in den Kommentaren.', 'error');
+                    return;
+                }
+                
+                // Deaktiviere Button während der Übertragung
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Wird gesendet...';
+                
+                try {
+                    const formData = new FormData(contactForm);
+                    
+                    // Erstelle formatierten Nachrichtentext
+                    const name = formData.get('name');
+                    const email = formData.get('email');
+                    const subject = formData.get('subject_select');
+                    const message = formData.get('message');
+                    
+                    // Formatiere die Nachricht
+                    const formattedMessage = `Name: ${name}\nE-Mail: ${email}\nBetreff: ${subject}\n\nNachricht:\n${message}`;
+                    formData.set('message', formattedMessage);
+                    
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showMessage('Vielen Dank! Deine Nachricht wurde erfolgreich gesendet. Wir melden uns schnellstmöglich bei dir zurück.', 'success');
+                        contactForm.reset();
+                    } else {
+                        showMessage('Es ist ein Fehler aufgetreten. Bitte versuche es später erneut oder kontaktiere uns direkt unter info@pfanda.io', 'error');
+                    }
+                } catch (error) {
+                    showMessage('Es ist ein Fehler aufgetreten. Bitte versuche es später erneut oder kontaktiere uns direkt unter info@pfanda.io', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Nachricht senden';
+                }
+            });
+            
+            function showMessage(text, type) {
+                formMessage.textContent = text;
+                formMessage.style.display = 'block';
+                formMessage.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
+                formMessage.style.color = type === 'success' ? '#155724' : '#721c24';
+                formMessage.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
+                
+                // Scroll zu Nachricht
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Nach 5 Sekunden ausblenden
+                setTimeout(function() {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+    <!-- 
+    Web3Forms Einrichtung:
+    1. Gehe zu https://web3forms.com/
+    2. Gib deine E-Mail-Adresse ein (info@pfanda.io)
+    3. Bestätige die E-Mail
+    4. Kopiere den Access Key
+    5. Ersetze "YOUR_ACCESS_KEY" im Formular mit deinem Access Key
+    -->
 </body>
 </html>
