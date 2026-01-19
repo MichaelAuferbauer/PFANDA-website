@@ -6,8 +6,8 @@
 // 2. Anon Key findest du in Supabase Dashboard → Settings → API Keys
 //    (verwende einen der "publishable" Keys - z.B. "web" oder "mobile")
 
-const SUPABASE_URL = 'https://vyjlmtmyrsrmefeszode.supabase.co'; // <-- HIER deine Project URL eintragen
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5amxtdG15cnNybWVmZXN6b2RlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwNzM3ODksImV4cCI6MjA3NDY0OTc4OX0.44wZXXHAwjeT7khvkKIaPHfarNFUJLzcL53SWq_5dn4'; // <-- HIER deinen Publishable Key eintragen
+const SUPABASE_URL = 'https://qbmykhvivrfswuglkwkv.supabase.co'; // <-- HIER deine Project URL eintragen
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibXlraHZpdnJmc3d1Z2xrd2t2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3Mzg3MzcsImV4cCI6MjA4NDMxNDczN30.QknWaZcfRtBCNtrKOVh0dswBy7GEHzPfeUhvrrohGdg'; // <-- HIER deinen Publishable Key eintragen
 
 // Erstelle Supabase Client
 // unpkg lädt die Bibliothek - createClient sollte global verfügbar sein
