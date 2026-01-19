@@ -122,7 +122,7 @@
   // 4. FAQ Accordion mit max-height Transition
   // ============================================
   // Struktur: .faq-item mit .faq-question (Header) + .faq-answer (Content)
-  // Öffnet ein Item, schließt automatisch alle anderen
+  // Mehrere Fragen können gleichzeitig offen sein
   // Tastatur-freundlich (Enter/Space)
   function initFAQAccordion() {
     const faqItems = document.querySelectorAll('.faq-item');
@@ -137,32 +137,42 @@
       // Defensive Check: Nur wenn beide Elemente existieren
       if (!question || !answer) return;
 
-      // Klick-Handler
-      const handleToggle = function() {
+      // Klick-Handler - nur aktuelles Item togglen, KEINE anderen schließen
+      const handleToggle = function(e) {
+        // Stoppe Event-Propagation
+        if (e) {
+          e.stopPropagation();
+        }
+        
         const isOpen = answer.classList.contains('is-open');
         
-        // Schließe alle anderen Items
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            const otherAnswer = otherItem.querySelector('.faq-answer');
-            const otherQuestion = otherItem.querySelector('.faq-question');
-            if (otherAnswer) otherAnswer.classList.remove('is-open');
-            if (otherQuestion) otherQuestion.classList.remove('is-open');
-          }
-        });
-        
-        // Toggle aktuelles Item
+        // NUR aktuelles Item togglen - keine anderen Items anfassen!
         if (isOpen) {
           answer.classList.remove('is-open');
           question.classList.remove('is-open');
+          question.setAttribute('aria-expanded', 'false');
         } else {
           answer.classList.add('is-open');
           question.classList.add('is-open');
+          question.setAttribute('aria-expanded', 'true');
         }
       };
 
       // Klick-Event
       question.addEventListener('click', handleToggle);
+      
+      // Tastatur-Support: Enter und Space
+      question.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleToggle(e);
+        }
+      });
+
+      // Accessibility: Tabindex für Tastatur-Navigation
+      question.setAttribute('tabindex', '0');
+      question.setAttribute('role', 'button');
+      question.setAttribute('aria-expanded', 'false');
       
       // Tastatur-Support: Enter und Space
       question.addEventListener('keydown', function(e) {
@@ -176,13 +186,6 @@
       question.setAttribute('tabindex', '0');
       question.setAttribute('role', 'button');
       question.setAttribute('aria-expanded', 'false');
-      
-      // Update aria-expanded beim Toggle
-      const originalHandleToggle = handleToggle;
-      question.addEventListener('click', function() {
-        const isOpen = answer.classList.contains('is-open');
-        question.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
     });
   }
 

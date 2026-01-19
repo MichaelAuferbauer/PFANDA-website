@@ -79,26 +79,34 @@
                 </div>
                 
                 <div>
-                    <div class="card">
-                        <h3 class="card-title">Vorteile für Abholer</h3>
-                        <ul style="padding-left: var(--spacing-lg); color: var(--color-text-light);">
-                            <li style="margin-bottom: var(--spacing-xs);">Flexible Arbeitszeiten</li>
-                            <li style="margin-bottom: var(--spacing-xs);">Fairer Verdienst</li>
-                            <li style="margin-bottom: var(--spacing-xs);">Beitrag zum Umweltschutz</li>
-                            <li style="margin-bottom: var(--spacing-xs);">Einfache Abwicklung</li>
-                            <li style="margin-bottom: var(--spacing-xs);">Verifizierte Pfandgeber</li>
-                            <li style="margin-bottom: var(--spacing-xs);">Keine Gebühren</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card" style="margin-top: var(--spacing-md);">
-                        <h3 class="card-title">Anforderungen</h3>
-                        <ul style="padding-left: var(--spacing-lg); color: var(--color-text-light);">
-                            <li style="margin-bottom: var(--spacing-xs);">Volljährigkeit</li>
-                            <li style="margin-bottom: var(--spacing-xs);">Verifizierung der Identität</li>
-                            <li style="margin-bottom: var(--spacing-xs);">Zuverlässigkeit und Pünktlichkeit</li>
-                            <li style="margin-bottom: var(--spacing-xs);">Eigenes Transportmittel (optional)</li>
-                        </ul>
+                    <div class="card" style="background-color: #e6f4ed;">
+                        <h3 class="card-title" style="font-size: 1.75rem; text-align: center;">Vorteile für Abholer</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-sm); margin-top: var(--spacing-md);">
+                            <div style="display: flex; align-items: start; gap: var(--spacing-xs);">
+                                <span style="font-size: 1.2rem; line-height: 1.2; font-weight: bold; color: var(--color-primary);">1.</span>
+                                <p style="color: var(--color-text); font-size: 1.05rem; line-height: 1.5; margin: 0; font-weight: bold;">Flexible Arbeitszeiten</p>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: var(--spacing-xs);">
+                                <span style="font-size: 1.2rem; line-height: 1.2; font-weight: bold; color: var(--color-primary);">2.</span>
+                                <p style="color: var(--color-text); font-size: 1.05rem; line-height: 1.5; margin: 0; font-weight: bold;">Verdienst selbst bestimmbar</p>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: var(--spacing-xs);">
+                                <span style="font-size: 1.2rem; line-height: 1.2; font-weight: bold; color: var(--color-primary);">3.</span>
+                                <p style="color: var(--color-text); font-size: 1.05rem; line-height: 1.5; margin: 0; font-weight: bold;">Beitrag zum Umweltschutz</p>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: var(--spacing-xs);">
+                                <span style="font-size: 1.2rem; line-height: 1.2; font-weight: bold; color: var(--color-primary);">4.</span>
+                                <p style="color: var(--color-text); font-size: 1.05rem; line-height: 1.5; margin: 0; font-weight: bold;">Keine Gebühren</p>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: var(--spacing-xs);">
+                                <span style="font-size: 1.2rem; line-height: 1.2; font-weight: bold; color: var(--color-primary);">5.</span>
+                                <p style="color: var(--color-text); font-size: 1.05rem; line-height: 1.5; margin: 0; font-weight: bold;">Lokale Aufträge in der Nähe</p>
+                            </div>
+                            <div style="display: flex; align-items: start; gap: var(--spacing-xs);">
+                                <span style="font-size: 1.2rem; line-height: 1.2; font-weight: bold; color: var(--color-primary);">6.</span>
+                                <p style="color: var(--color-text); font-size: 1.05rem; line-height: 1.5; margin: 0; font-weight: bold;">Verifizierte Pfandgeber</p>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="card" style="margin-top: var(--spacing-md);">
@@ -107,6 +115,10 @@
                             Haben Sie Fragen zum Abholprozess? Schauen Sie in unserem FAQ-Bereich vorbei.
                         </p>
                         <a href="/faq/" class="btn btn-secondary">FAQ ansehen</a>
+                    </div>
+                    
+                    <div style="margin-top: var(--spacing-lg); text-align: center;">
+                        <img src="/assets/img/Abholer-transportiert.png" alt="Abholung durchführen" style="max-width: 100%; max-height: 350px; width: auto; height: auto; object-fit: contain; border-radius: 12px;">
                     </div>
                 </div>
             </div>
@@ -121,7 +133,7 @@
                 Starten Sie noch heute und verdienen Sie Geld mit dem Abholen von Pfandflaschen.
             </p>
             <div style="text-align: center !important; width: 100%; display: flex; justify-content: center;">
-                <a href="/kontakt/" class="btn">Jetzt registrieren</a>
+                <a href="/#warteliste" class="btn" id="abholer-register-btn">Jetzt registrieren</a>
             </div>
         </div>
     </section>
