@@ -4,17 +4,17 @@
   "description": "Die moderne Lösung für Pfandflaschen",
   "icons": [
     {
-      "src": "/assets/img/favicon-16x16.png",
+      "src": "/assets/img/favicon-16x16.png?v=3",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "/assets/img/favicon-32x32.png",
+      "src": "/assets/img/favicon-32x32.png?v=3",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "/assets/img/favicon-512x512.png",
+      "src": "/assets/img/favicon-512x512.png?v=3",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
