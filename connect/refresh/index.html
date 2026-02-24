@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>PFANDA Connect Refresh</title>
+  <link rel="stylesheet" href="/connect/connect-bridge.css">
+</head>
+<body>
+  <main class="bridge-card">
+    <h1>Weiterleitung zur PFANDA App...</h1>
+    <p>Wenn deine PFANDA App installiert ist, wird sie jetzt geöffnet.</p>
+    <a class="open-app-btn" href="pfanda://wallet/connect-refresh">Zurück zur PFANDA App</a>
+    <p class="hint">Falls sich die App nicht öffnet, bitte PFANDA manuell öffnen.</p>
+  </main>
+
+  <script>
+    (function redirectToApp() {
+      var deepLink = "pfanda://wallet/connect-refresh";
+      window.location.replace(deepLink);
+    })();
+  </script>
+</body>
+</html>
