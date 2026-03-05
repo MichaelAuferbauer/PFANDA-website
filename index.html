@@ -518,6 +518,29 @@
             }
         })();
     </script>
+    <script>
+        (function fixInstagramMobileHeroViewport() {
+            var ua = navigator.userAgent || "";
+            var isInstagramInApp = /Instagram/i.test(ua);
+            var isMobileDevice = /iPhone|iPad|iPod|Android/i.test(ua);
+            if (!isInstagramInApp || !isMobileDevice) return;
+
+            var hero = document.getElementById("hero");
+            if (!hero) return;
+
+            function lockHeroToViewport() {
+                var viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+                if (!viewportHeight) return;
+                var value = Math.round(viewportHeight) + "px";
+                hero.style.minHeight = value;
+                hero.style.height = value;
+            }
+
+            lockHeroToViewport();
+            window.addEventListener("orientationchange", lockHeroToViewport, { passive: true });
+            window.addEventListener("pageshow", lockHeroToViewport, { passive: true });
+        })();
+    </script>
 </body>
 </html>
 
