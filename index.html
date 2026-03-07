@@ -528,17 +528,50 @@
             var hero = document.getElementById("hero");
             if (!hero) return;
 
-            function lockHeroToViewport() {
-                var viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-                if (!viewportHeight) return;
-                var value = Math.round(viewportHeight) + "px";
-                hero.style.minHeight = value;
-                hero.style.height = value;
+            var LOCK_UPDATE_THRESHOLD = 120;
+            var lockedHeight = 0;
+
+            function applyLockedHeight(heightPx) {
+                var value = Math.round(heightPx) + "px";
+                hero.style.setProperty("min-height", value, "important");
+                hero.style.setProperty("height", value, "important");
             }
 
-            lockHeroToViewport();
-            window.addEventListener("orientationchange", lockHeroToViewport, { passive: true });
-            window.addEventListener("pageshow", lockHeroToViewport, { passive: true });
+            function measureViewportHeight() {
+                return window.visualViewport ? window.visualViewport.height : window.innerHeight;
+            }
+
+            function lockHeroToInitialViewport() {
+                var viewportHeight = measureViewportHeight();
+                if (!viewportHeight) return;
+                lockedHeight = viewportHeight;
+                applyLockedHeight(lockedHeight);
+            }
+
+            function maybeRelockForMajorChange() {
+                var viewportHeight = measureViewportHeight();
+                if (!viewportHeight || !lockedHeight) return;
+
+                // Ignore small viewport changes from Instagram toolbar show/hide while scrolling.
+                if (Math.abs(viewportHeight - lockedHeight) < LOCK_UPDATE_THRESHOLD) return;
+
+                lockedHeight = viewportHeight;
+                applyLockedHeight(lockedHeight);
+            }
+
+            lockHeroToInitialViewport();
+
+            // Re-lock only when there is a major change (rotation / real layout change).
+            window.addEventListener("orientationchange", function() {
+                setTimeout(lockHeroToInitialViewport, 180);
+            }, { passive: true });
+            window.addEventListener("pageshow", function() {
+                setTimeout(lockHeroToInitialViewport, 0);
+            }, { passive: true });
+            window.addEventListener("resize", maybeRelockForMajorChange, { passive: true });
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener("resize", maybeRelockForMajorChange, { passive: true });
+            }
         })();
     </script>
 </body>
