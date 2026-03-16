@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pfanda.io/sitemap.xml
+Sitemap: https://pfandigo.com/sitemap.xml
