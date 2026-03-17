@@ -1,5 +1,5 @@
 /* ============================================
-   PFANDA - Modern Website Styles
+   PFANDIGO - Modern Website Styles
    ============================================ */
 
 /* CSS Variables for Theme */
@@ -203,13 +203,17 @@ a:focus-visible {
 
 .logo {
   font-size: 1.875rem !important; /* Größere Schrift */
-  font-weight: 700;
+  font-weight: 500;
   color: #ffffff !important; /* Weiß */
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.14em;
   white-space: nowrap; /* Verhindert Zeilenumbruch */
   line-height: 1;
+}
+
+.logo-igo {
+  color: #2bc7c4;
 }
 
 .nav-menu {
@@ -2007,3 +2011,4 @@ p {
     gap: 0.5rem !important; /* Mehr Abstand zwischen Logo und Text */
   }
 }
+

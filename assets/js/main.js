@@ -1,5 +1,5 @@
 // ============================================
-// PFANDA - Main JavaScript
+// PFANDIGO - Main JavaScript
 // Interaktive UX Features
 // ============================================
 
@@ -428,3 +428,4 @@
   }
 
 })();
+
