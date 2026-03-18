@@ -5,9 +5,9 @@
 /* CSS Variables for Theme */
 :root {
   /* Colors */
-  --color-primary: #2a6e4a; /* Dunkles Grün - etwas heller */
-  --color-primary-dark: #1e5a3a;
-  --color-primary-light: #4da878;
+  --color-primary: #1A4A43;
+  --color-primary-dark: #133B35;
+  --color-primary-light: #3A6B63;
   --color-accent: #52c48a;
   --color-text: #1a1a1a;
   --color-text-light: #1a1a1a; /* Schwarz statt grau */
@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.3;
   letter-spacing: -0.02em;
   margin-bottom: var(--spacing-md);
-  color: #2a6e4a; /* Dunkles Grün - etwas heller */
+  color: var(--color-primary);
 }
 
 h1 {
@@ -159,7 +159,7 @@ a:focus-visible {
 .navbar {
   position: sticky;
   top: 0;
-  background-color: #153d26 !important; /* Noch dunkleres Grün */
+  background-color: #12302B !important;
   border-bottom: none;
   z-index: 1000;
   box-shadow: var(--shadow-sm);
@@ -315,8 +315,165 @@ a:focus-visible {
   margin-left: var(--spacing-xl);
 }
 
+/* Homepage Hero with mockup instead of background image */
+.hero.hero-with-mockup {
+  background-image: none !important;
+  background-color: var(--color-white);
+  justify-content: center;
+}
+
+.hero.hero-with-mockup::before {
+  display: none;
+}
+
+.hero-with-mockup .hero-layout {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.hero-with-mockup .hero-visual {
+  flex: 0 1 42%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-with-mockup .hero-mockup-image {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  object-fit: contain;
+  /* Moderate left/right feather (less soft than before) */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.18) 5%,
+    rgba(0, 0, 0, 0.62) 10%,
+    rgba(0, 0, 0, 0.9) 15%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0.9) 85%,
+    rgba(0, 0, 0, 0.62) 90%,
+    rgba(0, 0, 0, 0.18) 95%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.18) 5%,
+    rgba(0, 0, 0, 0.62) 10%,
+    rgba(0, 0, 0, 0.9) 15%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0.9) 85%,
+    rgba(0, 0, 0, 0.62) 90%,
+    rgba(0, 0, 0, 0.18) 95%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.hero-with-mockup .hero-content {
+  flex: 0 1 52%;
+  max-width: 52%;
+  margin-left: 0;
+}
+
+.hero-with-mockup .value-proposition,
+.hero-with-mockup h1,
+.hero-with-mockup .subheadline {
+  color: var(--color-primary) !important;
+}
+
+.hero-with-mockup .hero-cta .btn {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 1.05rem;
+  padding: 0.7rem 1.8rem;
+}
+
+.hero-with-mockup .hero-cta .btn:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: #ffffff;
+}
+
+.hero-with-mockup .hero-cta .btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  font-size: 1.05rem;
+  padding: 0.7rem 1.8rem;
+}
+
+.hero-with-mockup .hero-cta .btn-secondary:hover {
+  background-color: rgba(26, 74, 67, 0.1);
+  color: var(--color-primary);
+}
+
+/* Ensure homepage hero text always uses brand green */
+#hero.hero-with-mockup .value-proposition,
+#hero.hero-with-mockup h1,
+#hero.hero-with-mockup .subheadline {
+  color: var(--color-primary) !important;
+}
+
+.hero-with-mockup .hero-cta {
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
 /* Mobile: Hero-Anpassungen */
 @media (max-width: 767px) {
+  .hero.hero-with-mockup {
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    padding-bottom: var(--spacing-xl) !important;
+    overflow: hidden !important;
+  }
+
+  .hero-with-mockup .hero-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+  }
+
+  .hero-with-mockup .hero-content {
+    order: 1;
+    max-width: 100% !important;
+    flex: 1 1 auto;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+  }
+
+  .hero-with-mockup .hero-visual {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-with-mockup .hero-mockup-image {
+    max-width: 320px;
+  }
+
+  .hero-with-mockup .hero-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-with-mockup .hero-cta .btn {
+    width: auto !important;
+    min-width: 0 !important;
+  }
+
   .hero-content {
     max-width: 75% !important;
     margin-left: var(--spacing-md) !important;
@@ -366,6 +523,47 @@ a:focus-visible {
 /* Sehr kleine Bildschirme (z.B. kleine Tablets im Hochformat) - Höhe und Breite berücksichtigen */
 @media (max-width: 768px) and (max-height: 900px), 
        (max-width: 1024px) and (max-height: 700px) {
+  .hero.hero-with-mockup {
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    padding-bottom: var(--spacing-xl) !important;
+    overflow: hidden !important;
+  }
+
+  .hero-with-mockup .hero-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+  }
+
+  .hero-with-mockup .hero-content {
+    order: 1;
+    max-width: 100% !important;
+    flex: 1 1 auto;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .hero-with-mockup .hero-visual {
+    order: 2;
+    width: 100%;
+  }
+
+  .hero-with-mockup .hero-mockup-image {
+    max-width: min(58vw, 300px);
+  }
+
+  .hero-with-mockup .hero-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-with-mockup .hero-cta .btn {
+    width: auto !important;
+    min-width: 0 !important;
+  }
+
   .hero {
     min-height: auto !important;
     height: auto !important;
@@ -700,9 +898,12 @@ a:focus-visible {
 }
 
 #so-funktionierts .feature-card .btn {
-  font-size: 1.125rem !important;
+  font-size: 1rem !important;
   font-weight: 700;
-  padding: var(--spacing-md) var(--spacing-xl);
+  padding: 0.65rem 1.1rem;
+  width: fit-content;
+  min-width: 0;
+  align-self: center;
 }
 
 #so-funktionierts .feature-card .btn:hover {
@@ -1374,7 +1575,7 @@ body.no-scroll {
 
 /* Footer */
 .footer {
-  background-color: #153d26 !important; /* Gleiche Hintergrundfarbe wie Header */
+  background-color: #12302B !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1); /* Leicht transparente weiße Linie */
   padding: var(--spacing-xl) var(--spacing-md);
   margin-top: var(--spacing-xxl);
@@ -1468,7 +1669,7 @@ body.no-scroll {
     top: 58px;
     left: -100%;
     flex-direction: column;
-    background-color: #153d26; /* Dunkles Grün - konsistent mit Header */
+    background-color: #12302B;
     width: 100%;
     text-align: center;
     transition: var(--transition);

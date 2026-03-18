@@ -50,7 +50,7 @@
     }
     </script>
     
-    <link rel="stylesheet" href="/assets/css/styles.css?v=110">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=118">
 </head>
 <body>
     <!-- Navigation -->
@@ -73,29 +73,39 @@
 
     <!-- Hero Section - Conversion Optimized -->
     <!-- Full-width Hero mit min. 80vh, vertikal zentriert, dezenter Farbverlauf -->
-    <section class="hero" id="hero" style="background-image: url('/assets/img/website-start-bild (2).png'); background-size: cover; background-position: center; width: 100%; min-height: 100vh !important; height: 100vh !important;">
-        <div class="hero-content">
-            <!-- Eyebrow (klein) -->
-            <p class="value-proposition" style="font-size: 1.5rem; margin-bottom: var(--spacing-md); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.9;">
-                Recycling verbindet
-            </p>
-            
-            <!-- Headline -->
-            <h1 style="margin-bottom: var(--spacing-lg); font-size: 4rem; line-height: 1.2;">
-                Pfand abholen lassen.<br>
-                Einfach. Sicher. Lokal.
-            </h1>
-            
-            <!-- Subheadline -->
-            <p class="subheadline" style="font-size: 1.5rem; line-height: 1.7; max-width: 600px;">
-                PFANDIGO verbindet Menschen, die ihr Pfand bequem loswerden wollen, mit Abholern in der Nähe – transparent und organisiert per App.
-            </p>
-            
-            <!-- CTA Buttons: Primary (Warteliste) + Secondary (So funktioniert's) -->
-            <!-- Buttons sind klar visuell unterscheidbar: Primary = gefüllt, Secondary = Outline -->
-            <div class="hero-cta">
-                <a href="#so-funktionierts" class="btn btn-secondary">So funktioniert's</a>
-                <a href="#warteliste" class="btn">Zur Warteliste</a>
+    <section class="hero hero-with-mockup" id="hero">
+        <div class="hero-layout">
+            <div class="hero-visual">
+                <img
+                    src="/assets/img/PFANDIGO_GEBER_HOME.png"
+                    alt="PFANDIGO Geber Home Mockup"
+                    class="hero-mockup-image"
+                    onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='/assets/img/PFANDIGO_GEBER_HOME.webp';}else if(this.dataset.fallback==='1'){this.dataset.fallback='2';this.src='/assets/img/PFANDIGO_GEBER_HOME.jpg';}else if(this.dataset.fallback==='2'){this.dataset.fallback='3';this.src='/assets/img/PFANDIGO_GEBER_HOME.jpeg';}"
+                >
+            </div>
+            <div class="hero-content">
+                <!-- Eyebrow (klein) -->
+                <p class="value-proposition" style="color: #1A4A43 !important;">
+                    Recycling verbindet
+                </p>
+                
+                <!-- Headline -->
+                <h1 style="color: #1A4A43 !important;">
+                    Pfand abholen lassen.<br>
+                    Einfach. Sicher. Lokal.
+                </h1>
+                
+                <!-- Subheadline -->
+                <p class="subheadline" style="color: #1A4A43 !important;">
+                    PFANDIGO verbindet Menschen, die ihr Pfand bequem loswerden wollen, mit Abholern in der Nähe – transparent und organisiert per App.
+                </p>
+                
+                <!-- CTA Buttons: Primary (Warteliste) + Secondary (So funktioniert's) -->
+                <!-- Buttons sind klar visuell unterscheidbar: Primary = gefüllt, Secondary = Outline -->
+                <div class="hero-cta">
+                    <a href="#so-funktionierts" class="btn btn-secondary">So funktioniert's</a>
+                    <a href="#warteliste" class="btn">Zur Warteliste</a>
+                </div>
             </div>
         </div>
     </section>
@@ -116,14 +126,14 @@
                         <li style="margin-bottom: var(--spacing-xs);">Ein Abholer in deiner Nähe nimmt den Auftrag an</li>
                         <li style="margin-bottom: var(--spacing-xs);">Pfand übergeben & deinen Anteil erhalten</li>
                     </ol>
-                    <a href="/pfandgeber/" class="btn" style="margin-top: var(--spacing-sm);">So gebe ich Pfand ab</a>
+                    <a href="/pfandgeber/" class="btn" style="margin: var(--spacing-sm) auto 0 auto; display: inline-flex;">So gebe ich Pfand ab</a>
                     <div class="flasche-image-wrapper">
                         <img src="/assets/img/Flasche-rechts.png" alt="Flasche rechts" class="flasche-image">
                     </div>
                 </div>
                 <div class="mockup-card feature-mockup">
                     <div class="mockup-image-wrapper">
-                        <img src="/assets/img/Mockup-DetailView.png?v=2" 
+                        <img src="/assets/img/PFANDIGO_DETAIL_VIEW.png?v=1" 
                              alt="PFANDIGO App Detail-Ansicht" 
                              class="mockup-image">
                     </div>
@@ -140,14 +150,14 @@
                         <li style="margin-bottom: var(--spacing-xs);">Pfand abholen</li>
                         <li style="margin-bottom: var(--spacing-xs);">Pfand einlösen & Geld verdienen</li>
                     </ol>
-                    <a href="/abholer/" class="btn" style="margin-top: var(--spacing-sm);">So werde ich Abholer</a>
+                    <a href="/abholer/" class="btn" style="margin: var(--spacing-sm) auto 0 auto; display: inline-flex;">So werde ich Abholer</a>
                     <div class="flasche-image-wrapper">
                         <img src="/assets/img/Flasche-links.png" alt="Flasche links" class="flasche-image">
                     </div>
                 </div>
                 <div class="mockup-card feature-mockup">
                     <div class="mockup-image-wrapper">
-                        <img src="/assets/img/Mockup-Map.png?v=1" 
+                        <img src="/assets/img/PFANDIGO_ORDER_SEARCH.png?v=1" 
                              alt="PFANDIGO App Karten-Ansicht" 
                              class="mockup-image mockup-image-large">
                     </div>
@@ -249,7 +259,7 @@
     </section>
 
     <!-- Transparenter Ablauf Sektion -->
-    <section class="section" style="background-color: var(--color-bg);">
+    <section class="section" style="background-color: var(--color-bg); padding-top: var(--spacing-md);">
         <!-- 2-Spalten-Layout: Flaschensack links, Text rechts (wie Mission) -->
         <div class="transparency-container">
             <!-- Linke Seite: Flaschensack Bild -->
@@ -272,7 +282,7 @@
         <div class="container">
             <div class="trust-timeline">
                 <!-- Hauptüberschrift -->
-                <h3 style="text-align: center; margin-bottom: var(--spacing-xl); margin-top: var(--spacing-lg); color: var(--color-primary); font-size: 2.75rem;">Transparenter Ablauf</h3>
+                <h3 style="text-align: center; margin-bottom: var(--spacing-xl); margin-top: 0; color: var(--color-primary); font-size: 2.75rem;">Transparenter Ablauf</h3>
                 
                 <!-- Timeline Steps -->
                 <div class="timeline-steps">
