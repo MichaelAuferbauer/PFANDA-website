@@ -320,6 +320,13 @@ a:focus-visible {
   background-image: none !important;
   background-color: var(--color-white);
   justify-content: center;
+  /* Safety layout: never clip hero content under sticky header */
+  min-height: calc(100svh - 78px) !important;
+  height: auto !important;
+  max-height: none !important;
+  padding-top: var(--spacing-sm) !important;
+  padding-bottom: var(--spacing-xl) !important;
+  overflow: visible !important;
 }
 
 .hero.hero-with-mockup::before {
@@ -423,6 +430,24 @@ a:focus-visible {
   color: var(--color-primary) !important;
 }
 
+/* Larger, responsive hero typography for homepage */
+#hero.hero-with-mockup .value-proposition {
+  font-size: clamp(1.12rem, 1.45vw, 1.4rem);
+  letter-spacing: 0.08em;
+}
+
+#hero.hero-with-mockup h1 {
+  font-size: clamp(2.4rem, 4.9vw, 4.1rem);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-md);
+}
+
+#hero.hero-with-mockup .subheadline {
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  line-height: 1.55;
+  max-width: 34ch;
+}
+
 .hero-with-mockup .hero-cta {
   justify-content: flex-start;
   align-items: flex-start;
@@ -435,8 +460,9 @@ a:focus-visible {
     min-height: auto !important;
     height: auto !important;
     max-height: none !important;
+    padding-top: var(--spacing-sm) !important;
     padding-bottom: var(--spacing-xl) !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
   .hero-with-mockup .hero-layout {
@@ -466,12 +492,38 @@ a:focus-visible {
 
   .hero-with-mockup .hero-cta {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .hero-with-mockup .hero-cta .btn {
     width: auto !important;
     min-width: 0 !important;
+    align-self: center;
+  }
+
+  #hero.hero-with-mockup .value-proposition {
+    font-size: clamp(0.95rem, 3.8vw, 1.08rem) !important;
+    margin-bottom: var(--spacing-sm) !important;
+  }
+
+  #hero.hero-with-mockup h1 {
+    font-size: clamp(1.9rem, 7.2vw, 2.55rem) !important;
+    line-height: 1.12 !important;
+    margin-bottom: var(--spacing-md) !important;
+  }
+
+  #hero.hero-with-mockup .subheadline {
+    font-size: clamp(0.98rem, 4.2vw, 1.16rem) !important;
+    line-height: 1.5 !important;
+    margin-bottom: var(--spacing-lg) !important;
+    max-width: 100% !important;
+  }
+
+  #hero.hero-with-mockup .hero-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   .hero-content {
@@ -527,8 +579,9 @@ a:focus-visible {
     min-height: auto !important;
     height: auto !important;
     max-height: none !important;
+    padding-top: var(--spacing-xs) !important;
     padding-bottom: var(--spacing-xl) !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
   .hero-with-mockup .hero-layout {
@@ -556,12 +609,38 @@ a:focus-visible {
 
   .hero-with-mockup .hero-cta {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .hero-with-mockup .hero-cta .btn {
     width: auto !important;
     min-width: 0 !important;
+    align-self: center;
+  }
+
+  #hero.hero-with-mockup .value-proposition {
+    font-size: clamp(0.9rem, 2vw, 1.02rem) !important;
+    margin-bottom: var(--spacing-xs) !important;
+  }
+
+  #hero.hero-with-mockup h1 {
+    font-size: clamp(1.75rem, 4.9vw, 2.25rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: var(--spacing-sm) !important;
+  }
+
+  #hero.hero-with-mockup .subheadline {
+    font-size: clamp(0.95rem, 2.25vw, 1.08rem) !important;
+    line-height: 1.45 !important;
+    margin-bottom: var(--spacing-md) !important;
+    max-width: 100% !important;
+  }
+
+  #hero.hero-with-mockup .hero-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   .hero {
