@@ -2294,9 +2294,14 @@ p {
 
 /* Final mobile hero type override for iPhone/WebView consistency */
 @media (max-width: 767px) {
+  #hero.hero-with-mockup {
+    padding-top: var(--spacing-md) !important;
+  }
+
   #hero.hero-with-mockup .value-proposition {
     font-size: clamp(1.06rem, 4.4vw, 1.22rem) !important;
     line-height: 1.35 !important;
+    margin-bottom: var(--spacing-md) !important;
   }
 
   #hero.hero-with-mockup h1 {
