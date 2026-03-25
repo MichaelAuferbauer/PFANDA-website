@@ -11,14 +11,16 @@
   <main class="bridge-card">
     <h1>Weiterleitung zur PFANDIGO App...</h1>
     <p>Wenn deine PFANDIGO App installiert ist, wird sie jetzt geöffnet.</p>
-    <a class="open-app-btn" href="PFANDIGO://wallet/connect-refresh">Zurück zur PFANDIGO App</a>
+    <a id="open-app-btn" class="open-app-btn" href="pfandigo://wallet/connect-refresh">Zurück zur PFANDIGO App</a>
     <p class="hint">Falls sich die App nicht öffnet, bitte PFANDIGO manuell öffnen.</p>
   </main>
 
+  <script src="/connect/deep-link-migration.js"></script>
   <script>
     (function redirectToApp() {
-      var deepLink = "PFANDIGO://wallet/connect-refresh";
-      window.location.replace(deepLink);
+      var btn = document.getElementById("open-app-btn");
+      var links = window.PFANDIGO_DEEP_LINKS.redirectWithFallback("wallet/connect-refresh");
+      btn.href = links.primary;
     })();
   </script>
 </body>
