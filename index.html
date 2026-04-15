@@ -355,16 +355,16 @@
         </div>
     </footer>
 
-    <!-- Supabase Configuration - Direkter REST API Zugriff (ohne Auth, RLS deaktiviert) -->
+    <!-- Supabase Configuration - RPC Zugriff mit anon key (RLS-konform) -->
     <script>
-        // Supabase Configuration für direkten REST API Aufruf
-        const SUPABASE_URL = 'https://qbmykhvivrfswuglkwkv.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibXlraHZpdnJmc3d1Z2xrd2t2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3Mzg3MzcsImV4cCI6MjA4NDMxNDczN30.QknWaZcfRtBCNtrKOVh0dswBy7GEHzPfeUhvrrohGdg';
+        // Supabase Configuration für RPC-Aufruf
+        const SUPABASE_URL = 'https://vyjlmtmyrsrmefeszode.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5amxtdG15cnNybWVmZXN6b2RlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwNzM3ODksImV4cCI6MjA3NDY0OTc4OX0.44wZXXHAwjeT7khvkKIaPHfarNFUJLzcL53SWq_5dn4';
         
-        // Funktion für direkten Supabase REST API Aufruf
-        async function insertToSupabase(table, data) {
-            const url = `${SUPABASE_URL}/rest/v1/${table}`;
-            console.log('Supabase Insert:', { url, data });
+        // Funktion für Supabase RPC Aufruf
+        async function callSupabaseRpc(functionName, payload) {
+            const url = `${SUPABASE_URL}/rest/v1/rpc/${functionName}`;
+            console.log('Supabase RPC:', { url, payload });
             
             const response = await fetch(url, {
                 method: 'POST',
@@ -374,7 +374,7 @@
                     'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
                     'Prefer': 'return=representation'
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(payload)
             });
             
             console.log('Supabase Response Status:', response.status);
@@ -404,7 +404,7 @@
             return result;
         }
         
-        console.log('Supabase REST API bereit');
+        console.log('Supabase RPC bereit');
     </script>
     <!-- Main JavaScript -->
     <script src="/assets/js/main.js"></script>
@@ -468,7 +468,7 @@
                     const roleDb = role === 'pfandgeber' ? 'Pfandgeber' : 'Abholer';
                     const nameValue = document.getElementById('waitlist-name').value.trim() || null;
                     
-                    // Daten in Supabase speichern - direkter REST API Aufruf (RLS deaktiviert)
+                    // Daten in Supabase speichern - nur via RPC (RLS-konform)
                     async function submitToSupabase() {
                         try {
                             // Zeige Loading-State
@@ -477,21 +477,32 @@
                             submitButton.disabled = true;
                             submitButton.textContent = 'Wird gespeichert...';
                             
-                            // Direkter REST API Aufruf (RLS ist deaktiviert, sollte funktionieren)
-                            const data = await insertToSupabase('waitlist_signups', {
-                                role: roleDb,
-                                postal_code: plz,
-                                name: nameValue,
-                                email: email
+                            // RPC: add_waitlist_signup (insert-only flow)
+                            const data = await callSupabaseRpc('add_waitlist_signup', {
+                                p_role: roleDb,
+                                p_postal_code: plz,
+                                p_name: nameValue,
+                                p_email: email,
+                                p_source: 'website'
                             });
                             
-                            // Erfolgreich gespeichert
-                            console.log('Erfolgreich in Supabase gespeichert:', data);
+                            // Erwartet: [{ inserted: boolean, waitlist_id: uuid|null }]
+                            const resultRow = Array.isArray(data) ? data[0] : data;
+                            const inserted = !!(resultRow && resultRow.inserted === true);
+                            console.log('Warteliste RPC Ergebnis:', resultRow);
                             
                             // Formular ausblenden
                             waitlistForm.classList.add('hidden');
                             
                             // Success-Message anzeigen
+                            const successText = waitlistSuccess.querySelector('p');
+                            if (successText) {
+                                if (inserted) {
+                                    successText.textContent = 'Wir melden uns, sobald PFANDIGO in deiner Region startet.';
+                                } else {
+                                    successText.textContent = 'Du bist bereits auf der Warteliste. Vielen Dank für dein Interesse!';
+                                }
+                            }
                             waitlistSuccess.classList.add('active');
                             
                             // Scroll zu Success-Message für bessere UX
@@ -510,12 +521,10 @@
                             submitButton.textContent = 'Auf die Warteliste';
                             
                             // Spezielle Fehlermeldungen basierend auf Error-Code
-                            if (err.code === 409 || err.code === '23505' || (err.message && err.message.includes('duplicate'))) {
-                                alert('Diese E-Mail-Adresse ist bereits auf der Warteliste. Vielen Dank für dein Interesse!');
-                            } else if (err.code === 400 || err.code === 422) {
+                            if (err.code === 400 || err.code === 422) {
                                 alert('Ungültige Eingabe. Bitte überprüfe deine Angaben.\n\nFehler: ' + (err.message || ''));
                             } else if (err.code === 404) {
-                                alert('Die Datenbank-Tabelle wurde nicht gefunden. Bitte überprüfe die Migration.');
+                                alert('Die RPC-Funktion wurde nicht gefunden. Bitte überprüfe die SQL-Migration.');
                             } else {
                                 alert('Fehler beim Speichern: ' + (err.message || 'Bitte versuche es später erneut.'));
                             }
