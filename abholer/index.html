@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Als Abholer bei PFANDIGO kannst du Geld verdienen, indem du Pfandflaschen abholst und zum Recycling bringst.">
     <meta name="keywords" content="Abholer, Pfandflaschen abholen, Geld verdienen, Recycling">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pfandigo.com/abholer/">
@@ -15,148 +15,832 @@
     <meta property="og:image:alt" content="PFANDIGO Logo">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
-    
+
     <title>Abholer werden - PFANDIGO</title>
     <link rel="canonical" href="https://pfandigo.com/abholer/">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png?v=4">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png?v=4">
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
     <link rel="apple-touch-icon" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
-    
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/assets/css/styles.css?v=118">
+
+    <style>
+        /* ============================================
+           ABHOLER PAGE – Modern Design
+           Prefix: pg-  (keine Konflikte mit styles.css)
+           ============================================ */
+
+        html, body {
+            background-color: #ffffff !important;
+            color: #1a1a1a;
+            font-family: 'DM Sans', sans-serif !important;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+
+        .pg-section p,
+        .pg-cta-section p,
+        .pg-footer p {
+            max-width: 100% !important;
+        }
+
+        /* =====================
+           NAVBAR
+        ===================== */
+        .pg-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 46, 26, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pg-navbar.scrolled {
+            background: rgba(10, 46, 26, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .pg-navbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.75rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pg-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+        }
+
+        .pg-brand-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .pg-brand-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.875rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            line-height: 1;
+        }
+
+        .pg-brand-text .pg-igo {
+            color: #2bc7c4;
+        }
+
+        .pg-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pg-nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .pg-nav-links a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .pg-nav-links a.active {
+            color: #a8f0c6 !important;
+        }
+
+        .pg-mobile-menu a.active {
+            color: #a8f0c6 !important;
+        }
+
+        .pg-nav-cta {
+            background: #f5c842 !important;
+            color: #0a2e1a !important;
+            padding: 0.55rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            font-size: 0.95rem !important;
+            transition: all 0.25s ease !important;
+        }
+
+        .pg-nav-cta:hover {
+            background: #e8b835 !important;
+            color: #0a2e1a !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(245, 200, 66, 0.35);
+            text-decoration: none;
+        }
+
+        .pg-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        .pg-hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .pg-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .pg-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .pg-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .pg-mobile-menu {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: rgba(8, 36, 20, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.5rem 1.75rem;
+            gap: 0;
+            transform: translateY(-110%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.35s ease, opacity 0.35s ease, visibility 0.35s ease;
+            z-index: 999;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pg-mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .pg-mobile-menu a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            transition: color 0.2s;
+        }
+
+        .pg-mobile-menu a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .pg-mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .pg-mobile-cta {
+            background: #f5c842 !important;
+            color: #0a2e1a !important;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: 700 !important;
+            border-bottom: none !important;
+            margin-top: 0.75rem;
+            padding: 0.8rem 1.5rem !important;
+        }
+
+        /* =====================
+           SECTION BASE
+        ===================== */
+        .pg-section {
+            padding: 6rem 1.75rem;
+            position: relative;
+        }
+
+        .pg-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pg-section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(1.9rem, 3.5vw, 3rem) !important;
+            color: #0a2e1a !important;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            line-height: 1.15 !important;
+        }
+
+        .pg-section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.05rem;
+            font-weight: 300;
+            margin-bottom: 3.5rem;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* =====================
+           CARDS (grüner Hintergrund)
+        ===================== */
+        .pg-glass-card {
+            background: #0a2e1a;
+            border: 1px solid rgba(26, 173, 94, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(10, 46, 26, 0.15);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pg-glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(10, 46, 26, 0.25);
+        }
+
+        /* =====================
+           STEPS ("SO FUNKTIONIERTS")
+        ===================== */
+        .pg-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pg-step-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pg-step-number-bg {
+            position: absolute;
+            top: -12px;
+            right: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 7rem;
+            color: rgba(26, 173, 94, 0.08);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .pg-step-icon {
+            font-size: 2rem;
+            margin-bottom: 0.85rem;
+            display: block;
+        }
+
+        .pg-step-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.1rem !important;
+            color: #ffffff !important;
+            margin-bottom: 0.65rem;
+            line-height: 1.3 !important;
+        }
+
+        .pg-step-text {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* =====================
+           BENEFITS (3 SPALTEN)
+        ===================== */
+        .pg-benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pg-benefit-icon {
+            font-size: 2.4rem;
+            margin-bottom: 0.9rem;
+            display: block;
+        }
+
+        .pg-benefit-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.2rem !important;
+            color: #ffffff !important;
+            margin-bottom: 1rem;
+            line-height: 1.3 !important;
+        }
+
+        .pg-benefit-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pg-benefit-list li {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.95rem;
+            padding: 0.4rem 0 0.4rem 1.4rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .pg-benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #1aad5e;
+            font-weight: 700;
+        }
+
+        /* =====================
+           SCREENSHOT
+        ===================== */
+        .pg-screenshot-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 1rem;
+        }
+
+        .pg-screenshot-inner {
+            position: relative;
+            display: inline-block;
+        }
+
+        .pg-screenshot-inner::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65%;
+            height: 50px;
+            background: rgba(26, 173, 94, 0.35);
+            filter: blur(28px);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .pg-app-screenshot {
+            max-width: 340px;
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 20px 80px rgba(26, 173, 94, 0.3);
+            display: block;
+        }
+
+        /* =====================
+           FAQ TEASER
+        ===================== */
+        .pg-faq-teaser {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pg-faq-text h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.3rem !important;
+            color: #ffffff !important;
+            margin-bottom: 0.4rem;
+            line-height: 1.3 !important;
+        }
+
+        .pg-faq-text p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.93rem;
+            margin: 0;
+        }
+
+        .pg-btn-amber-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.8rem 1.6rem;
+            background: #f5c842;
+            color: #0a2e1a;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+        }
+
+        .pg-btn-amber-arrow:hover {
+            background: #e8b835;
+            color: #0a2e1a;
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(245, 200, 66, 0.35);
+            text-decoration: none;
+        }
+
+        /* =====================
+           BUTTONS
+        ===================== */
+        .pg-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 2.1rem;
+            background: #f5c842;
+            color: #0a2e1a;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .pg-btn-primary:hover {
+            background: #e8b835;
+            color: #0a2e1a;
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(245, 200, 66, 0.4);
+            text-decoration: none;
+        }
+
+        /* =====================
+           CTA SECTION
+        ===================== */
+        .pg-cta-section {
+            background: #f0f7f2;
+            padding: 7rem 1.75rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .pg-cta-inner {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .pg-cta-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(2rem, 3.5vw, 3rem) !important;
+            color: #0a2e1a !important;
+            margin-bottom: 1rem;
+            line-height: 1.15 !important;
+        }
+
+        .pg-cta-sub {
+            color: #4b5563;
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+        }
+
+        /* =====================
+           FOOTER
+        ===================== */
+        .pg-footer {
+            background: #0a1f10;
+            border-top: 1px solid rgba(26, 173, 94, 0.2);
+            padding: 4rem 1.75rem 2rem;
+        }
+
+        .pg-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pg-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pg-footer-brand h3 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 1.5rem !important;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #ffffff !important;
+            margin-bottom: 0.75rem;
+        }
+
+        .pg-footer-brand p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        .pg-footer-col h4 {
+            font-family: 'DM Sans', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.8rem !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.1rem;
+        }
+
+        .pg-footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pg-footer-col ul li {
+            margin-bottom: 0.65rem;
+        }
+
+        .pg-footer-col ul li a {
+            color: rgba(255, 255, 255, 0.78);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .pg-footer-col ul li a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .pg-footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .pg-footer-bottom sup {
+            font-size: 0.75em;
+            vertical-align: super;
+        }
+
+        /* =====================
+           SCROLL ANIMATIONS
+        ===================== */
+        .pg-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .pg-fade-in.pg-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pg-steps-grid .pg-fade-in:nth-child(1) { transition-delay: 0.05s; }
+        .pg-steps-grid .pg-fade-in:nth-child(2) { transition-delay: 0.15s; }
+        .pg-steps-grid .pg-fade-in:nth-child(3) { transition-delay: 0.25s; }
+        .pg-steps-grid .pg-fade-in:nth-child(4) { transition-delay: 0.35s; }
+
+        .pg-benefits-grid .pg-fade-in:nth-child(1) { transition-delay: 0.05s; }
+        .pg-benefits-grid .pg-fade-in:nth-child(2) { transition-delay: 0.18s; }
+        .pg-benefits-grid .pg-fade-in:nth-child(3) { transition-delay: 0.3s; }
+
+        /* =====================
+           RESPONSIVE
+        ===================== */
+        @media (max-width: 900px) {
+            .pg-footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pg-nav-links { display: none; }
+            .pg-hamburger { display: flex; }
+
+            .pg-section {
+                padding: 4rem 1.25rem;
+            }
+
+            .pg-steps-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pg-benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pg-faq-teaser {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.25rem;
+            }
+
+            .pg-cta-section {
+                padding: 5rem 1.25rem;
+            }
+
+            .pg-footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #so-funktionierts {
+                padding-top: calc(72px + 2.5rem);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <a href="/" class="brand">
-                <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="brand-logo">
-                <span class="logo"><span class="logo-main">PFAND</span><span class="logo-igo">IGO</span></span>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="pg-navbar" id="pgNavbar">
+        <div class="pg-navbar-inner">
+            <a href="/" class="pg-brand">
+                <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="pg-brand-logo">
+                <span class="pg-brand-text"><span>PFAND</span><span class="pg-igo">IGO</span></span>
             </a>
-            <button class="menu-toggle" aria-label="Menü öffnen">Menu [+]</button>
-            <ul class="nav-menu">
+            <ul class="pg-nav-links">
                 <li><a href="/">Start</a></li>
                 <li><a href="/pfandgeber/">Pfandgeber</a></li>
                 <li><a href="/abholer/">Abholer</a></li>
                 <li><a href="/faq/">FAQ</a></li>
                 <li><a href="/kontakt/">Kontakt</a></li>
+                <li><a href="/#warteliste" class="pg-nav-cta">Zur Warteliste</a></li>
             </ul>
+            <button class="pg-hamburger" id="pgHamburger" aria-label="Menü öffnen" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="pg-mobile-menu" id="pgMobileMenu">
+            <a href="/">Start</a>
+            <a href="/pfandgeber/">Pfandgeber</a>
+            <a href="/abholer/">Abholer</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/kontakt/">Kontakt</a>
+            <a href="/#warteliste" class="pg-mobile-cta">Zur Warteliste</a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <section class="section">
-        <div class="container">
-            <div class="grid grid-2">
-                <div>
-                    <h2>So funktioniert's für Abholer</h2>
-                    <p style="color: var(--color-text-light); margin-bottom: var(--spacing-xl);">
-                        Als Abholer kannst du flexibel arbeiten und Geld verdienen, indem du Pfandflaschen 
-                        von Pfandgebern abholst und zum Recycling bringst.
-                    </p>
-                    
-                    <div class="card" style="margin-bottom: var(--spacing-lg);">
-                        <h3 class="card-title">1. Registrierung</h3>
-                        <p style="color: var(--color-text-light);">
-                            Registriere dich als verifizierter Abholer auf unserer Plattform. 
-                            Die Registrierung ist kostenlos und unverbindlich.
-                        </p>
-                    </div>
-                    
-                    <div class="card" style="margin-bottom: var(--spacing-lg);">
-                        <h3 class="card-title">2. Angebote finden</h3>
-                        <p style="color: var(--color-text-light);">
-                            Suche verfügbare Pfandflaschen-Aufträge in der App.
-                        </p>
-                    </div>
-                    
-                    <div class="card" style="margin-bottom: var(--spacing-lg);">
-                        <h3 class="card-title">3. Abholung durchführen</h3>
-                        <p style="color: var(--color-text-light);">
-                            Hole den Pfand am vereinbarten Tag zur richtigen Uhrzeit ab. 
-                            Der vereinbarte Betrag wird deinem Wallet abgezogen (deutlich weniger als der Pfandwert).
-                        </p>
-                    </div>
-                    
-                    <div class="card">
-                        <h3 class="card-title">4. Gewinn erzielen</h3>
-                        <p style="color: var(--color-text-light);">
-                            Gib die Flaschen bei einer Pfandstation ab und erhalte den vollen Pfandwert. 
-                            Die Differenz zwischen deinem Anteil für den Pfandgeber und dem Pfandwert ist dann dein Gewinn.
-                        </p>
-                    </div>
+    <!-- ===== SO FUNKTIONIERTS (4 SCHRITTE) ===== -->
+    <section id="so-funktionierts" class="pg-section" style="padding-top: calc(72px + 4rem);">
+        <div class="pg-container">
+            <h2 class="pg-section-title">So funktioniert's für Abholer</h2>
+            <p class="pg-section-subtitle">Als Abholer kannst du flexibel arbeiten und Geld verdienen, indem du Pfandflaschen von Pfandgebern abholst und zum Recycling bringst.</p>
+            <div class="pg-steps-grid">
+                <div class="pg-glass-card pg-step-card pg-fade-in">
+                    <span class="pg-step-number-bg" aria-hidden="true">1</span>
+                    <span class="pg-step-icon" aria-hidden="true">📝</span>
+                    <h3 class="pg-step-title">1. Registrierung</h3>
+                    <p class="pg-step-text">Registriere dich als verifizierter Abholer auf unserer Plattform. Die Registrierung ist kostenlos und unverbindlich.</p>
                 </div>
-                
-                <div>
-                    <div class="card" style="background-color: #e6f4ed; margin-top: var(--spacing-lg);">
-                        <h3 class="card-title" style="font-size: 1.75rem; text-align: center;">Vorteile für Abholer</h3>
-                        <div style="margin-top: var(--spacing-lg);">
-                            <ul style="padding-left: var(--spacing-lg); font-size: 1.05rem; line-height: 1.7; list-style-type: decimal;">
-                                <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                    <span style="color: var(--color-text);">Flexible Arbeitszeiten – du entscheidest, wann du abholst</span>
-                                </li>
-                                <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                    <span style="color: var(--color-text);">Verdienst selbst bestimmbar</span>
-                                </li>
-                                <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                    <span style="color: var(--color-text);">Keine Gebühren, kein Abo</span>
-                                </li>
-                                <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                    <span style="color: var(--color-text);">Lokale Aufträge in Ihrer Nähe</span>
-                                </li>
-                                <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                    <span style="color: var(--color-text);">Verifizierte Pfandgeber</span>
-                                </li>
-                                <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                    <span style="color: var(--color-text);">Beitrag zum Umweltschutz</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: var(--spacing-xl); text-align: center;">
-                        <img src="/assets/img/Abholer-transportiert.png" alt="Abholung durchführen" style="max-width: 100%; max-height: 450px; width: auto; height: auto; object-fit: contain; border-radius: 12px;">
-                    </div>
-
-                    <div class="card" style="margin-top: var(--spacing-xl);">
-                        <h3 class="card-title">Häufige Fragen</h3>
-                        <p style="color: var(--color-text-light); margin-bottom: var(--spacing-sm);">
-                            Hast du Fragen zum Abholprozess? Schau in unserem FAQ-Bereich vorbei.
-                        </p>
-                        <a href="/faq/" class="btn btn-secondary">FAQ ansehen</a>
-                    </div>
+                <div class="pg-glass-card pg-step-card pg-fade-in">
+                    <span class="pg-step-number-bg" aria-hidden="true">2</span>
+                    <span class="pg-step-icon" aria-hidden="true">🔍</span>
+                    <h3 class="pg-step-title">2. Angebote finden</h3>
+                    <p class="pg-step-text">Suche verfügbare Pfandflaschen-Aufträge in der App.</p>
+                </div>
+                <div class="pg-glass-card pg-step-card pg-fade-in">
+                    <span class="pg-step-number-bg" aria-hidden="true">3</span>
+                    <span class="pg-step-icon" aria-hidden="true">🚲</span>
+                    <h3 class="pg-step-title">3. Abholung durchführen</h3>
+                    <p class="pg-step-text">Hole den Pfand am vereinbarten Tag zur richtigen Uhrzeit ab. Der vereinbarte Betrag wird deinem Wallet abgezogen – deutlich weniger als der Pfandwert.</p>
+                </div>
+                <div class="pg-glass-card pg-step-card pg-fade-in">
+                    <span class="pg-step-number-bg" aria-hidden="true">4</span>
+                    <span class="pg-step-icon" aria-hidden="true">💰</span>
+                    <h3 class="pg-step-title">4. Gewinn erzielen</h3>
+                    <p class="pg-step-text">Gib die Flaschen bei einer Pfandstation ab und erhalte den vollen Pfandwert. Die Differenz zwischen deinem Anteil und dem Pfandwert ist dein Gewinn.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section" style="background-color: var(--color-bg-light); text-align: center !important;">
-        <div class="container" style="text-align: center !important; max-width: 100% !important;">
-            <h2 style="text-align: center !important; margin-bottom: var(--spacing-lg); color: var(--color-primary);">Bereit, Abholer zu werden?</h2>
-            <p style="font-size: var(--font-size-lg); color: var(--color-text-light); margin-bottom: var(--spacing-lg); text-align: center !important; width: 100%; margin-left: auto; margin-right: auto;">
-                Starte noch heute und verdiene Geld mit dem Abholen von Pfandflaschen.
-            </p>
-            <div style="text-align: center !important; width: 100%; display: flex; justify-content: center;">
-                <a href="/#warteliste" class="btn" id="abholer-register-btn">Jetzt registrieren</a>
+    <!-- ===== VORTEILE (3 SPALTEN) ===== -->
+    <section class="pg-section">
+        <div class="pg-container">
+            <h2 class="pg-section-title">Vorteile für Abholer</h2>
+            <p class="pg-section-subtitle">Verdiene Geld auf eigene Faust – flexibel, lokal und ohne Risiko.</p>
+            <div class="pg-benefits-grid">
+                <div class="pg-glass-card pg-fade-in">
+                    <span class="pg-benefit-icon" aria-hidden="true">🕐</span>
+                    <h3 class="pg-benefit-title">Flexibilität</h3>
+                    <ul class="pg-benefit-list">
+                        <li>Flexible Arbeitszeiten – du entscheidest, wann du abholst</li>
+                        <li>Verdienst selbst bestimmbar</li>
+                    </ul>
+                </div>
+                <div class="pg-glass-card pg-fade-in">
+                    <span class="pg-benefit-icon" aria-hidden="true">🔒</span>
+                    <h3 class="pg-benefit-title">Kosten &amp; Sicherheit</h3>
+                    <ul class="pg-benefit-list">
+                        <li>Keine Gebühren, kein Abo</li>
+                        <li>Verifizierte Pfandgeber</li>
+                    </ul>
+                </div>
+                <div class="pg-glass-card pg-fade-in">
+                    <span class="pg-benefit-icon" aria-hidden="true">🌿</span>
+                    <h3 class="pg-benefit-title">Wirkung</h3>
+                    <ul class="pg-benefit-list">
+                        <li>Lokale Aufträge in deiner Nähe</li>
+                        <li>Beitrag zum Umweltschutz</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+    <!-- ===== BILD ===== -->
+    <section class="pg-section pg-fade-in">
+        <div class="pg-container">
+            <h2 class="pg-section-title" style="margin-bottom: 3rem;">Unterwegs für den guten Zweck</h2>
+            <div class="pg-screenshot-wrap">
+                <div class="pg-screenshot-inner">
+                    <img src="/assets/img/Abholer-transportiert.png" alt="Abholung durchführen" class="pg-app-screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ TEASER ===== -->
+    <section class="pg-section pg-fade-in">
+        <div class="pg-container">
+            <div class="pg-glass-card pg-faq-teaser">
+                <div class="pg-faq-text">
+                    <h3>Häufige Fragen</h3>
+                    <p>Hast du Fragen zum Abholprozess? Schau in unserem FAQ-Bereich vorbei.</p>
+                </div>
+                <a href="/faq/" class="pg-btn-amber-arrow">FAQ ansehen →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="pg-cta-section pg-fade-in">
+        <div class="pg-cta-inner">
+            <h2 class="pg-cta-title">Bereit, Abholer zu werden?</h2>
+            <p class="pg-cta-sub">Starte noch heute und verdiene Geld mit dem Abholen von Pfandflaschen.</p>
+            <a href="/#warteliste" class="pg-btn-primary" id="abholer-register-btn">Jetzt registrieren</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="pg-footer">
+        <div class="pg-footer-inner">
+            <div class="pg-footer-grid">
+                <div class="pg-footer-brand">
                     <h3>PFANDIGO<sup>®</sup></h3>
-                    <p style="color: #ffffff;">Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
+                    <p>Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Navigation</h3>
-                    <ul class="footer-links">
+                <div class="pg-footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
                         <li><a href="/">Start</a></li>
                         <li><a href="/pfandgeber/">Pfandgeber</a></li>
                         <li><a href="/abholer/">Abholer</a></li>
@@ -164,24 +848,69 @@
                         <li><a href="/kontakt/">Kontakt</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Rechtliches</h3>
-                    <ul class="footer-links">
+                <div class="pg-footer-col">
+                    <h4>Rechtliches</h4>
+                    <ul>
                         <li><a href="/impressum/">Impressum</a></li>
                         <li><a href="/datenschutz/">Datenschutz</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="pg-footer-bottom">
                 <p>2026 PFANDIGO<sup>®</sup>. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
 
     <script src="/assets/js/main.js"></script>
+    <script>
+        (function () {
+            var navbar = document.getElementById('pgNavbar');
+            window.addEventListener('scroll', function () {
+                navbar.classList.toggle('scrolled', window.scrollY > 30);
+            }, { passive: true });
+
+            var hamburger = document.getElementById('pgHamburger');
+            var mobileMenu = document.getElementById('pgMobileMenu');
+
+            hamburger.addEventListener('click', function () {
+                var isOpen = hamburger.classList.toggle('open');
+                mobileMenu.classList.toggle('open', isOpen);
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    hamburger.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Active nav link
+            var path = window.location.pathname;
+            document.querySelectorAll('.pg-nav-links a').forEach(function(a) {
+                if (a.getAttribute('href') === path) a.classList.add('active');
+            });
+            document.querySelectorAll('.pg-mobile-menu a:not(.pg-mobile-cta)').forEach(function(a) {
+                if (a.getAttribute('href') === path) a.classList.add('active');
+            });
+
+            var fadeEls = document.querySelectorAll('.pg-fade-in');
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('pg-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                fadeEls.forEach(function (el) { observer.observe(el); });
+            } else {
+                fadeEls.forEach(function (el) { el.classList.add('pg-visible'); });
+            }
+        })();
+    </script>
 </body>
 </html>
-
-
-
-

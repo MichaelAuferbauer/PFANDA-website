@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Als Pfandgeber bei PFANDIGO kannst du einfach und schnell Geld mit deinen Pfandflaschen verdienen.">
     <meta name="keywords" content="Pfandgeber, Pfandflaschen verkaufen, Pfand abgeben">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pfandigo.com/pfandgeber/">
@@ -15,169 +15,867 @@
     <meta property="og:image:alt" content="PFANDIGO Logo">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
-    
+
     <title>Pfandgeber werden - PFANDIGO</title>
     <link rel="canonical" href="https://pfandigo.com/pfandgeber/">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png?v=4">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png?v=4">
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
     <link rel="apple-touch-icon" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
-    
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/assets/css/styles.css?v=118">
+
+    <style>
+        /* ============================================
+           PFANDGEBER – Modern Dark Design Override
+           Prefix: pg-  (keine Konflikte mit styles.css)
+           ============================================ */
+
+        /* Base */
+        html, body {
+            background-color: #ffffff !important;
+            color: #1a1a1a;
+            font-family: 'DM Sans', sans-serif !important;
+            line-height: 1.7;
+        }
+
+        /* Global heading & paragraph resets inside pg- context */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+
+        /* Prevent styles.css max-width on <p> from breaking layouts */
+        .pg-section p,
+        .pg-cta-section p,
+        .pg-footer p {
+            max-width: 100% !important;
+        }
+
+        /* =====================
+           NAVBAR
+        ===================== */
+        .pg-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 46, 26, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pg-navbar.scrolled {
+            background: rgba(10, 46, 26, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .pg-navbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.75rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pg-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+        }
+
+        .pg-brand-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .pg-brand-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.875rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            line-height: 1;
+        }
+
+        .pg-brand-text .pg-igo {
+            color: #2bc7c4;
+        }
+
+        .pg-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pg-nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .pg-nav-links a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .pg-nav-links a.active {
+            color: #a8f0c6 !important;
+        }
+
+        .pg-mobile-menu a.active {
+            color: #a8f0c6 !important;
+        }
+
+        .pg-nav-cta {
+            background: #f5c842 !important;
+            color: #0a2e1a !important;
+            padding: 0.55rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            font-size: 0.95rem !important;
+            transition: all 0.25s ease !important;
+        }
+
+        .pg-nav-cta:hover {
+            background: #e8b835 !important;
+            color: #0a2e1a !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(245, 200, 66, 0.35);
+            text-decoration: none;
+        }
+
+        /* Hamburger button */
+        .pg-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        .pg-hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .pg-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .pg-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .pg-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile slide-in menu */
+        .pg-mobile-menu {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: rgba(8, 36, 20, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.5rem 1.75rem;
+            gap: 0;
+            transform: translateY(-110%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.35s ease, opacity 0.35s ease, visibility 0.35s ease;
+            z-index: 999;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pg-mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .pg-mobile-menu a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            transition: color 0.2s;
+        }
+
+        .pg-mobile-menu a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .pg-mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .pg-mobile-cta {
+            background: #f5c842 !important;
+            color: #0a2e1a !important;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: 700 !important;
+            border-bottom: none !important;
+            margin-top: 0.75rem;
+            padding: 0.8rem 1.5rem !important;
+        }
+
+        /* Primary amber button */
+        .pg-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.9rem 2.1rem;
+            background: #f5c842;
+            color: #0a2e1a;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .pg-btn-primary:hover {
+            background: #e8b835;
+            color: #0a2e1a;
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(245, 200, 66, 0.4);
+            text-decoration: none;
+        }
+
+        /* Glass secondary button */
+        .pg-btn-glass {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 2.1rem;
+            background: transparent;
+            color: #0a2e1a;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1.5px solid rgba(10, 46, 26, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .pg-btn-glass:hover {
+            background: rgba(10, 46, 26, 0.06);
+            color: #0a2e1a;
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+        }
+
+        /* =====================
+           SECTION BASE
+        ===================== */
+        .pg-section {
+            padding: 6rem 1.75rem;
+            position: relative;
+        }
+
+        .pg-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pg-section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(1.9rem, 3.5vw, 3rem) !important;
+            color: #0a2e1a !important;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            line-height: 1.15 !important;
+        }
+
+        .pg-section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.05rem;
+            font-weight: 300;
+            margin-bottom: 3.5rem;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* =====================
+           GLASSMORPHISM CARD
+        ===================== */
+        .pg-glass-card {
+            background: #0a2e1a;
+            border: 1px solid rgba(26, 173, 94, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(10, 46, 26, 0.15);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pg-glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(10, 46, 26, 0.25);
+        }
+
+        /* =====================
+           STEPS ("SO FUNKTIONIERTS")
+        ===================== */
+        .pg-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pg-step-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Large decorative step number */
+        .pg-step-number-bg {
+            position: absolute;
+            top: -12px;
+            right: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 7rem;
+            color: rgba(26, 173, 94, 0.08);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .pg-step-icon {
+            font-size: 2rem;
+            margin-bottom: 0.85rem;
+            display: block;
+        }
+
+        .pg-step-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.1rem !important;
+            color: #ffffff !important;
+            margin-bottom: 0.65rem;
+            line-height: 1.3 !important;
+        }
+
+        .pg-step-text {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* =====================
+           BENEFITS (3 COLUMNS)
+        ===================== */
+        .pg-benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pg-benefit-icon {
+            font-size: 2.4rem;
+            margin-bottom: 0.9rem;
+            display: block;
+        }
+
+        .pg-benefit-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.2rem !important;
+            color: #ffffff !important;
+            margin-bottom: 1rem;
+            line-height: 1.3 !important;
+        }
+
+        .pg-benefit-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pg-benefit-list li {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.95rem;
+            padding: 0.4rem 0 0.4rem 1.4rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .pg-benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #1aad5e;
+            font-weight: 700;
+        }
+
+        /* =====================
+           APP SCREENSHOT
+        ===================== */
+        .pg-screenshot-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 1rem;
+        }
+
+        .pg-screenshot-inner {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Glow effect under screenshot */
+        .pg-screenshot-inner::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65%;
+            height: 50px;
+            background: rgba(26, 173, 94, 0.35);
+            filter: blur(28px);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .pg-app-screenshot {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 20px 80px rgba(26, 173, 94, 0.3);
+            clip-path: inset(0 0 14% 0 round 24px);
+            display: block;
+        }
+
+        /* =====================
+           FAQ TEASER
+        ===================== */
+        .pg-faq-teaser {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pg-faq-text h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.3rem !important;
+            color: #ffffff !important;
+            margin-bottom: 0.4rem;
+            line-height: 1.3 !important;
+        }
+
+        .pg-faq-text p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.93rem;
+            margin: 0;
+        }
+
+        .pg-btn-amber-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.8rem 1.6rem;
+            background: #f5c842;
+            color: #0a2e1a;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+        }
+
+        .pg-btn-amber-arrow:hover {
+            background: #e8b835;
+            color: #0a2e1a;
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(245, 200, 66, 0.35);
+            text-decoration: none;
+        }
+
+        /* =====================
+           CTA SECTION
+        ===================== */
+        .pg-cta-section {
+            background: #f0f7f2;
+            padding: 7rem 1.75rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pg-cta-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .pg-cta-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(2rem, 3.5vw, 3rem) !important;
+            color: #0a2e1a !important;
+            margin-bottom: 1rem;
+            line-height: 1.15 !important;
+        }
+
+        .pg-cta-sub {
+            color: #4b5563;
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+        }
+
+        /* =====================
+           FOOTER
+        ===================== */
+        .pg-footer {
+            background: #0a1f10;
+            border-top: 1px solid rgba(26, 173, 94, 0.2);
+            padding: 4rem 1.75rem 2rem;
+        }
+
+        .pg-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pg-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pg-footer-brand h3 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 1.5rem !important;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #ffffff !important;
+            margin-bottom: 0.75rem;
+        }
+
+        .pg-footer-brand p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        .pg-footer-col h4 {
+            font-family: 'DM Sans', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.8rem !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.1rem;
+        }
+
+        .pg-footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pg-footer-col ul li {
+            margin-bottom: 0.65rem;
+        }
+
+        .pg-footer-col ul li a {
+            color: rgba(255, 255, 255, 0.78);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .pg-footer-col ul li a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .pg-footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .pg-footer-bottom sup {
+            font-size: 0.75em;
+            vertical-align: super;
+        }
+
+        /* =====================
+           SCROLL ANIMATIONS
+        ===================== */
+        .pg-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .pg-fade-in.pg-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pg-steps-grid .pg-fade-in:nth-child(1) { transition-delay: 0.05s; }
+        .pg-steps-grid .pg-fade-in:nth-child(2) { transition-delay: 0.15s; }
+        .pg-steps-grid .pg-fade-in:nth-child(3) { transition-delay: 0.25s; }
+        .pg-steps-grid .pg-fade-in:nth-child(4) { transition-delay: 0.35s; }
+
+        .pg-benefits-grid .pg-fade-in:nth-child(1) { transition-delay: 0.05s; }
+        .pg-benefits-grid .pg-fade-in:nth-child(2) { transition-delay: 0.18s; }
+        .pg-benefits-grid .pg-fade-in:nth-child(3) { transition-delay: 0.3s; }
+
+        /* =====================
+           RESPONSIVE
+        ===================== */
+        @media (max-width: 900px) {
+            .pg-footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pg-nav-links { display: none; }
+            .pg-hamburger { display: flex; }
+
+            .pg-section {
+                padding: 4rem 1.25rem;
+            }
+
+            .pg-steps-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pg-benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pg-faq-teaser {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.25rem;
+            }
+
+            .pg-cta-section {
+                padding: 5rem 1.25rem;
+            }
+
+            .pg-footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #so-funktionierts {
+                padding-top: calc(72px + 2.5rem);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <a href="/" class="brand">
-                <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="brand-logo">
-                <span class="logo"><span class="logo-main">PFAND</span><span class="logo-igo">IGO</span></span>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="pg-navbar" id="pgNavbar">
+        <div class="pg-navbar-inner">
+            <a href="/" class="pg-brand">
+                <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="pg-brand-logo">
+                <span class="pg-brand-text"><span>PFAND</span><span class="pg-igo">IGO</span></span>
             </a>
-            <button class="menu-toggle" aria-label="Menü öffnen">Menu [+]</button>
-            <ul class="nav-menu">
+            <ul class="pg-nav-links">
                 <li><a href="/">Start</a></li>
                 <li><a href="/pfandgeber/">Pfandgeber</a></li>
                 <li><a href="/abholer/">Abholer</a></li>
                 <li><a href="/faq/">FAQ</a></li>
                 <li><a href="/kontakt/">Kontakt</a></li>
+                <li><a href="/#warteliste" class="pg-nav-cta">Zur Warteliste</a></li>
             </ul>
+            <button class="pg-hamburger" id="pgHamburger" aria-label="Menü öffnen" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="pg-mobile-menu" id="pgMobileMenu">
+            <a href="/">Start</a>
+            <a href="/pfandgeber/">Pfandgeber</a>
+            <a href="/abholer/">Abholer</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/kontakt/">Kontakt</a>
+            <a href="/#warteliste" class="pg-mobile-cta">Zur Warteliste</a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <section class="section">
-        <div class="container">
-            <div class="grid grid-2">
-                <div>
-                    <h2>So funktioniert's für Pfandgeber</h2>
-                    <p style="color: var(--color-text-light); margin-bottom: var(--spacing-xl);">
-                        Als Pfandgeber kannst du deine gesammelten Pfandflaschen einfach und bequem anbieten. 
-                        Ein Abholer kommt zu dir und zahlt dir den vollen Pfandwert.
-                    </p>
-                    
-                    <div class="card" style="margin-bottom: var(--spacing-lg);">
-                        <h3 class="card-title">1. Pfandflaschen sammeln</h3>
-                        <p style="color: var(--color-text-light);">
-                            Sammle deine Pfandflaschen zu Hause oder im Büro. Keine Mindestmenge erforderlich.
-                        </p>
-                    </div>
-                    
-                    <div class="card" style="margin-bottom: var(--spacing-lg);">
-                        <h3 class="card-title">2. Angebot erstellen</h3>
-                        <p style="color: var(--color-text-light);">
-                            Melde die Anzahl deiner Pfandflaschen über unsere Plattform an. 
-                            Gib Standort, bevorzugten Abholtermin und den prozentuellen Anteil an, den der Abholer vom Pfandbetrag bekommen soll.
-                        </p>
-                    </div>
-                    
-                    <div class="card" style="margin-bottom: var(--spacing-lg);">
-                        <h3 class="card-title">3. Pfandauftrag wird angenommen</h3>
-                        <p style="color: var(--color-text-light);">
-                            Ein verifizierter Abholer nimmt deinen Pfandauftrag zu den gegebenen Konditionen an.
-                        </p>
-                    </div>
-                    
-                    <div class="card">
-                        <h3 class="card-title">4. Abholung & Auszahlung</h3>
-                        <p style="color: var(--color-text-light);">
-                            Der Abholer kommt die Flaschen abholen, bestätigt, dass alles passt, und der vereinbarte Pfandbetrag wird auf dein Wallet überwiesen.
-                        </p>
-                    </div>
+    <!-- ===== SO FUNKTIONIERTS (4 SCHRITTE) ===== -->
+    <section id="so-funktionierts" class="pg-section" style="padding-top: calc(72px + 4rem);">
+        <div class="pg-container">
+            <h2 class="pg-section-title">So funktioniert's für Pfandgeber</h2>
+            <p class="pg-section-subtitle">In vier einfachen Schritten zu deinem Pfandgeld – ohne Supermarkt, ohne Stress.</p>
+            <div class="pg-steps-grid">
+                <div class="pg-glass-card pg-step-card pg-fade-in">
+                    <span class="pg-step-number-bg" aria-hidden="true">1</span>
+                    <span class="pg-step-icon" aria-hidden="true">🍾</span>
+                    <h3 class="pg-step-title">1. Pfandflaschen sammeln</h3>
+                    <p class="pg-step-text">Sammle deine Pfandflaschen zu Hause oder im Büro. Keine Mindestmenge erforderlich.</p>
                 </div>
-                
-                <div>
-                    <div class="card" style="background-color: #e6f4ed; margin-top: var(--spacing-lg); max-width: 520px; margin-left: auto; margin-right: auto;">
-                        <h3 class="card-title" style="font-size: 1.75rem; text-align: center;">Vorteile für Pfandgeber</h3>
-                        <div style="margin-top: var(--spacing-lg);">
-                            <div style="margin-bottom: var(--spacing-md);">
-                                <p style="font-size: 1.08rem; line-height: 1.6; margin: 0;">
-                                    <span style="color: var(--color-primary); font-weight: 700;">1.</span>
-                                    <span style="color: var(--color-text); font-weight: 700;"> Zeit sparen</span>
-                                </p>
-                                <ul style="padding-left: var(--spacing-lg); margin-top: var(--spacing-xs); font-size: 1.02rem; line-height: 1.6;">
-                                    <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                        <span style="color: var(--color-text);">Kein Gang zum Supermarkt</span>
-                                    </li>
-                                    <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                        <span style="color: var(--color-text);">Kein Anstellen am Pfandautomaten</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div style="margin-bottom: var(--spacing-md);">
-                                <p style="font-size: 1.08rem; line-height: 1.6; margin: 0;">
-                                    <span style="color: var(--color-primary); font-weight: 700;">2.</span>
-                                    <span style="color: var(--color-text); font-weight: 700;"> Kosten &amp; Risiko</span>
-                                </p>
-                                <ul style="padding-left: var(--spacing-lg); margin-top: var(--spacing-xs); font-size: 1.02rem; line-height: 1.6;">
-                                    <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                        <span style="color: var(--color-text);">Kein Abo, keine Fixkosten</span>
-                                    </li>
-                                    <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                        <span style="color: var(--color-text);">Keine Vorleistung</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <p style="font-size: 1.08rem; line-height: 1.6; margin: 0;">
-                                    <span style="color: var(--color-primary); font-weight: 700;">3.</span>
-                                    <span style="color: var(--color-text); font-weight: 700;"> Flexibilität &amp; Nachhaltigkeit</span>
-                                </p>
-                                <ul style="padding-left: var(--spacing-lg); margin-top: var(--spacing-xs); font-size: 1.02rem; line-height: 1.6;">
-                                    <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                        <span style="color: var(--color-text);">Flexible Terminvereinbarung</span>
-                                    </li>
-                                    <li style="margin-bottom: var(--spacing-xs); color: var(--color-primary); font-weight: 700;">
-                                        <span style="color: var(--color-text);">Lokale Abholung, weniger Wege</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: var(--spacing-xl); text-align: center;">
-                        <img src="/assets/img/PFANDIGO_NEW_ORDER.png" alt="Angebot erstellen" style="max-width: 100%; max-height: 450px; width: auto; height: auto; object-fit: contain; border-radius: 12px; clip-path: inset(0 0 14% 0 round 12px);">
-                    </div>
-
-                    <div class="card" style="margin-top: var(--spacing-sm);">
-                        <h3 class="card-title">Häufige Fragen</h3>
-                        <p style="color: var(--color-text-light); margin-bottom: var(--spacing-sm);">
-                            Hast du Fragen zum Prozess? Schau in unserem FAQ-Bereich vorbei oder 
-                            kontaktiere uns direkt.
-                        </p>
-                        <a href="/faq/" class="btn btn-secondary">FAQ ansehen</a>
-                    </div>
+                <div class="pg-glass-card pg-step-card pg-fade-in">
+                    <span class="pg-step-number-bg" aria-hidden="true">2</span>
+                    <span class="pg-step-icon" aria-hidden="true">📋</span>
+                    <h3 class="pg-step-title">2. Angebot erstellen</h3>
+                    <p class="pg-step-text">Melde die Anzahl deiner Pfandflaschen über unsere Plattform an. Gib Standort, bevorzugten Abholtermin und den prozentuellen Anteil an, den der Abholer vom Pfandbetrag bekommen soll.</p>
+                </div>
+                <div class="pg-glass-card pg-step-card pg-fade-in">
+                    <span class="pg-step-number-bg" aria-hidden="true">3</span>
+                    <span class="pg-step-icon" aria-hidden="true">✅</span>
+                    <h3 class="pg-step-title">3. Pfandauftrag wird angenommen</h3>
+                    <p class="pg-step-text">Ein verifizierter Abholer nimmt deinen Pfandauftrag zu den gegebenen Konditionen an.</p>
+                </div>
+                <div class="pg-glass-card pg-step-card pg-fade-in">
+                    <span class="pg-step-number-bg" aria-hidden="true">4</span>
+                    <span class="pg-step-icon" aria-hidden="true">💸</span>
+                    <h3 class="pg-step-title">4. Abholung &amp; Auszahlung</h3>
+                    <p class="pg-step-text">Der Abholer kommt die Flaschen abholen, bestätigt, dass alles passt, und der vereinbarte Pfandbetrag wird auf dein Wallet überwiesen.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="section" style="background-color: var(--color-bg-light); text-align: center !important;">
-        <div class="container" style="text-align: center !important; max-width: 100% !important;">
-            <h2 style="text-align: center !important; margin-bottom: var(--spacing-lg); color: var(--color-primary);">Bereit, Pfandgeber zu werden?</h2>
-            <p style="font-size: var(--font-size-lg); color: var(--color-text-light); margin-bottom: var(--spacing-lg); text-align: center !important; width: 100%; margin-left: auto; margin-right: auto;">
-                Starte noch heute und verdiene Geld mit deinen Pfandflaschen.
-            </p>
-            <div style="text-align: center !important; width: 100%; display: flex; justify-content: center;">
-                <a href="/#warteliste" class="btn">Jetzt registrieren</a>
+    <!-- ===== VORTEILE (3 SPALTEN) ===== -->
+    <section class="pg-section">
+        <div class="pg-container">
+            <h2 class="pg-section-title">Vorteile für Pfandgeber</h2>
+            <p class="pg-section-subtitle">Warum PFANDIGO der smarte Weg ist, dein Pfand loszuwerden.</p>
+            <div class="pg-benefits-grid">
+                <div class="pg-glass-card pg-fade-in">
+                    <span class="pg-benefit-icon" aria-hidden="true">⏱️</span>
+                    <h3 class="pg-benefit-title">Zeit sparen</h3>
+                    <ul class="pg-benefit-list">
+                        <li>Kein Gang zum Supermarkt</li>
+                        <li>Kein Anstellen am Pfandautomaten</li>
+                    </ul>
+                </div>
+                <div class="pg-glass-card pg-fade-in">
+                    <span class="pg-benefit-icon" aria-hidden="true">💰</span>
+                    <h3 class="pg-benefit-title">Kosten &amp; Risiko</h3>
+                    <ul class="pg-benefit-list">
+                        <li>Kein Abo, keine Fixkosten</li>
+                        <li>Keine Vorleistung</li>
+                    </ul>
+                </div>
+                <div class="pg-glass-card pg-fade-in">
+                    <span class="pg-benefit-icon" aria-hidden="true">🌿</span>
+                    <h3 class="pg-benefit-title">Flexibilität &amp; Nachhaltigkeit</h3>
+                    <ul class="pg-benefit-list">
+                        <li>Flexible Terminvereinbarung</li>
+                        <li>Lokale Abholung, weniger Wege</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+    <!-- ===== APP SCREENSHOT ===== -->
+    <section class="pg-section pg-fade-in">
+        <div class="pg-container">
+            <h2 class="pg-section-title" style="margin-bottom: 3rem;">Angebot erstellen – so einfach geht's</h2>
+            <div class="pg-screenshot-wrap">
+                <div class="pg-screenshot-inner">
+                    <img src="/assets/img/PFANDIGO_NEW_ORDER.png" alt="Angebot erstellen" class="pg-app-screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ TEASER ===== -->
+    <section class="pg-section pg-fade-in">
+        <div class="pg-container">
+            <div class="pg-glass-card pg-faq-teaser">
+                <div class="pg-faq-text">
+                    <h3>Häufige Fragen</h3>
+                    <p>Hast du Fragen zum Prozess? Schau in unserem FAQ-Bereich vorbei oder kontaktiere uns direkt.</p>
+                </div>
+                <a href="/faq/" class="pg-btn-amber-arrow">FAQ ansehen →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="pg-cta-section pg-fade-in">
+        <div class="pg-cta-inner">
+            <h2 class="pg-cta-title">Bereit, Pfandgeber zu werden?</h2>
+            <p class="pg-cta-sub">Starte noch heute und verdiene Geld mit deinen Pfandflaschen.</p>
+            <a href="/#warteliste" class="pg-btn-primary">Jetzt registrieren</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="pg-footer">
+        <div class="pg-footer-inner">
+            <div class="pg-footer-grid">
+                <div class="pg-footer-brand">
                     <h3>PFANDIGO<sup>®</sup></h3>
-                    <p style="color: #ffffff;">Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
+                    <p>Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Navigation</h3>
-                    <ul class="footer-links">
+                <div class="pg-footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
                         <li><a href="/">Start</a></li>
                         <li><a href="/pfandgeber/">Pfandgeber</a></li>
                         <li><a href="/abholer/">Abholer</a></li>
@@ -185,24 +883,77 @@
                         <li><a href="/kontakt/">Kontakt</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Rechtliches</h3>
-                    <ul class="footer-links">
+                <div class="pg-footer-col">
+                    <h4>Rechtliches</h4>
+                    <ul>
                         <li><a href="/impressum/">Impressum</a></li>
                         <li><a href="/datenschutz/">Datenschutz</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="pg-footer-bottom">
                 <p>2026 PFANDIGO<sup>®</sup>. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
 
     <script src="/assets/js/main.js"></script>
+    <script>
+        (function () {
+            // Navbar: scroll-triggered blur intensification
+            var navbar = document.getElementById('pgNavbar');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 30) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }, { passive: true });
+
+            // Hamburger / mobile menu
+            var hamburger = document.getElementById('pgHamburger');
+            var mobileMenu = document.getElementById('pgMobileMenu');
+
+            hamburger.addEventListener('click', function () {
+                var isOpen = hamburger.classList.toggle('open');
+                mobileMenu.classList.toggle('open', isOpen);
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    hamburger.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Fade-in via IntersectionObserver
+            // Active nav link
+            var path = window.location.pathname;
+            document.querySelectorAll('.pg-nav-links a').forEach(function(a) {
+                if (a.getAttribute('href') === path) a.classList.add('active');
+            });
+            document.querySelectorAll('.pg-mobile-menu a:not(.pg-mobile-cta)').forEach(function(a) {
+                if (a.getAttribute('href') === path) a.classList.add('active');
+            });
+
+            var fadeEls = document.querySelectorAll('.pg-fade-in');
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('pg-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                fadeEls.forEach(function (el) { observer.observe(el); });
+            } else {
+                // Fallback: show immediately
+                fadeEls.forEach(function (el) { el.classList.add('pg-visible'); });
+            }
+        })();
+    </script>
 </body>
 </html>
-
-
-
-

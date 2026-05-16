@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kontaktieren Sie PFANDIGO. Wir helfen Ihnen gerne weiter bei Fragen zu Pfandgebern, Abholern oder dem Service.">
     <meta name="keywords" content="Kontakt, Support, Hilfe, PFANDIGO">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pfandigo.com/kontakt/">
@@ -15,86 +15,316 @@
     <meta property="og:image:alt" content="PFANDIGO Logo">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
-    
+
     <title>Kontakt - PFANDIGO</title>
     <link rel="canonical" href="https://pfandigo.com/kontakt/">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png?v=4">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png?v=4">
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
     <link rel="apple-touch-icon" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
-    
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/assets/css/styles.css?v=118">
+
+    <style>
+        html, body {
+            background-color: #ffffff !important;
+            color: #1a1a1a;
+            font-family: 'DM Sans', sans-serif !important;
+            line-height: 1.7;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+        .pg-section p, .pg-cta-section p, .pg-footer p { max-width: 100% !important; }
+
+        /* ===================== NAVBAR ===================== */
+        .pg-navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10,46,26,0.92);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pg-navbar.scrolled { background: rgba(10,46,26,0.98); box-shadow: 0 2px 20px rgba(0,0,0,0.25); }
+        .pg-navbar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 1.75rem; height: 72px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .pg-brand { display: flex; align-items: center; gap: 0.4rem; text-decoration: none; }
+        .pg-brand-logo { height: 50px; width: auto; object-fit: contain; }
+        .pg-brand-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.875rem; font-weight: 500; color: #ffffff;
+            text-transform: uppercase; letter-spacing: 0.14em; line-height: 1;
+        }
+        .pg-brand-text .pg-igo { color: #2bc7c4; }
+        .pg-nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+        .pg-nav-links a {
+            color: rgba(255,255,255,0.8); text-decoration: none;
+            font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 1rem; transition: color 0.2s ease;
+        }
+        .pg-nav-links a:hover { color: #ffffff; text-decoration: none; }
+        .pg-nav-links a.active { color: #a8f0c6 !important; }
+        .pg-mobile-menu a.active { color: #a8f0c6 !important; }
+        .pg-nav-cta {
+            background: #f5c842 !important; color: #0a2e1a !important;
+            padding: 0.55rem 1.4rem; border-radius: 50px;
+            font-weight: 700 !important; font-size: 0.95rem !important; transition: all 0.25s ease !important;
+        }
+        .pg-nav-cta:hover {
+            background: #e8b835 !important; color: #0a2e1a !important;
+            transform: translateY(-1px); box-shadow: 0 4px 16px rgba(245,200,66,0.35); text-decoration: none;
+        }
+        .pg-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+        .pg-hamburger span { display: block; width: 26px; height: 2px; background: #ffffff; border-radius: 2px; transition: all 0.3s ease; transform-origin: center; }
+        .pg-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .pg-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .pg-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .pg-mobile-menu {
+            display: flex; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0;
+            background: rgba(8,36,20,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 1.5rem 1.75rem; gap: 0;
+            transform: translateY(-110%); opacity: 0; visibility: hidden;
+            transition: transform 0.35s ease, opacity 0.35s ease, visibility 0.35s ease;
+            z-index: 999; border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .pg-mobile-menu.open { transform: translateY(0); opacity: 1; visibility: visible; }
+        .pg-mobile-menu a {
+            color: rgba(255,255,255,0.85); text-decoration: none; font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem; font-weight: 500; padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.2s;
+        }
+        .pg-mobile-menu a:hover { color: #ffffff; text-decoration: none; }
+        .pg-mobile-menu a:last-child { border-bottom: none; }
+        .pg-mobile-cta {
+            background: #f5c842 !important; color: #0a2e1a !important;
+            border-radius: 50px; text-align: center; font-weight: 700 !important;
+            border-bottom: none !important; margin-top: 0.75rem; padding: 0.8rem 1.5rem !important;
+        }
+
+        /* ===================== PAGE HEADER ===================== */
+        .pg-page-header {
+            padding: calc(72px + 4rem) 1.75rem 3rem;
+            text-align: center;
+        }
+        .pg-page-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(2rem, 4vw, 3.2rem) !important;
+            color: #0a2e1a !important;
+            margin-bottom: 0.75rem; line-height: 1.15 !important;
+        }
+        .pg-page-subtitle {
+            color: #6b7280; font-size: 1.1rem; font-weight: 300;
+            max-width: 480px; margin: 0 auto;
+        }
+
+        /* ===================== CONTACT CONTENT ===================== */
+        .pg-contact-section {
+            padding: 0 1.75rem 6rem;
+        }
+        .pg-contact-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Email card */
+        .pg-contact-card {
+            background: #0a2e1a;
+            border: 1px solid rgba(26,173,94,0.2);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(10,46,26,0.15);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pg-contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(10,46,26,0.25);
+        }
+        .pg-contact-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .pg-contact-card h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.4rem !important;
+            color: #ffffff !important;
+            margin-bottom: 0.75rem;
+            line-height: 1.3 !important;
+        }
+        .pg-contact-card p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.97rem;
+            margin-bottom: 1.75rem;
+        }
+        .pg-btn-email {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            padding: 0.9rem 2rem; background: #f5c842; color: #0a2e1a;
+            font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem;
+            border-radius: 50px; text-decoration: none; transition: all 0.25s ease;
+        }
+        .pg-btn-email:hover {
+            background: #e8b835; color: #0a2e1a; transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(245,200,66,0.4); text-decoration: none;
+        }
+
+        /* FAQ teaser card */
+        .pg-faq-card {
+            background: #0a2e1a;
+            border: 1px solid rgba(26,173,94,0.2);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(10,46,26,0.15);
+            padding: 1.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pg-faq-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(10,46,26,0.25);
+        }
+        .pg-faq-card-text h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important; font-size: 1.15rem !important;
+            color: #ffffff !important; margin-bottom: 0.3rem; line-height: 1.3 !important;
+        }
+        .pg-faq-card-text p {
+            color: rgba(255,255,255,0.6); font-size: 0.93rem; margin: 0;
+        }
+        .pg-btn-amber-arrow {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.75rem 1.5rem; background: #f5c842; color: #0a2e1a;
+            font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.95rem;
+            border-radius: 50px; text-decoration: none; white-space: nowrap; transition: all 0.25s ease;
+        }
+        .pg-btn-amber-arrow:hover {
+            background: #e8b835; color: #0a2e1a; transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(245,200,66,0.35); text-decoration: none;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .pg-footer {
+            background: #0a1f10; border-top: 1px solid rgba(26,173,94,0.2); padding: 4rem 1.75rem 2rem;
+        }
+        .pg-footer-inner { max-width: 1200px; margin: 0 auto; }
+        .pg-footer-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; margin-bottom: 3rem; }
+        .pg-footer-brand h3 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+            font-weight: 500 !important; font-size: 1.5rem !important;
+            letter-spacing: 0.14em; text-transform: uppercase; color: #ffffff !important; margin-bottom: 0.75rem;
+        }
+        .pg-footer-brand p { color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.65; }
+        .pg-footer-col h4 {
+            font-family: 'DM Sans', sans-serif !important; font-weight: 500 !important;
+            font-size: 0.8rem !important; color: rgba(255,255,255,0.6) !important;
+            text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.1rem;
+        }
+        .pg-footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .pg-footer-col ul li { margin-bottom: 0.65rem; }
+        .pg-footer-col ul li a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.2s ease; }
+        .pg-footer-col ul li a:hover { color: #ffffff; text-decoration: none; }
+        .pg-footer-bottom { padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        .pg-footer-bottom sup { font-size: 0.75em; vertical-align: super; }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 900px) { .pg-footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) {
+            .pg-nav-links { display: none; }
+            .pg-hamburger { display: flex; }
+            .pg-page-header { padding: calc(72px + 2.5rem) 1.25rem 2rem; }
+            .pg-contact-section { padding: 0 1.25rem 4rem; }
+            .pg-faq-card { flex-direction: column; align-items: flex-start; }
+            .pg-footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <a href="/" class="brand">
-                <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="brand-logo">
-                <span class="logo"><span class="logo-main">PFAND</span><span class="logo-igo">IGO</span></span>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="pg-navbar" id="pgNavbar">
+        <div class="pg-navbar-inner">
+            <a href="/" class="pg-brand">
+                <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="pg-brand-logo">
+                <span class="pg-brand-text"><span>PFAND</span><span class="pg-igo">IGO</span></span>
             </a>
-            <button class="menu-toggle" aria-label="Menü öffnen">Menu [+]</button>
-            <ul class="nav-menu">
+            <ul class="pg-nav-links">
                 <li><a href="/">Start</a></li>
                 <li><a href="/pfandgeber/">Pfandgeber</a></li>
                 <li><a href="/abholer/">Abholer</a></li>
                 <li><a href="/faq/">FAQ</a></li>
                 <li><a href="/kontakt/">Kontakt</a></li>
+                <li><a href="/#warteliste" class="pg-nav-cta">Zur Warteliste</a></li>
             </ul>
+            <button class="pg-hamburger" id="pgHamburger" aria-label="Menü öffnen" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="pg-mobile-menu" id="pgMobileMenu">
+            <a href="/">Start</a>
+            <a href="/pfandgeber/">Pfandgeber</a>
+            <a href="/abholer/">Abholer</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/kontakt/">Kontakt</a>
+            <a href="/#warteliste" class="pg-mobile-cta">Zur Warteliste</a>
         </div>
     </nav>
 
-    <!-- Contact Section -->
-    <section class="section">
-        <div class="container">
-            <div style="max-width: 600px; margin: 0 auto;">
-                <h2>Schreibe uns</h2>
-                <p style="color: var(--color-text-light); margin-bottom: var(--spacing-lg);">
-                    Hast du Fragen oder Anregungen? Wir freuen uns auf deine Nachricht!
-                </p>
-                
-                <div class="card" style="text-align: center; padding: var(--spacing-xl);">
-                    <h3 class="card-title" style="margin-bottom: var(--spacing-md);">Kontaktiere uns per E-Mail</h3>
-                    <p style="color: var(--color-text-light); margin-bottom: var(--spacing-lg);">
-                        Schicke uns einfach eine E-Mail und wir melden uns schnellstmöglich bei dir zurück.
-                    </p>
-                    <a href="mailto:info@pfandigo.com" class="btn" style="font-size: 1.125rem; padding: var(--spacing-md) var(--spacing-xl);">
-                        info@pfandigo.com
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ===== PAGE HEADER ===== -->
+    <header class="pg-page-header">
+        <h1 class="pg-page-title">Schreibe uns</h1>
+        <p class="pg-page-subtitle">Hast du Fragen oder Anregungen? Wir freuen uns auf deine Nachricht!</p>
+    </header>
 
-    <!-- FAQ Section -->
-    <section class="section" style="background-color: var(--color-white);">
-        <div class="container">
-            <div style="max-width: 600px; margin: 0 auto;">
-                <div class="card">
-                    <h3 class="card-title">Häufige Fragen</h3>
-                    <p style="color: var(--color-text-light); margin-bottom: var(--spacing-sm);">
-                        Vielleicht findest du die Antwort auf deine Frage bereits in unserem FAQ-Bereich.
-                    </p>
-                    <a href="/faq/" class="btn btn-secondary">FAQ ansehen</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ===== CONTACT CONTENT ===== -->
+    <div class="pg-contact-section">
+        <div class="pg-contact-inner">
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+            <div class="pg-contact-card">
+                <span class="pg-contact-card-icon" aria-hidden="true">✉️</span>
+                <h2>Kontaktiere uns per E-Mail</h2>
+                <p>Schicke uns einfach eine E-Mail und wir melden uns schnellstmöglich bei dir zurück.</p>
+                <a href="mailto:info@pfandigo.com" class="pg-btn-email">
+                    info@pfandigo.com
+                </a>
+            </div>
+
+            <div class="pg-faq-card">
+                <div class="pg-faq-card-text">
+                    <h3>Häufige Fragen</h3>
+                    <p>Vielleicht findest du die Antwort bereits in unserem FAQ-Bereich.</p>
+                </div>
+                <a href="/faq/" class="pg-btn-amber-arrow">FAQ ansehen →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="pg-footer">
+        <div class="pg-footer-inner">
+            <div class="pg-footer-grid">
+                <div class="pg-footer-brand">
                     <h3>PFANDIGO<sup>®</sup></h3>
-                    <p style="color: #ffffff;">Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
+                    <p>Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Navigation</h3>
-                    <ul class="footer-links">
+                <div class="pg-footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
                         <li><a href="/">Start</a></li>
                         <li><a href="/pfandgeber/">Pfandgeber</a></li>
                         <li><a href="/abholer/">Abholer</a></li>
@@ -102,24 +332,52 @@
                         <li><a href="/kontakt/">Kontakt</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Rechtliches</h3>
-                    <ul class="footer-links">
+                <div class="pg-footer-col">
+                    <h4>Rechtliches</h4>
+                    <ul>
                         <li><a href="/impressum/">Impressum</a></li>
                         <li><a href="/datenschutz/">Datenschutz</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="pg-footer-bottom">
                 <p>2026 PFANDIGO<sup>®</sup>. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
 
     <script src="/assets/js/main.js"></script>
+    <script>
+        (function () {
+            var navbar = document.getElementById('pgNavbar');
+            window.addEventListener('scroll', function () {
+                navbar.classList.toggle('scrolled', window.scrollY > 30);
+            }, { passive: true });
+
+            var hamburger = document.getElementById('pgHamburger');
+            var mobileMenu = document.getElementById('pgMobileMenu');
+            hamburger.addEventListener('click', function () {
+                var isOpen = hamburger.classList.toggle('open');
+                mobileMenu.classList.toggle('open', isOpen);
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            });
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    hamburger.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Active nav link
+            var path = window.location.pathname;
+            document.querySelectorAll('.pg-nav-links a').forEach(function (a) {
+                if (a.getAttribute('href') === path) a.classList.add('active');
+            });
+            document.querySelectorAll('.pg-mobile-menu a:not(.pg-mobile-cta)').forEach(function (a) {
+                if (a.getAttribute('href') === path) a.classList.add('active');
+            });
+        })();
+    </script>
 </body>
 </html>
-
-
-
-

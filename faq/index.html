@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Häufig gestellte Fragen zu PFANDIGO. Finde Antworten zu Pfandgebern, Abholern und dem Service.">
     <meta name="keywords" content="FAQ, Fragen, Hilfe, Support, PFANDIGO">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pfandigo.com/faq/">
@@ -15,183 +15,514 @@
     <meta property="og:image:alt" content="PFANDIGO Logo">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
-    
+
     <title>FAQ - PFANDIGO</title>
     <link rel="canonical" href="https://pfandigo.com/faq/">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png?v=4">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png?v=4">
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
     <link rel="apple-touch-icon" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
-    
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/assets/css/styles.css?v=118">
+
     <style>
-        .section:last-of-type .container,
-        .section:last-of-type .container p,
-        .section:last-of-type .container h2 {
-            text-align: center !important;
+        html, body {
+            background-color: #ffffff !important;
+            color: #1a1a1a;
+            font-family: 'DM Sans', sans-serif !important;
+            line-height: 1.7;
         }
-        .section:last-of-type .container {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+
+        .pg-section p, .pg-cta-section p, .pg-footer p {
+            max-width: 100% !important;
+        }
+
+        /* ===================== NAVBAR ===================== */
+        .pg-navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(10, 46, 26, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pg-navbar.scrolled {
+            background: rgba(10, 46, 26, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+        }
+        .pg-navbar-inner {
+            max-width: 1200px; margin: 0 auto;
+            padding: 0 1.75rem; height: 72px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .pg-brand { display: flex; align-items: center; gap: 0.4rem; text-decoration: none; }
+        .pg-brand-logo { height: 50px; width: auto; object-fit: contain; }
+        .pg-brand-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.875rem; font-weight: 500; color: #ffffff;
+            text-transform: uppercase; letter-spacing: 0.14em; line-height: 1;
+        }
+        .pg-brand-text .pg-igo { color: #2bc7c4; }
+        .pg-nav-links {
+            display: flex; align-items: center; gap: 2rem;
+            list-style: none; margin: 0; padding: 0;
+        }
+        .pg-nav-links a {
+            color: rgba(255,255,255,0.8); text-decoration: none;
+            font-family: 'DM Sans', sans-serif; font-weight: 500;
+            font-size: 1rem; transition: color 0.2s ease;
+        }
+        .pg-nav-links a:hover { color: #ffffff; text-decoration: none; }
+        .pg-nav-links a.active { color: #a8f0c6 !important; }
+        .pg-mobile-menu a.active { color: #a8f0c6 !important; }
+        .pg-nav-cta {
+            background: #f5c842 !important; color: #0a2e1a !important;
+            padding: 0.55rem 1.4rem; border-radius: 50px;
+            font-weight: 700 !important; font-size: 0.95rem !important;
+            transition: all 0.25s ease !important;
+        }
+        .pg-nav-cta:hover {
+            background: #e8b835 !important; color: #0a2e1a !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(245,200,66,0.35); text-decoration: none;
+        }
+        .pg-hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 6px;
+        }
+        .pg-hamburger span {
+            display: block; width: 26px; height: 2px;
+            background: #ffffff; border-radius: 2px;
+            transition: all 0.3s ease; transform-origin: center;
+        }
+        .pg-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .pg-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .pg-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .pg-mobile-menu {
+            display: flex; flex-direction: column;
+            position: fixed; top: 72px; left: 0; right: 0;
+            background: rgba(8,36,20,0.98);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 1.5rem 1.75rem; gap: 0;
+            transform: translateY(-110%); opacity: 0; visibility: hidden;
+            transition: transform 0.35s ease, opacity 0.35s ease, visibility 0.35s ease;
+            z-index: 999; border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .pg-mobile-menu.open { transform: translateY(0); opacity: 1; visibility: visible; }
+        .pg-mobile-menu a {
+            color: rgba(255,255,255,0.85); text-decoration: none;
+            font-family: 'DM Sans', sans-serif; font-size: 1.1rem; font-weight: 500;
+            padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+            transition: color 0.2s;
+        }
+        .pg-mobile-menu a:hover { color: #ffffff; text-decoration: none; }
+        .pg-mobile-menu a:last-child { border-bottom: none; }
+        .pg-mobile-cta {
+            background: #f5c842 !important; color: #0a2e1a !important;
+            border-radius: 50px; text-align: center; font-weight: 700 !important;
+            border-bottom: none !important; margin-top: 0.75rem;
+            padding: 0.8rem 1.5rem !important;
+        }
+
+        /* ===================== PAGE HEADER ===================== */
+        .pg-page-header {
+            padding: calc(72px + 4rem) 1.75rem 3rem;
+            text-align: center;
+        }
+        .pg-page-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(2rem, 4vw, 3.2rem) !important;
+            color: #0a2e1a !important;
+            margin-bottom: 0.75rem;
+            line-height: 1.15 !important;
+        }
+        .pg-page-subtitle {
+            color: #6b7280;
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ===================== FAQ CONTENT ===================== */
+        .pg-faq-section {
+            padding: 0 1.75rem 5rem;
+        }
+        .pg-faq-inner {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .pg-faq-group {
+            margin-bottom: 3rem;
+        }
+        .pg-faq-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(26,173,94,0.1);
+            color: #0f7a3e;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.85rem;
+            border-radius: 50px;
+            margin-bottom: 1.25rem;
+        }
+        .pg-faq-item {
+            border-bottom: 1px solid rgba(10,46,26,0.08);
+        }
+        .pg-faq-item:first-of-type {
+            border-top: 1px solid rgba(10,46,26,0.08);
+        }
+        .pg-faq-q {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 1.2rem 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #0a2e1a;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: color 0.2s;
+        }
+        .pg-faq-q:hover { color: #1aad5e; }
+        .pg-faq-arrow {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(26,173,94,0.12);
+            color: #1aad5e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, background 0.2s;
+            font-style: normal;
+        }
+        .pg-faq-q.open .pg-faq-arrow {
+            transform: rotate(180deg);
+            background: rgba(26,173,94,0.2);
+        }
+        .pg-faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            color: #4b5563;
+            font-size: 0.97rem;
+            line-height: 1.75;
+        }
+        .pg-faq-a.open {
+            max-height: 600px;
+            padding-bottom: 1.25rem;
+        }
+
+        /* ===================== CTA ===================== */
+        .pg-cta-section {
+            background: #f0f7f2;
+            padding: 6rem 1.75rem;
+            text-align: center;
+        }
+        .pg-cta-inner { max-width: 560px; margin: 0 auto; }
+        .pg-cta-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(1.8rem, 3vw, 2.6rem) !important;
+            color: #0a2e1a !important;
+            margin-bottom: 1rem; line-height: 1.15 !important;
+        }
+        .pg-cta-sub {
+            color: #4b5563; font-size: 1.05rem;
+            font-weight: 300; margin-bottom: 2.25rem;
+        }
+        .pg-btn-primary {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.9rem 2.1rem; background: #f5c842; color: #0a2e1a;
+            font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem;
+            border-radius: 50px; text-decoration: none; border: none;
+            cursor: pointer; transition: all 0.25s ease;
+        }
+        .pg-btn-primary:hover {
+            background: #e8b835; color: #0a2e1a; transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(245,200,66,0.4); text-decoration: none;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .pg-footer {
+            background: #0a1f10;
+            border-top: 1px solid rgba(26,173,94,0.2);
+            padding: 4rem 1.75rem 2rem;
+        }
+        .pg-footer-inner { max-width: 1200px; margin: 0 auto; }
+        .pg-footer-grid {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 2.5rem; margin-bottom: 3rem;
+        }
+        .pg-footer-brand h3 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+            font-weight: 500 !important; font-size: 1.5rem !important;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: #ffffff !important; margin-bottom: 0.75rem;
+        }
+        .pg-footer-brand p { color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.65; }
+        .pg-footer-col h4 {
+            font-family: 'DM Sans', sans-serif !important; font-weight: 500 !important;
+            font-size: 0.8rem !important; color: rgba(255,255,255,0.6) !important;
+            text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.1rem;
+        }
+        .pg-footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .pg-footer-col ul li { margin-bottom: 0.65rem; }
+        .pg-footer-col ul li a {
+            color: rgba(255,255,255,0.78); text-decoration: none;
+            font-size: 0.95rem; font-weight: 400; transition: color 0.2s ease;
+        }
+        .pg-footer-col ul li a:hover { color: #ffffff; text-decoration: none; }
+        .pg-footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center; color: rgba(255,255,255,0.5); font-size: 0.85rem;
+        }
+        .pg-footer-bottom sup { font-size: 0.75em; vertical-align: super; }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 900px) {
+            .pg-footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .pg-nav-links { display: none; }
+            .pg-hamburger { display: flex; }
+            .pg-page-header { padding: calc(72px + 2.5rem) 1.25rem 2rem; }
+            .pg-faq-section { padding: 0 1.25rem 4rem; }
+            .pg-cta-section { padding: 4rem 1.25rem; }
+            .pg-footer-grid { grid-template-columns: 1fr; gap: 2rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <a href="/" class="brand">
-                <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="brand-logo">
-                <span class="logo"><span class="logo-main">PFAND</span><span class="logo-igo">IGO</span></span>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="pg-navbar" id="pgNavbar">
+        <div class="pg-navbar-inner">
+            <a href="/" class="pg-brand">
+                <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="pg-brand-logo">
+                <span class="pg-brand-text"><span>PFAND</span><span class="pg-igo">IGO</span></span>
             </a>
-            <button class="menu-toggle" aria-label="Menü öffnen">Menu [+]</button>
-            <ul class="nav-menu">
+            <ul class="pg-nav-links">
                 <li><a href="/">Start</a></li>
                 <li><a href="/pfandgeber/">Pfandgeber</a></li>
                 <li><a href="/abholer/">Abholer</a></li>
                 <li><a href="/faq/">FAQ</a></li>
                 <li><a href="/kontakt/">Kontakt</a></li>
+                <li><a href="/#warteliste" class="pg-nav-cta">Zur Warteliste</a></li>
             </ul>
+            <button class="pg-hamburger" id="pgHamburger" aria-label="Menü öffnen" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="pg-mobile-menu" id="pgMobileMenu">
+            <a href="/">Start</a>
+            <a href="/pfandgeber/">Pfandgeber</a>
+            <a href="/abholer/">Abholer</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/kontakt/">Kontakt</a>
+            <a href="/#warteliste" class="pg-mobile-cta">Zur Warteliste</a>
         </div>
     </nav>
 
-    <!-- FAQ Section -->
-    <section class="section" style="padding-top: var(--spacing-xl);">
-        <div class="container">
-            <div style="max-width: 800px; margin: 0 auto;">
-                <h2 style="margin-bottom: var(--spacing-lg);">Allgemeine Fragen</h2>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Was ist PFANDIGO?</div>
-                    <div class="faq-answer">
-                        PFANDIGO ist eine Plattform, die Pfandgeber und Abholer verbindet. 
-                        Pfandgeber können ihre Pfandflaschen einfach anbieten, und Abholer 
-                        holen diese ab und bringen sie zum Recycling. So sparen alle Zeit 
+    <!-- ===== PAGE HEADER ===== -->
+    <header class="pg-page-header">
+        <h1 class="pg-page-title">Häufige Fragen</h1>
+        <p class="pg-page-subtitle">Finde Antworten zu Pfandgebern, Abholern und unserem Service.</p>
+    </header>
+
+    <!-- ===== FAQ CONTENT ===== -->
+    <div class="pg-faq-section">
+        <div class="pg-faq-inner">
+
+            <!-- Allgemeine Fragen -->
+            <div class="pg-faq-group">
+                <div class="pg-faq-category">Allgemein</div>
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Was ist PFANDIGO?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
+                        PFANDIGO ist eine Plattform, die Pfandgeber und Abholer verbindet.
+                        Pfandgeber können ihre Pfandflaschen einfach anbieten, und Abholer
+                        holen diese ab und bringen sie zum Recycling. So sparen alle Zeit
                         und tragen zum Umweltschutz bei.
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Ist PFANDIGO kostenlos?</div>
-                    <div class="faq-answer">
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Ist PFANDIGO kostenlos?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Die Nutzung von PFANDIGO ist grundsätzlich kostenlos.
                         Es fallen keine Fixkosten oder Abogebühren an.
                         PFANDIGO finanziert sich über einen kleinen prozentuellen Anteil am Pfandbetrag, der nur bei erfolgreicher Abholung anfällt.
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Wie funktioniert die Bezahlung?</div>
-                    <div class="faq-answer">
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Wie funktioniert die Bezahlung?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Der Pfandbetrag wird zwischen Pfandgeber und Abholer fair aufgeteilt.
                         Die genaue Aufteilung wird beim Erstellen des Auftrags festgelegt.
                         Nach erfolgreicher Abholung erfolgt die Auszahlung transparent über PFANDIGO.
                     </div>
                 </div>
+            </div>
 
-                <h2 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-lg);">Fragen für Pfandgeber</h2>
-
-                <div class="faq-item">
-                    <div class="faq-question">Gibt es eine Mindestmenge an Pfandflaschen?</div>
-                    <div class="faq-answer">
+            <!-- Fragen für Pfandgeber -->
+            <div class="pg-faq-group">
+                <div class="pg-faq-category">Pfandgeber</div>
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Gibt es eine Mindestmenge an Pfandflaschen?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Nein, es gibt keine Mindestmenge. Du kannst auch kleine Mengen anbieten.
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Wie schnell wird mein Auftrag angenommen?</div>
-                    <div class="faq-answer">
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Wie schnell wird mein Auftrag angenommen?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         In der Regel wird ein Auftrag innerhalb kurzer Zeit von einem Abholer in der Nähe angenommen.
                         Wie schnell das passiert, hängt von Standort, Menge und gewählter Entlohnung ab.
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Muss ich die Flaschen vorbereiten?</div>
-                    <div class="faq-answer">
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Muss ich die Flaschen vorbereiten?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Die Flaschen sollten leer sein und gesammelt bereitstehen, idealerweise in einem Sack, damit sie einfach abgeholt werden können.
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Was passiert, wenn ein Abholer nicht erscheint?</div>
-                    <div class="faq-answer">
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Was passiert, wenn ein Abholer nicht erscheint?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Sollte ein Abholer einen Auftrag nicht wahrnehmen, kann der Auftrag erneut freigegeben werden, sodass ein anderer Abholer ihn übernehmen kann.
                         PFANDIGO arbeitet laufend daran, Zuverlässigkeit und Verbindlichkeit weiter zu erhöhen.
                     </div>
                 </div>
+            </div>
 
-                <h2 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-lg);">Fragen für Abholer</h2>
-
-                <div class="faq-item">
-                    <div class="faq-question">Wie viel kann ich als Abholer verdienen?</div>
-                    <div class="faq-answer">
+            <!-- Fragen für Abholer -->
+            <div class="pg-faq-group">
+                <div class="pg-faq-category">Abholer</div>
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Wie viel kann ich als Abholer verdienen?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Der Verdienst hängt von Menge, Entfernung und der vereinbarten Aufteilung ab.
                         Der Abholer erhält einen festgelegten Anteil des Pfandwerts, den er beim Recycling einlöst.
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Brauche ich ein eigenes Fahrzeug?</div>
-                    <div class="faq-answer">
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Brauche ich ein eigenes Fahrzeug?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Ein eigenes Transportmittel ist von Vorteil, aber nicht zwingend erforderlich. Kleinere Mengen können auch zu Fuß oder mit öffentlichen Verkehrsmitteln transportiert werden.
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Kann ich auch regelmäßig abholen?</div>
-                    <div class="faq-answer">
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Kann ich auch regelmäßig abholen?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Ja, du kannst sowohl einmalige als auch regelmäßige Abholungen vereinbaren.
                     </div>
                 </div>
+            </div>
 
-                <h2 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-lg);">Sicherheit & Rechtliches</h2>
-
-                <div class="faq-item">
-                    <div class="faq-question">Wie sicher ist die Plattform?</div>
-                    <div class="faq-answer">
+            <!-- Sicherheit & Rechtliches -->
+            <div class="pg-faq-group">
+                <div class="pg-faq-category">Sicherheit &amp; Rechtliches</div>
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Wie sicher ist die Plattform?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Wir legen großen Wert auf Sicherheit. Abholungen erfolgen organisiert über die Plattform, und wir arbeiten kontinuierlich an Maßnahmen zur Erhöhung von Vertrauen und Zuverlässigkeit.
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Was passiert bei Problemen?</div>
-                    <div class="faq-answer">
+                <div class="pg-faq-item">
+                    <button class="pg-faq-q" aria-expanded="false">
+                        Was passiert bei Problemen?
+                        <span class="pg-faq-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="pg-faq-a">
                         Bei Problemen oder Unklarheiten stehen wir dir über das Kontaktformular zur Verfügung und unterstützen dich bei der Klärung des Anliegens.
                     </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+
+    <!-- ===== CTA ===== -->
+    <section class="pg-cta-section">
+        <div class="pg-cta-inner">
+            <h2 class="pg-cta-title">Weitere Fragen?</h2>
+            <p class="pg-cta-sub">Wenn du weitere Fragen hast, kontaktiere uns gerne direkt.</p>
+            <a href="/kontakt/" class="pg-btn-primary">Kontakt aufnehmen</a>
         </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section class="section" style="background-color: var(--color-bg-light); text-align: center !important;">
-        <div class="container" style="text-align: center !important; max-width: 100% !important;">
-            <h2 style="text-align: center !important; margin-bottom: var(--spacing-lg); color: var(--color-primary);">Weitere Fragen?</h2>
-            <p style="font-size: var(--font-size-lg); color: var(--color-text-light); margin-bottom: var(--spacing-lg); text-align: center !important; width: 100%; margin-left: auto; margin-right: auto;">
-                Wenn du weitere Fragen hast, kontaktiere uns gerne.
-            </p>
-            <div style="text-align: center !important; width: 100%; display: flex; justify-content: center;">
-                <a href="/kontakt/" class="btn">Kontakt aufnehmen</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+    <!-- ===== FOOTER ===== -->
+    <footer class="pg-footer">
+        <div class="pg-footer-inner">
+            <div class="pg-footer-grid">
+                <div class="pg-footer-brand">
                     <h3>PFANDIGO<sup>®</sup></h3>
-                    <p style="color: #ffffff;">Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
+                    <p>Die moderne Lösung für Pfandflaschen. Nachhaltig, einfach und fair.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Navigation</h3>
-                    <ul class="footer-links">
+                <div class="pg-footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
                         <li><a href="/">Start</a></li>
                         <li><a href="/pfandgeber/">Pfandgeber</a></li>
                         <li><a href="/abholer/">Abholer</a></li>
@@ -199,24 +530,76 @@
                         <li><a href="/kontakt/">Kontakt</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Rechtliches</h3>
-                    <ul class="footer-links">
+                <div class="pg-footer-col">
+                    <h4>Rechtliches</h4>
+                    <ul>
                         <li><a href="/impressum/">Impressum</a></li>
                         <li><a href="/datenschutz/">Datenschutz</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="pg-footer-bottom">
                 <p>2026 PFANDIGO<sup>®</sup>. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
 
     <script src="/assets/js/main.js"></script>
+    <script>
+        (function () {
+            // Navbar scroll
+            var navbar = document.getElementById('pgNavbar');
+            window.addEventListener('scroll', function () {
+                navbar.classList.toggle('scrolled', window.scrollY > 30);
+            }, { passive: true });
+
+            // Hamburger
+            var hamburger = document.getElementById('pgHamburger');
+            var mobileMenu = document.getElementById('pgMobileMenu');
+            hamburger.addEventListener('click', function () {
+                var isOpen = hamburger.classList.toggle('open');
+                mobileMenu.classList.toggle('open', isOpen);
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+            });
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    hamburger.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Active nav link
+            var path = window.location.pathname;
+            document.querySelectorAll('.pg-nav-links a').forEach(function (a) {
+                if (a.getAttribute('href') === path) a.classList.add('active');
+            });
+            document.querySelectorAll('.pg-mobile-menu a:not(.pg-mobile-cta)').forEach(function (a) {
+                if (a.getAttribute('href') === path) a.classList.add('active');
+            });
+
+            // FAQ accordion
+            document.querySelectorAll('.pg-faq-q').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var answer = btn.nextElementSibling;
+                    var isOpen = btn.classList.contains('open');
+
+                    // Close all
+                    document.querySelectorAll('.pg-faq-q.open').forEach(function (b) {
+                        b.classList.remove('open');
+                        b.setAttribute('aria-expanded', 'false');
+                        b.nextElementSibling.classList.remove('open');
+                    });
+
+                    // Open clicked if it was closed
+                    if (!isOpen) {
+                        btn.classList.add('open');
+                        btn.setAttribute('aria-expanded', 'true');
+                        answer.classList.add('open');
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
-
-
-
-
