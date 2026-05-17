@@ -499,12 +499,24 @@
             font-family: 'Manrope', sans-serif;
         }
 
-        /* Mockup: floating + glow */
+        /* Mockup: floating + glow + modern bottom-fade */
         .hero-with-mockup .hero-mockup-image {
-            -webkit-mask-image: none !important;
-            mask-image: none !important;
             filter: drop-shadow(0 24px 48px rgba(26, 173, 94, 0.35)) !important;
             animation: hpFloat 4s ease-in-out infinite;
+            -webkit-mask-image: linear-gradient(
+                to bottom,
+                black 0%,
+                black 62%,
+                rgba(0,0,0,0.55) 80%,
+                transparent 100%
+            ) !important;
+            mask-image: linear-gradient(
+                to bottom,
+                black 0%,
+                black 62%,
+                rgba(0,0,0,0.55) 80%,
+                transparent 100%
+            ) !important;
         }
 
         @keyframes hpFloat {
@@ -703,6 +715,65 @@
                 radial-gradient(ellipse 40% 50% at 50% 50%, rgba(15, 92, 51, 0.3) 0%, transparent 70%),
                 #0a2e1a !important;
             background-image: none !important;
+        }
+
+        /* Blobs inside waitlist + mission sections */
+        .waitlist-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hp-wl-blob-1 {
+            width: 380px; height: 380px;
+            background: rgba(15, 92, 51, 0.65);
+            top: -100px; right: -80px;
+            animation: hpBlobFloat 10s ease-in-out infinite;
+            animation-delay: -2s;
+        }
+
+        .hp-wl-blob-2 {
+            width: 300px; height: 300px;
+            background: rgba(26, 173, 94, 0.38);
+            bottom: -60px; left: 8%;
+            animation: hpBlobFloat 8s ease-in-out infinite reverse;
+            animation-delay: -5s;
+        }
+
+        .hp-wl-blob-3 {
+            width: 220px; height: 220px;
+            background: rgba(15, 92, 51, 0.4);
+            top: 40%; left: -50px;
+            animation: hpBlobFloat 12s ease-in-out infinite;
+            animation-delay: -8s;
+        }
+
+        .hp-ms-blob-1 {
+            width: 320px; height: 320px;
+            background: rgba(15, 92, 51, 0.8);
+            top: -70px; left: -60px;
+            animation: hpBlobFloat 9s ease-in-out infinite;
+            animation-delay: -1s;
+        }
+
+        .hp-ms-blob-2 {
+            width: 260px; height: 260px;
+            background: rgba(26, 173, 94, 0.45);
+            bottom: -50px; right: -40px;
+            animation: hpBlobFloat 11s ease-in-out infinite reverse;
+            animation-delay: -4s;
+        }
+
+        .hp-ms-blob-3 {
+            width: 180px; height: 180px;
+            background: rgba(26, 173, 94, 0.28);
+            top: 50%; right: 20%;
+            animation: hpBlobFloat 7s ease-in-out infinite;
+            animation-delay: -6s;
         }
 
         /* Hide old white card (replaced by hp-waitlist-card) */
@@ -1067,10 +1138,10 @@
             <!-- Mockup (right on desktop) -->
             <div class="hero-visual">
                 <img
-                    src="/assets/img/PFANDIGO_GEBER_HOME.png"
+                    src="/assets/img/Mockup_Geber_Home_2.0.png"
                     alt="PFANDIGO App Mockup"
                     class="hero-mockup-image"
-                    onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='/assets/img/PFANDIGO_GEBER_HOME.webp';}else if(this.dataset.fallback==='1'){this.dataset.fallback='2';this.src='/assets/img/PFANDIGO_GEBER_HOME.jpg';}else if(this.dataset.fallback==='2'){this.dataset.fallback='3';this.src='/assets/img/PFANDIGO_GEBER_HOME.jpeg';}"
+                    onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='/assets/img/PFANDIGO_GEBER_HOME.png';}else if(this.dataset.fallback==='1'){this.dataset.fallback='2';this.src='/assets/img/PFANDIGO_GEBER_HOME.webp';}else if(this.dataset.fallback==='2'){this.dataset.fallback='3';this.src='/assets/img/PFANDIGO_GEBER_HOME.jpg';}"
                 >
             </div>
 
@@ -1202,7 +1273,10 @@
 
     <!-- Wartelisten-Sektion -->
     <section class="waitlist-section hp-dark-section" id="warteliste">
-        <div class="container">
+        <div class="hp-blob hp-wl-blob-1" aria-hidden="true"></div>
+        <div class="hp-blob hp-wl-blob-2" aria-hidden="true"></div>
+        <div class="hp-blob hp-wl-blob-3" aria-hidden="true"></div>
+        <div class="container" style="position:relative;z-index:1;">
             <!-- New glassmorphism waitlist card (separate from old .waitlist-card which is hidden via CSS) -->
             <div class="hp-waitlist-card hp-fade">
                 <h2 class="section-title">Sei beim Start dabei.</h2>
@@ -1276,7 +1350,10 @@
             </div>
 
             <div class="mission-image hp-fade hp-fade-d1">
-                <div class="mission-logo-wrapper">
+                <div class="hp-blob hp-ms-blob-1" aria-hidden="true"></div>
+                <div class="hp-blob hp-ms-blob-2" aria-hidden="true"></div>
+                <div class="hp-blob hp-ms-blob-3" aria-hidden="true"></div>
+                <div class="mission-logo-wrapper" style="position:relative;z-index:1;">
                     <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="mission-logo">
                 </div>
             </div>
