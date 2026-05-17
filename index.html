@@ -276,7 +276,7 @@
            HERO
         ===================== */
         .hero.hero-with-mockup {
-            background-color: #0a2e1a !important;
+            background-color: #ffffff !important;
             background-image: none !important;
             min-height: 100vh !important;
             height: auto !important;
@@ -296,6 +296,13 @@
             filter: blur(80px);
             pointer-events: none;
             z-index: 0;
+        }
+
+        /* Hero blobs hidden (white bg) – still used in waitlist/mission */
+        #hero .hp-blob-1,
+        #hero .hp-blob-2,
+        #hero .hp-blob-3 {
+            display: none;
         }
 
         .hp-blob-1 {
@@ -356,14 +363,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(26, 173, 94, 0.15);
-            border: 1px solid rgba(26, 173, 94, 0.3);
+            background: rgba(26, 173, 94, 0.1);
+            border: 1px solid rgba(26, 173, 94, 0.25);
             border-radius: 50px;
             padding: 6px 16px;
             margin-bottom: 1.25rem;
             font-size: 0.85rem;
             font-weight: 500;
-            color: #a8f0c6;
+            color: #1A4A43;
             font-family: 'Manrope', sans-serif;
         }
 
@@ -383,7 +390,7 @@
 
         /* Hero headline */
         #hero.hero-with-mockup h1 {
-            color: #ffffff !important;
+            color: #1A4A43 !important;
             font-family: 'Manrope', sans-serif !important;
             font-weight: 800 !important;
             font-size: clamp(2.8rem, 5vw, 4.5rem) !important;
@@ -392,7 +399,7 @@
         }
 
         #hero.hero-with-mockup .subheadline {
-            color: rgba(255, 255, 255, 0.65) !important;
+            color: rgba(0, 0, 0, 0.65) !important;
             font-family: 'Manrope', sans-serif !important;
             font-size: clamp(1rem, 1.6vw, 1.2rem) !important;
             line-height: 1.6 !important;
@@ -437,25 +444,23 @@
             align-items: center;
             justify-content: center;
             padding: 0.9rem 2.2rem;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: transparent;
+            color: #1A4A43 !important;
+            border: 1.5px solid #1A4A43;
             border-radius: 10px;
             font-family: 'Manrope', sans-serif;
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
             text-decoration: none !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: transform 0.2s ease, background 0.2s ease;
+            transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
             min-height: 44px;
         }
 
         .hp-btn-glass:hover {
-            background: rgba(255, 255, 255, 0.18);
-            transform: scale(1.03);
+            background: #1A4A43;
             color: #ffffff !important;
+            transform: scale(1.03);
             text-decoration: none !important;
         }
 
@@ -494,7 +499,7 @@
 
         .hp-social-text {
             font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.65);
+            color: rgba(0, 0, 0, 0.55);
             margin: 0 0 0 10px !important;
             font-family: 'Manrope', sans-serif;
         }
@@ -524,24 +529,26 @@
         .hero-mockup-wrapper img {
             position: relative;
             z-index: 1;
-            max-width: 320px !important;
+            max-width: 420px !important;
             width: 100%;
             height: auto;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5))
-                    drop-shadow(0 0 30px rgba(26,173,94,0.3)) !important;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.18))
+                    drop-shadow(0 0 30px rgba(26,173,94,0.15)) !important;
             animation: float 4s ease-in-out infinite;
             -webkit-mask-image: linear-gradient(
                 to bottom,
                 black 0%,
-                black 62%,
-                rgba(0,0,0,0.55) 80%,
+                black 50%,
+                rgba(0,0,0,0.6) 72%,
+                rgba(0,0,0,0.15) 90%,
                 transparent 100%
             ) !important;
             mask-image: linear-gradient(
                 to bottom,
                 black 0%,
-                black 62%,
-                rgba(0,0,0,0.55) 80%,
+                black 50%,
+                rgba(0,0,0,0.6) 72%,
+                rgba(0,0,0,0.15) 90%,
                 transparent 100%
             ) !important;
         }
