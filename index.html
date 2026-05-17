@@ -62,9 +62,9 @@
            HOMEPAGE – Dark Green Design (hp- prefix)
            ============================================ */
 
-        /* Global: Dark + Manrope */
+        /* Global: white background + Manrope */
         html, body {
-            background-color: #0a2e1a !important;
+            background-color: #ffffff !important;
             font-family: 'Manrope', sans-serif !important;
         }
 
@@ -412,11 +412,11 @@
            SO FUNKTIONIERT'S
         ===================== */
         #so-funktionierts {
-            background-color: #0a2e1a !important;
+            background-color: #ffffff !important;
         }
 
         #so-funktionierts .section-title {
-            color: #ffffff !important;
+            color: #1A4A43 !important;
         }
 
         /* Hide old feature-row structure */
@@ -449,26 +449,25 @@
             font-family: 'Manrope', sans-serif !important;
             font-weight: 700;
             font-size: 1.4rem;
-            color: #a8f0c6;
+            color: #1A4A43;
             margin-bottom: 0.75rem;
         }
 
-        /* Glassmorphism step card */
+        /* Step card – light green on white background */
         .hp-step-card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #e6f4ed;
+            border: 1px solid rgba(26, 173, 94, 0.12);
             border-radius: 20px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             padding: 1.25rem 1.5rem;
             position: relative;
             overflow: hidden;
-            transition: transform 0.2s ease, background 0.2s ease;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
         }
 
         .hp-step-card:hover {
-            background: rgba(255, 255, 255, 0.09);
+            background: #d4ecdf;
             transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26, 173, 94, 0.12);
         }
 
         .hp-step-num-bg {
@@ -477,7 +476,7 @@
             right: 12px;
             font-size: 5.5rem;
             font-weight: 800;
-            color: rgba(255, 255, 255, 0.05);
+            color: rgba(26, 173, 94, 0.07);
             line-height: 1;
             user-select: none;
             pointer-events: none;
@@ -503,7 +502,7 @@
             font-family: 'Manrope', sans-serif;
             font-weight: 600;
             font-size: 0.975rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: #1a2e1a;
             margin: 0;
             line-height: 1.4;
         }
@@ -556,67 +555,67 @@
            WARTELISTE
         ===================== */
         .waitlist-section {
-            background-color: #0a2e1a !important;
-            background-image: none !important;
+            background-image: url('/assets/img/Background-Tafel.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-color: transparent !important;
         }
 
-        /* Hide old white card */
+        /* Hide old white card (replaced by hp-waitlist-card) */
         .waitlist-section .waitlist-card {
             display: none !important;
         }
 
-        /* New glassmorphism waitlist card */
+        /* New waitlist card – white on the Tafel background */
         .hp-waitlist-card {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 16px;
             padding: 2.5rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
         }
 
         .hp-waitlist-card .section-title {
-            color: #ffffff !important;
+            color: #1A4A43 !important;
             font-family: 'Manrope', sans-serif !important;
         }
 
         .hp-waitlist-card .waitlist-intro,
         .hp-waitlist-card p {
-            color: rgba(255, 255, 255, 0.65) !important;
+            color: #1a1a1a !important;
         }
 
         .hp-waitlist-card .form-label {
-            color: rgba(255, 255, 255, 0.85) !important;
+            color: #1a1a1a !important;
             font-family: 'Manrope', sans-serif !important;
         }
 
         .hp-waitlist-card .form-input,
         .hp-waitlist-card .form-select {
-            background: rgba(0, 0, 0, 0.35) !important;
-            border: 1px solid rgba(255, 255, 255, 0.15) !important;
-            color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1px solid #e0e0e0 !important;
+            color: #1a1a1a !important;
             font-family: 'Manrope', sans-serif !important;
         }
 
         .hp-waitlist-card .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.3) !important;
+            color: #999 !important;
         }
 
         .hp-waitlist-card .form-input:focus,
         .hp-waitlist-card .form-select:focus {
             border-color: #1aad5e !important;
-            box-shadow: 0 0 0 3px rgba(26, 173, 94, 0.25) !important;
+            box-shadow: 0 0 0 3px rgba(26, 173, 94, 0.15) !important;
         }
 
         .hp-waitlist-card .form-select option {
-            background: #0f3d22;
-            color: #fff;
+            background: #fff;
+            color: #1a1a1a;
         }
 
         .hp-waitlist-card small {
-            color: rgba(255, 255, 255, 0.45) !important;
+            color: #666 !important;
         }
 
         .hp-submit-btn {
@@ -647,46 +646,46 @@
             gap: 6px;
             margin-top: 1rem !important;
             font-size: 0.8rem !important;
-            color: rgba(255, 255, 255, 0.4) !important;
+            color: rgba(0, 0, 0, 0.4) !important;
             text-align: center;
         }
 
         .hp-trust-note a {
-            color: rgba(255, 255, 255, 0.6) !important;
+            color: #1A4A43 !important;
         }
 
         .hp-waitlist-card .waitlist-success {
-            background: rgba(26, 173, 94, 0.15) !important;
-            border: 1px solid rgba(26, 173, 94, 0.3) !important;
-            color: #a8f0c6 !important;
+            background: #f0f7f4 !important;
+            border: 1px solid rgba(26, 173, 94, 0.2) !important;
+            color: #1A4A43 !important;
         }
 
         .hp-waitlist-card .waitlist-success h3 {
-            color: #a8f0c6 !important;
+            color: #1A4A43 !important;
         }
 
         .hp-waitlist-card .waitlist-success p {
-            color: rgba(255, 255, 255, 0.75) !important;
+            color: #1a1a1a !important;
         }
 
         /* =====================
            MISSION
         ===================== */
         .mission-section {
-            background-color: #0a2e1a !important;
+            background-color: #ffffff !important;
         }
 
         .mission-text {
-            background-color: #0a2e1a !important;
+            background-color: #ffffff !important;
         }
 
         .mission-title {
-            color: #a8f0c6 !important;
+            color: #1A4A43 !important;
             font-family: 'Manrope', sans-serif !important;
         }
 
         .mission-content {
-            color: rgba(255, 255, 255, 0.72) !important;
+            color: #1a1a1a !important;
         }
 
         .mission-image {
@@ -699,44 +698,43 @@
            TRANSPARENTER ABLAUF
         ===================== */
         .hp-ablauf-section {
-            background-color: #0a2e1a !important;
+            background-color: #ffffff !important;
         }
 
         .transparency-container {
-            background-color: #0a2e1a !important;
+            background-color: #ffffff !important;
         }
 
         .transparency-text {
-            background-color: #0a2e1a !important;
+            background-color: #ffffff !important;
         }
 
         .transparency-title {
-            color: #a8f0c6 !important;
+            color: #1A4A43 !important;
             font-family: 'Manrope', sans-serif !important;
         }
 
         .transparency-content {
-            color: rgba(255, 255, 255, 0.72) !important;
+            color: #1a1a1a !important;
         }
 
         .trust-timeline h3 {
-            color: #a8f0c6 !important;
+            color: #1A4A43 !important;
             font-family: 'Manrope', sans-serif !important;
         }
 
-        /* Glassmorphism timeline steps */
+        /* Timeline steps */
         .timeline-step {
-            background: rgba(255, 255, 255, 0.06) !important;
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            background: #e6f4ed !important;
+            border: 1px solid rgba(26, 173, 94, 0.12) !important;
             border-radius: 20px !important;
-            backdrop-filter: blur(16px) !important;
-            -webkit-backdrop-filter: blur(16px) !important;
-            transition: transform 0.2s ease, background 0.2s ease !important;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
         }
 
         .timeline-step:hover {
-            background: rgba(255, 255, 255, 0.09) !important;
+            background: #d4ecdf !important;
             transform: translateY(-3px) !important;
+            box-shadow: 0 8px 24px rgba(26, 173, 94, 0.12) !important;
         }
 
         .timeline-number {
@@ -745,27 +743,20 @@
         }
 
         .timeline-step h4 {
-            color: #a8f0c6 !important;
+            color: #1A4A43 !important;
             font-family: 'Manrope', sans-serif !important;
         }
 
         .timeline-step p {
-            color: rgba(255, 255, 255, 0.65) !important;
+            color: #1a1a1a !important;
         }
 
         .timeline-connector {
-            background-color: rgba(255, 255, 255, 0.12) !important;
+            background-color: #e0e0e0 !important;
         }
 
         .timeline-connector::after {
-            border-left-color: rgba(255, 255, 255, 0.12) !important;
-        }
-
-        @media (max-width: 767px) {
-            .timeline-connector::after {
-                border-top-color: rgba(255, 255, 255, 0.12) !important;
-                border-left-color: transparent !important;
-            }
+            border-left-color: #e0e0e0 !important;
         }
 
         /* =====================
@@ -791,14 +782,14 @@
             transform: scale(1.03) translateY(-1px) !important;
         }
 
-        /* Section override for bg */
+        /* hp-dark-section is now unused – kept for safety */
         .hp-dark-section {
-            background-color: #0a2e1a !important;
+            /* background handled per-section above */
         }
 
-        /* Footer stays dark green */
+        /* Footer – original dark green */
         .footer {
-            background-color: #0a2e1a !important;
+            background-color: #12302B !important;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             margin-top: 0 !important;
         }
