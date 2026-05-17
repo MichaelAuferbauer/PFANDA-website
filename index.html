@@ -499,10 +499,37 @@
             font-family: 'Manrope', sans-serif;
         }
 
-        /* Mockup: floating + glow + modern bottom-fade */
-        .hero-with-mockup .hero-mockup-image {
-            filter: drop-shadow(0 24px 48px rgba(26, 173, 94, 0.35)) !important;
-            animation: hpFloat 4s ease-in-out infinite;
+        /* Mockup wrapper */
+        .hero-mockup-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-mockup-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 420px;
+            height: 520px;
+            background: radial-gradient(ellipse at center,
+                rgba(200, 255, 230, 0.18) 0%,
+                rgba(26, 173, 94, 0.12) 40%,
+                transparent 75%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(30px);
+        }
+
+        .hero-mockup-wrapper img {
+            position: relative;
+            z-index: 1;
+            max-width: 320px !important;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5))
+                    drop-shadow(0 0 30px rgba(26,173,94,0.3)) !important;
+            animation: float 4s ease-in-out infinite;
             -webkit-mask-image: linear-gradient(
                 to bottom,
                 black 0%,
@@ -517,6 +544,11 @@
                 rgba(0,0,0,0.55) 80%,
                 transparent 100%
             ) !important;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-12px); }
         }
 
         @keyframes hpFloat {
@@ -1137,12 +1169,14 @@
         <div class="hero-layout">
             <!-- Mockup (right on desktop) -->
             <div class="hero-visual">
-                <img
-                    src="/assets/img/Mockup_Geber_Home_2.0.png"
-                    alt="PFANDIGO App Mockup"
-                    class="hero-mockup-image"
-                    onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='/assets/img/PFANDIGO_GEBER_HOME.png';}else if(this.dataset.fallback==='1'){this.dataset.fallback='2';this.src='/assets/img/PFANDIGO_GEBER_HOME.webp';}else if(this.dataset.fallback==='2'){this.dataset.fallback='3';this.src='/assets/img/PFANDIGO_GEBER_HOME.jpg';}"
-                >
+                <div class="hero-mockup-wrapper">
+                    <img
+                        src="/assets/img/Mockup_Geber_Home_2.0.png"
+                        alt="PFANDIGO App Mockup"
+                        class="hero-mockup-image"
+                        onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='/assets/img/PFANDIGO_GEBER_HOME.png';}else if(this.dataset.fallback==='1'){this.dataset.fallback='2';this.src='/assets/img/PFANDIGO_GEBER_HOME.webp';}else if(this.dataset.fallback==='2'){this.dataset.fallback='3';this.src='/assets/img/PFANDIGO_GEBER_HOME.jpg';}"
+                    >
+                </div>
             </div>
 
             <!-- Text content (left on desktop) -->
