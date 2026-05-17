@@ -6,7 +6,7 @@
     <meta name="description" content="PFANDIGO - Die moderne Lösung für Pfandflaschen. Einfach, nachhaltig und fair für alle.">
     <meta name="keywords" content="Pfand, Pfandflaschen, Recycling, Nachhaltigkeit, Umweltschutz">
     <meta name="author" content="PFANDIGO">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pfandigo.com/">
@@ -17,24 +17,24 @@
     <meta property="og:image:alt" content="PFANDIGO Vorschau">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://pfandigo.com/">
     <meta property="twitter:title" content="PFANDIGO - Die moderne Pfandlösung">
     <meta property="twitter:description" content="PFANDIGO - Die moderne Lösung für Pfandflaschen. Einfach, nachhaltig und fair für alle.">
     <meta property="twitter:image" content="https://pfandigo.com/assets/img/PFANDIGO_01.png?v=1">
-    
+
     <title>PFANDIGO</title>
     <link rel="canonical" href="https://pfandigo.com/">
-    
+
     <!-- Favicons -->
-        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4">
-        <link rel="shortcut icon" href="/favicon.ico?v=4">
-        <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png?v=4">
-        <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png?v=4">
-        <link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
-        <link rel="apple-touch-icon" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4">
+    <link rel="shortcut icon" href="/favicon.ico?v=4">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png?v=4">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png?v=4">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/img/favicon-512x512.png?v=4">
     <link rel="manifest" href="/site.webmanifest?v=3">
 
     <!-- Site name for Google -->
@@ -49,8 +49,760 @@
       "url": "https://pfandigo.com/"
     }
     </script>
-    
+
+    <!-- Google Fonts: Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/assets/css/styles.css?v=120">
+
+    <style>
+        /* ============================================
+           HOMEPAGE – Dark Green Design (hp- prefix)
+           ============================================ */
+
+        /* Global: Dark + Manrope */
+        html, body {
+            background-color: #0a2e1a !important;
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        /* p max-width reset for dark-themed sections */
+        .hp-how-grid p,
+        .hp-waitlist-card p,
+        .hp-ablauf-section p,
+        .hp-social-text,
+        .hp-step-label,
+        .hp-social-proof p {
+            max-width: 100% !important;
+        }
+
+        /* =====================
+           NAVBAR
+        ===================== */
+        .navbar {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 46, 26, 0.55) !important;
+            backdrop-filter: blur(14px) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: none !important;
+            transition: background 0.3s ease;
+        }
+
+        .navbar.hp-scrolled {
+            background: rgba(10, 46, 26, 0.95) !important;
+        }
+
+        .nav-menu a.active {
+            color: #a8f0c6 !important;
+        }
+
+        /* Hamburger icon – only shown on mobile (desktop stays hidden via styles.css) */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                padding: 0 !important;
+                font-size: 0 !important;
+            }
+        }
+
+        .menu-toggle svg {
+            display: block;
+        }
+
+        /* Mobile nav slide-in */
+        @media (max-width: 767px) {
+            .nav-menu {
+                top: 65px !important;
+            }
+        }
+
+        /* =====================
+           HERO
+        ===================== */
+        .hero.hero-with-mockup {
+            background-color: #0a2e1a !important;
+            background-image: none !important;
+            min-height: 100vh !important;
+            height: auto !important;
+            max-height: none !important;
+            padding-top: 120px !important;
+            padding-bottom: 4rem !important;
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+            overflow: hidden !important;
+            position: relative;
+        }
+
+        /* Animated blur blobs */
+        .hp-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hp-blob-1 {
+            width: 520px;
+            height: 520px;
+            background: rgba(15, 92, 51, 0.65);
+            top: -120px;
+            right: -80px;
+            animation: hpBlobFloat 9s ease-in-out infinite;
+        }
+
+        .hp-blob-2 {
+            width: 380px;
+            height: 380px;
+            background: rgba(26, 173, 94, 0.3);
+            bottom: -60px;
+            left: 25%;
+            animation: hpBlobFloat 11s ease-in-out infinite reverse;
+            animation-delay: -3s;
+        }
+
+        .hp-blob-3 {
+            width: 280px;
+            height: 280px;
+            background: rgba(15, 92, 51, 0.45);
+            top: 40%;
+            left: -60px;
+            animation: hpBlobFloat 7s ease-in-out infinite;
+            animation-delay: -5s;
+        }
+
+        @keyframes hpBlobFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33%       { transform: translate(18px, -18px) scale(1.06); }
+            66%       { transform: translate(-12px, 12px) scale(0.94); }
+        }
+
+        /* Hero layout: text LEFT, mockup RIGHT */
+        .hero-with-mockup .hero-layout {
+            position: relative;
+            z-index: 1;
+            flex-direction: row-reverse !important; /* visual is first in DOM → move to right */
+            align-items: center;
+        }
+
+        .hero-with-mockup .hero-content {
+            flex: 0 1 55% !important;
+            max-width: 55% !important;
+            margin-left: 0 !important;
+        }
+
+        .hero-with-mockup .hero-visual {
+            flex: 0 1 42% !important;
+        }
+
+        /* Badge */
+        .hp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(26, 173, 94, 0.15);
+            border: 1px solid rgba(26, 173, 94, 0.3);
+            border-radius: 50px;
+            padding: 6px 16px;
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #a8f0c6;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .hp-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #1aad5e;
+            flex-shrink: 0;
+            animation: hpPulseDot 2s ease-in-out infinite;
+        }
+
+        @keyframes hpPulseDot {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(26, 173, 94, 0.7); }
+            50%       { box-shadow: 0 0 0 6px rgba(26, 173, 94, 0); }
+        }
+
+        /* Hero headline */
+        #hero.hero-with-mockup h1 {
+            color: #ffffff !important;
+            font-family: 'Manrope', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(2.8rem, 5vw, 4.5rem) !important;
+            line-height: 1.08 !important;
+            margin-bottom: 1.25rem !important;
+        }
+
+        #hero.hero-with-mockup .subheadline {
+            color: rgba(255, 255, 255, 0.65) !important;
+            font-family: 'Manrope', sans-serif !important;
+            font-size: clamp(1rem, 1.6vw, 1.2rem) !important;
+            line-height: 1.6 !important;
+        }
+
+        /* CTA buttons */
+        .hp-hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        .hp-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 2.2rem;
+            background: #f5c842;
+            color: #0a2e1a !important;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 44px;
+        }
+
+        .hp-btn-primary:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 28px rgba(245, 200, 66, 0.4);
+            color: #0a2e1a !important;
+            text-decoration: none !important;
+        }
+
+        .hp-btn-glass {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 2.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 10px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.2s ease, background 0.2s ease;
+            min-height: 44px;
+        }
+
+        .hp-btn-glass:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: scale(1.03);
+            color: #ffffff !important;
+            text-decoration: none !important;
+        }
+
+        /* Social proof */
+        .hp-social-proof {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 1.75rem;
+        }
+
+        .hp-avatars {
+            display: flex;
+            align-items: center;
+        }
+
+        .hp-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid #0a2e1a;
+            margin-right: -10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .hp-avatar:nth-child(1) { background: linear-gradient(135deg, #1aad5e, #0f5c33); }
+        .hp-avatar:nth-child(2) { background: linear-gradient(135deg, #16914d, #1aad5e); }
+        .hp-avatar:nth-child(3) { background: linear-gradient(135deg, #0f5c33, #2bc7c4); }
+        .hp-avatar:nth-child(4) { background: linear-gradient(135deg, #2bc7c4, #1aad5e); }
+
+        .hp-social-text {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.65);
+            margin: 0 0 0 10px !important;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        /* Mockup: floating + glow */
+        .hero-with-mockup .hero-mockup-image {
+            -webkit-mask-image: none !important;
+            mask-image: none !important;
+            filter: drop-shadow(0 24px 48px rgba(26, 173, 94, 0.35)) !important;
+            animation: hpFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes hpFloat {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-12px); }
+        }
+
+        /* Mobile hero adjustments */
+        @media (max-width: 767px) {
+            .hero.hero-with-mockup {
+                padding-top: 90px !important;
+                padding-bottom: 3rem !important;
+                overflow: hidden !important;
+            }
+
+            .hero-with-mockup .hero-layout {
+                flex-direction: column !important;
+            }
+
+            .hero-with-mockup .hero-content {
+                order: 1 !important;
+                max-width: 100% !important;
+                flex: 1 1 auto !important;
+            }
+
+            .hero-with-mockup .hero-visual {
+                order: 2 !important;
+                width: 100%;
+            }
+
+            #hero.hero-with-mockup h1 {
+                font-size: clamp(2.2rem, 8vw, 3rem) !important;
+            }
+
+            .hp-hero-cta {
+                flex-direction: column;
+            }
+
+            .hp-btn-primary,
+            .hp-btn-glass {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* =====================
+           SO FUNKTIONIERT'S
+        ===================== */
+        #so-funktionierts {
+            background-color: #0a2e1a !important;
+        }
+
+        #so-funktionierts .section-title {
+            color: #ffffff !important;
+        }
+
+        /* Hide old feature-row structure */
+        #so-funktionierts .feature-row {
+            display: none !important;
+        }
+
+        /* 2-column grid */
+        .hp-how-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .hp-how-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .hp-how-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .hp-how-col-title {
+            font-family: 'Manrope', sans-serif !important;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #a8f0c6;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Glassmorphism step card */
+        .hp-step-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 1.25rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .hp-step-card:hover {
+            background: rgba(255, 255, 255, 0.09);
+            transform: translateY(-2px);
+        }
+
+        .hp-step-num-bg {
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            font-size: 5.5rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.05);
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .hp-step-badge {
+            display: inline-flex;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #1aad5e;
+            color: #fff;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .hp-step-label {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 0.975rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* App screenshot in "So funktioniert's" */
+        .hp-screenshot {
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(26, 173, 94, 0.25);
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+            display: block;
+            margin: 1.25rem auto 0;
+            object-fit: contain;
+        }
+
+        /* Flasche decorative */
+        .hp-flasche {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0.5rem auto;
+            opacity: 0.75;
+        }
+
+        /* CTA button inside "So funktioniert's" */
+        .hp-col-cta {
+            margin-top: 1.25rem;
+            text-align: center;
+        }
+
+        .hp-col-cta .btn {
+            background-color: #1aad5e !important;
+            border-color: #1aad5e !important;
+            color: #fff !important;
+            border-radius: 50px !important;
+            font-family: 'Manrope', sans-serif !important;
+            font-weight: 700 !important;
+            transition: transform 0.2s ease, background 0.2s ease !important;
+        }
+
+        .hp-col-cta .btn:hover {
+            background-color: #16914d !important;
+            border-color: #16914d !important;
+            transform: scale(1.03) !important;
+            color: #fff !important;
+        }
+
+        /* =====================
+           WARTELISTE
+        ===================== */
+        .waitlist-section {
+            background-color: #0a2e1a !important;
+            background-image: none !important;
+        }
+
+        /* Hide old white card */
+        .waitlist-section .waitlist-card {
+            display: none !important;
+        }
+
+        /* New glassmorphism waitlist card */
+        .hp-waitlist-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 2.5rem;
+        }
+
+        .hp-waitlist-card .section-title {
+            color: #ffffff !important;
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        .hp-waitlist-card .waitlist-intro,
+        .hp-waitlist-card p {
+            color: rgba(255, 255, 255, 0.65) !important;
+        }
+
+        .hp-waitlist-card .form-label {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        .hp-waitlist-card .form-input,
+        .hp-waitlist-card .form-select {
+            background: rgba(0, 0, 0, 0.35) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        .hp-waitlist-card .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        .hp-waitlist-card .form-input:focus,
+        .hp-waitlist-card .form-select:focus {
+            border-color: #1aad5e !important;
+            box-shadow: 0 0 0 3px rgba(26, 173, 94, 0.25) !important;
+        }
+
+        .hp-waitlist-card .form-select option {
+            background: #0f3d22;
+            color: #fff;
+        }
+
+        .hp-waitlist-card small {
+            color: rgba(255, 255, 255, 0.45) !important;
+        }
+
+        .hp-submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #f5c842;
+            color: #0a2e1a;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 0.5rem;
+            min-height: 52px;
+        }
+
+        .hp-submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 28px rgba(245, 200, 66, 0.35);
+        }
+
+        .hp-trust-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 1rem !important;
+            font-size: 0.8rem !important;
+            color: rgba(255, 255, 255, 0.4) !important;
+            text-align: center;
+        }
+
+        .hp-trust-note a {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .hp-waitlist-card .waitlist-success {
+            background: rgba(26, 173, 94, 0.15) !important;
+            border: 1px solid rgba(26, 173, 94, 0.3) !important;
+            color: #a8f0c6 !important;
+        }
+
+        .hp-waitlist-card .waitlist-success h3 {
+            color: #a8f0c6 !important;
+        }
+
+        .hp-waitlist-card .waitlist-success p {
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+
+        /* =====================
+           MISSION
+        ===================== */
+        .mission-section {
+            background-color: #0a2e1a !important;
+        }
+
+        .mission-text {
+            background-color: #0a2e1a !important;
+        }
+
+        .mission-title {
+            color: #a8f0c6 !important;
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        .mission-content {
+            color: rgba(255, 255, 255, 0.72) !important;
+        }
+
+        .mission-image {
+            background-image: url('/assets/img/Background-Tafel.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* =====================
+           TRANSPARENTER ABLAUF
+        ===================== */
+        .hp-ablauf-section {
+            background-color: #0a2e1a !important;
+        }
+
+        .transparency-container {
+            background-color: #0a2e1a !important;
+        }
+
+        .transparency-text {
+            background-color: #0a2e1a !important;
+        }
+
+        .transparency-title {
+            color: #a8f0c6 !important;
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        .transparency-content {
+            color: rgba(255, 255, 255, 0.72) !important;
+        }
+
+        .trust-timeline h3 {
+            color: #a8f0c6 !important;
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        /* Glassmorphism timeline steps */
+        .timeline-step {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 20px !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            transition: transform 0.2s ease, background 0.2s ease !important;
+        }
+
+        .timeline-step:hover {
+            background: rgba(255, 255, 255, 0.09) !important;
+            transform: translateY(-3px) !important;
+        }
+
+        .timeline-number {
+            background-color: #1aad5e !important;
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        .timeline-step h4 {
+            color: #a8f0c6 !important;
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        .timeline-step p {
+            color: rgba(255, 255, 255, 0.65) !important;
+        }
+
+        .timeline-connector {
+            background-color: rgba(255, 255, 255, 0.12) !important;
+        }
+
+        .timeline-connector::after {
+            border-left-color: rgba(255, 255, 255, 0.12) !important;
+        }
+
+        @media (max-width: 767px) {
+            .timeline-connector::after {
+                border-top-color: rgba(255, 255, 255, 0.12) !important;
+                border-left-color: transparent !important;
+            }
+        }
+
+        /* =====================
+           SCROLL ANIMATIONS
+        ===================== */
+        .hp-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .hp-fade.hp-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hp-fade-d1 { transition-delay: 0.1s; }
+        .hp-fade-d2 { transition-delay: 0.2s; }
+        .hp-fade-d3 { transition-delay: 0.3s; }
+
+        /* General button hover scale */
+        .btn:hover {
+            transform: scale(1.03) translateY(-1px) !important;
+        }
+
+        /* Section override for bg */
+        .hp-dark-section {
+            background-color: #0a2e1a !important;
+        }
+
+        /* Footer stays dark green */
+        .footer {
+            background-color: #0a2e1a !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 0 !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -60,7 +812,13 @@
                 <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="brand-logo">
                 <span class="logo"><span class="logo-main">PFAND</span><span class="logo-igo">IGO</span></span>
             </a>
-            <button class="menu-toggle" aria-label="Menü öffnen">Menu [+]</button>
+            <button class="menu-toggle" aria-label="Menü öffnen">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
             <ul class="nav-menu">
                 <li><a href="/">Start</a></li>
                 <li><a href="/pfandgeber/">Pfandgeber</a></li>
@@ -71,95 +829,144 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Conversion Optimized -->
-    <!-- Full-width Hero mit min. 80vh, vertikal zentriert, dezenter Farbverlauf -->
+    <!-- Hero Section -->
     <section class="hero hero-with-mockup" id="hero">
+        <!-- Animated background blobs -->
+        <div class="hp-blob hp-blob-1" aria-hidden="true"></div>
+        <div class="hp-blob hp-blob-2" aria-hidden="true"></div>
+        <div class="hp-blob hp-blob-3" aria-hidden="true"></div>
+
         <div class="hero-layout">
+            <!-- Mockup (right on desktop) -->
             <div class="hero-visual">
                 <img
                     src="/assets/img/PFANDIGO_GEBER_HOME.png"
-                    alt="PFANDIGO Geber Home Mockup"
+                    alt="PFANDIGO App Mockup"
                     class="hero-mockup-image"
                     onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='/assets/img/PFANDIGO_GEBER_HOME.webp';}else if(this.dataset.fallback==='1'){this.dataset.fallback='2';this.src='/assets/img/PFANDIGO_GEBER_HOME.jpg';}else if(this.dataset.fallback==='2'){this.dataset.fallback='3';this.src='/assets/img/PFANDIGO_GEBER_HOME.jpeg';}"
                 >
             </div>
+
+            <!-- Text content (left on desktop) -->
             <div class="hero-content">
-                <!-- Eyebrow (klein) -->
-                <p class="value-proposition" style="color: #1A4A43 !important;">
-                    Recycling verbindet
-                </p>
-                
+                <!-- Badge -->
+                <div class="hp-badge">
+                    <span class="hp-badge-dot"></span>
+                    Bald verfügbar in deiner Region
+                </div>
+
                 <!-- Headline -->
-                <h1 style="color: #1A4A43 !important;">
+                <h1>
                     Pfand abholen lassen.<br>
                     Einfach. Sicher. Fair.
                 </h1>
-                
+
                 <!-- Subheadline -->
-                <p class="subheadline" style="color: #1A4A43 !important;">
+                <p class="subheadline">
                     PFANDIGO verbindet Menschen, die ihr Pfand bequem loswerden wollen, mit Abholern in der Nähe – transparent und organisiert per App.
                 </p>
-                
-                <!-- CTA Buttons: Primary (Warteliste) + Secondary (So funktioniert's) -->
-                <!-- Buttons sind klar visuell unterscheidbar: Primary = gefüllt, Secondary = Outline -->
-                <div class="hero-cta">
-                    <a href="#so-funktionierts" class="btn btn-secondary">So funktioniert's</a>
-                    <a href="#warteliste" class="btn">Zur Warteliste</a>
+
+                <!-- CTA Buttons -->
+                <div class="hp-hero-cta">
+                    <a href="#warteliste" class="hp-btn-primary">Zur Warteliste</a>
+                    <a href="#so-funktionierts" class="hp-btn-glass">So funktioniert's</a>
+                </div>
+
+                <!-- Social Proof -->
+                <div class="hp-social-proof">
+                    <div class="hp-avatars">
+                        <div class="hp-avatar">M</div>
+                        <div class="hp-avatar">A</div>
+                        <div class="hp-avatar">S</div>
+                        <div class="hp-avatar">K</div>
+                    </div>
+                    <p class="hp-social-text">500+ Personen auf der Warteliste</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- "So funktioniert's" Sektion -->
-    <!-- Scroll-Anker für Secondary CTA Button -->
-    <section class="section" id="so-funktionierts" style="background-color: var(--color-white);">
+    <section class="section hp-dark-section" id="so-funktionierts">
         <div class="container">
-            <h2 class="section-title" style="margin-bottom: var(--spacing-md);">So funktioniert's</h2>
-            
-            <!-- Pfandgeber: Text links, Mockup rechts -->
-            <div class="feature-row">
-                <div class="card feature-card">
-                    <h3 class="card-title">Für Pfandgeber</h3>
-                    <ol style="padding-left: var(--spacing-lg); color: var(--color-text);">
-                        <li style="margin-bottom: var(--spacing-xs);">Pfand sammeln</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Abholung in der App anlegen</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Ein Abholer in deiner Nähe nimmt den Auftrag an</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Pfand übergeben & deinen Anteil erhalten</li>
-                    </ol>
-                    <a href="/pfandgeber/" class="btn" style="margin: var(--spacing-sm) auto 0 auto; display: inline-flex;">So gebe ich Pfand ab</a>
-                    <div class="flasche-image-wrapper">
-                        <img src="/assets/img/Flasche-rechts.png" alt="Flasche rechts" class="flasche-image">
+            <h2 class="section-title hp-fade" style="margin-bottom: var(--spacing-md);">So funktioniert's</h2>
+
+            <div class="hp-how-grid">
+                <!-- Pfandgeber Spalte -->
+                <div class="hp-how-col hp-fade hp-fade-d1">
+                    <h3 class="hp-how-col-title">Für Pfandgeber</h3>
+
+                    <div class="hp-step-card">
+                        <span class="hp-step-num-bg" aria-hidden="true">1</span>
+                        <div class="hp-step-badge">1</div>
+                        <p class="hp-step-label">Pfand sammeln</p>
+                    </div>
+
+                    <div class="hp-step-card">
+                        <span class="hp-step-num-bg" aria-hidden="true">2</span>
+                        <div class="hp-step-badge">2</div>
+                        <p class="hp-step-label">Abholung in der App anlegen</p>
+                    </div>
+
+                    <div class="hp-step-card">
+                        <span class="hp-step-num-bg" aria-hidden="true">3</span>
+                        <div class="hp-step-badge">3</div>
+                        <p class="hp-step-label">Ein Abholer in deiner Nähe nimmt den Auftrag an</p>
+                    </div>
+
+                    <div class="hp-step-card">
+                        <span class="hp-step-num-bg" aria-hidden="true">4</span>
+                        <div class="hp-step-badge">4</div>
+                        <p class="hp-step-label">Pfand übergeben &amp; deinen Anteil erhalten</p>
+                    </div>
+
+                    <img src="/assets/img/PFANDIGO_DETAIL_VIEW.png?v=1"
+                         alt="PFANDIGO App Detail-Ansicht"
+                         class="hp-screenshot">
+
+                    <img src="/assets/img/Flasche-rechts.png" alt="Flasche" class="hp-flasche">
+
+                    <div class="hp-col-cta">
+                        <a href="/pfandgeber/" class="btn">So gebe ich Pfand ab</a>
                     </div>
                 </div>
-                <div class="mockup-card feature-mockup">
-                    <div class="mockup-image-wrapper">
-                        <img src="/assets/img/PFANDIGO_DETAIL_VIEW.png?v=1" 
-                             alt="PFANDIGO App Detail-Ansicht" 
-                             class="mockup-image">
+
+                <!-- Abholer Spalte -->
+                <div class="hp-how-col hp-fade hp-fade-d2">
+                    <h3 class="hp-how-col-title">Für Abholer</h3>
+
+                    <div class="hp-step-card">
+                        <span class="hp-step-num-bg" aria-hidden="true">1</span>
+                        <div class="hp-step-badge">1</div>
+                        <p class="hp-step-label">Als Abholer registrieren</p>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Abholer: Text links, Mockup rechts -->
-            <div class="feature-row feature-row-reverse">
-                <div class="card feature-card">
-                    <h3 class="card-title">Für Abholer</h3>
-                    <ol style="padding-left: var(--spacing-lg); color: var(--color-text);">
-                        <li style="margin-bottom: var(--spacing-xs);">Als Abholer registrieren</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Aufträge in deiner Nähe finden</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Pfand abholen</li>
-                        <li style="margin-bottom: var(--spacing-xs);">Pfand einlösen & Geld verdienen</li>
-                    </ol>
-                    <a href="/abholer/" class="btn" style="margin: var(--spacing-sm) auto 0 auto; display: inline-flex;">So werde ich Abholer</a>
-                    <div class="flasche-image-wrapper">
-                        <img src="/assets/img/Flasche-links.png" alt="Flasche links" class="flasche-image">
+
+                    <div class="hp-step-card">
+                        <span class="hp-step-num-bg" aria-hidden="true">2</span>
+                        <div class="hp-step-badge">2</div>
+                        <p class="hp-step-label">Aufträge in deiner Nähe finden</p>
                     </div>
-                </div>
-                <div class="mockup-card feature-mockup">
-                    <div class="mockup-image-wrapper">
-                        <img src="/assets/img/PFANDIGO_ORDER_SEARCH.png?v=1" 
-                             alt="PFANDIGO App Karten-Ansicht" 
-                             class="mockup-image mockup-image-large">
+
+                    <div class="hp-step-card">
+                        <span class="hp-step-num-bg" aria-hidden="true">3</span>
+                        <div class="hp-step-badge">3</div>
+                        <p class="hp-step-label">Pfand abholen</p>
+                    </div>
+
+                    <div class="hp-step-card">
+                        <span class="hp-step-num-bg" aria-hidden="true">4</span>
+                        <div class="hp-step-badge">4</div>
+                        <p class="hp-step-label">Pfand einlösen &amp; Geld verdienen</p>
+                    </div>
+
+                    <img src="/assets/img/PFANDIGO_ORDER_SEARCH.png?v=1"
+                         alt="PFANDIGO App Karten-Ansicht"
+                         class="hp-screenshot">
+
+                    <img src="/assets/img/Flasche-links.png" alt="Flasche" class="hp-flasche">
+
+                    <div class="hp-col-cta">
+                        <a href="/abholer/" class="btn">So werde ich Abholer</a>
                     </div>
                 </div>
             </div>
@@ -167,24 +974,21 @@
     </section>
 
     <!-- Wartelisten-Sektion -->
-    <!-- Ruhige Card-Optik mit abgesetztem Hintergrund für bessere Conversion -->
-    <section class="waitlist-section" id="warteliste" style="background-image: url('/assets/img/Background-Tafel.png'); background-size: cover; background-position: center;">
+    <section class="waitlist-section hp-dark-section" id="warteliste">
         <div class="container">
-            <div class="waitlist-card">
-                <!-- Überschrift: Kurz & motivierend -->
+            <!-- New glassmorphism waitlist card (separate from old .waitlist-card which is hidden via CSS) -->
+            <div class="hp-waitlist-card hp-fade">
                 <h2 class="section-title">Sei beim Start dabei.</h2>
-                
-                <!-- Text: Erklärung, warum sich Eintragung lohnt -->
-                <p class="waitlist-intro" style="text-align: center; color: var(--color-text-light); margin-bottom: var(--spacing-sm);">
+
+                <p class="waitlist-intro" style="text-align: center;">
                     Trag dich ein und wir melden uns, sobald PFANDIGO in deiner Region verfügbar ist.
                 </p>
-                <p style="text-align: center; color: var(--color-text-light); margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+                <p style="text-align: center; font-size: var(--font-size-sm); margin-bottom: var(--spacing-lg);">
                     PFANDIGO befindet sich aktuell in der Vorbereitungsphase. Der Start ist in den nächsten Wochen geplant.
                 </p>
-                
+
                 <!-- Formular -->
                 <form class="waitlist-form" id="waitlistForm">
-                    <!-- Feld: Rolle (Pflicht) -->
                     <div class="form-group">
                         <label for="waitlist-role" class="form-label">Ich bin… *</label>
                         <select id="waitlist-role" name="role" class="form-select" required>
@@ -193,64 +997,58 @@
                             <option value="abholer">Abholer (Ich möchte Pfand abholen)</option>
                         </select>
                     </div>
-                    
-                    <!-- Feld: PLZ (Pflicht) -->
+
                     <div class="form-group">
                         <label for="waitlist-plz" class="form-label">PLZ *</label>
                         <input type="text" id="waitlist-plz" name="plz" class="form-input" placeholder="z. B. 1010" required pattern="[0-9]{4,5}" maxlength="5">
-                        <small style="color: var(--color-text-light); font-size: var(--font-size-sm); display: block; margin-top: var(--spacing-xs);">
-                            Damit wir wissen, wo PFANDIGO zuerst startet.
-                        </small>
+                        <small>Damit wir wissen, wo PFANDIGO zuerst startet.</small>
                     </div>
-                    
-                    <!-- Feld: Name (optional) -->
+
                     <div class="form-group">
                         <label for="waitlist-name" class="form-label">Name (optional)</label>
                         <input type="text" id="waitlist-name" name="name" class="form-input" placeholder="Ihr Name">
                     </div>
-                    
-                    <!-- Feld: E-Mail (Pflicht) -->
+
                     <div class="form-group">
                         <label for="waitlist-email" class="form-label">E-Mail *</label>
                         <input type="email" id="waitlist-email" name="email" class="form-input" placeholder="ihre@email.at" required>
                     </div>
-                    
-                    <button type="submit" class="btn" style="width: 100%;">Auf die Warteliste</button>
-                    
-                    <!-- Hinweis unter dem Button -->
-                    <p style="text-align: center; font-size: var(--font-size-sm); color: var(--color-text-light); margin-top: var(--spacing-md);">
-                        Wir senden dir ausschließlich Updates, sobald PFANDIGO live geht.<br>
-                        <a href="/datenschutz/" style="color: var(--color-primary);">Datenschutz</a>
+
+                    <button type="submit" class="hp-submit-btn">Auf die Warteliste</button>
+
+                    <p class="hp-trust-note">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;opacity:0.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Keine Werbung. Nur ein Update wenn PFANDIGO startet.
+                        &ensp;<a href="/datenschutz/">Datenschutz</a>
                     </p>
                 </form>
-                
-                <!-- Success-Message: Wird nach erfolgreichem Submit angezeigt -->
+
+                <!-- Success-Message -->
                 <div class="waitlist-success" id="waitlistSuccess">
-                    <h3 style="color: var(--color-primary); margin-bottom: var(--spacing-sm);">✓ Danke!</h3>
-                    <p style="color: var(--color-text-light);">
-                        Wir melden uns, sobald PFANDIGO in deiner Region startet.
-                    </p>
+                    <h3>✓ Danke!</h3>
+                    <p>Wir melden uns, sobald PFANDIGO in deiner Region startet.</p>
                 </div>
             </div>
+
+            <!-- Keep original (hidden) waitlist-card so existing JS selectors still work -->
+            <div class="waitlist-card" style="display:none;" aria-hidden="true"></div>
         </div>
     </section>
 
     <!-- Mission Sektion -->
-    <section class="mission-section" id="mission">
+    <section class="mission-section hp-dark-section" id="mission">
         <div class="mission-container">
-            <!-- Linke Seite: Missionstext -->
-            <div class="mission-text">
-                <h2 class="mission-title" style="color: var(--color-primary);">Unsere Mission</h2>
+            <div class="mission-text hp-fade">
+                <h2 class="mission-title">Unsere Mission</h2>
                 <p class="mission-content">
-                    PFANDIGO ist eine mobile App, die das Zurückgeben und Recyclen von Pfandflaschen vereinfacht. 
-                    Wir verbinden Menschen, die ihre Pfandflaschen bequem loswerden möchten, mit Abholern in ihrer Nähe 
-                    und organisieren den gesamten Prozess digital. Unser Ziel ist es, Recycling zugänglicher zu machen 
+                    PFANDIGO ist eine mobile App, die das Zurückgeben und Recyclen von Pfandflaschen vereinfacht.
+                    Wir verbinden Menschen, die ihre Pfandflaschen bequem loswerden möchten, mit Abholern in ihrer Nähe
+                    und organisieren den gesamten Prozess digital. Unser Ziel ist es, Recycling zugänglicher zu machen
                     und einen positiven Beitrag zur Umwelt zu leisten – lokal, bequem und nachhaltig.
                 </p>
             </div>
-            
-            <!-- Rechte Seite: Tafel mit Logo -->
-            <div class="mission-image">
+
+            <div class="mission-image hp-fade hp-fade-d1">
                 <div class="mission-logo-wrapper">
                     <img src="/assets/img/04_Logo_only.png" alt="PFANDIGO Logo" class="mission-logo">
                 </div>
@@ -259,18 +1057,15 @@
     </section>
 
     <!-- Transparenter Ablauf Sektion -->
-    <section class="section" style="background-color: var(--color-bg); padding-top: var(--spacing-md);">
-        <!-- 2-Spalten-Layout: Flaschensack links, Text rechts (wie Mission) -->
+    <section class="section hp-dark-section hp-ablauf-section" style="padding-top: var(--spacing-md);">
         <div class="transparency-container">
-            <!-- Linke Seite: Flaschensack Bild -->
-            <div class="transparency-image">
+            <div class="transparency-image hp-fade">
                 <div class="flaschensack-wrapper">
                     <img src="/assets/img/Flaschensack.png" alt="Flaschensack" class="flaschensack-image">
                 </div>
             </div>
-            
-            <!-- Rechte Seite: Text-Block -->
-            <div class="transparency-text">
+
+            <div class="transparency-text hp-fade hp-fade-d1">
                 <h3 class="transparency-title">Faire Aufteilung des Pfandbetrags</h3>
                 <p class="transparency-content">
                     Beim Erstellen eines Auftrags legt der Pfandgeber fest,<br>
@@ -278,44 +1073,41 @@
                 </p>
             </div>
         </div>
-        
+
         <div class="container">
             <div class="trust-timeline">
-                <!-- Hauptüberschrift -->
-                <h3 style="text-align: center; margin-bottom: var(--spacing-xl); margin-top: 0; color: var(--color-primary); font-size: 2.75rem;">Transparenter Ablauf</h3>
-                
-                <!-- Timeline Steps -->
+                <h3 style="text-align: center; margin-bottom: var(--spacing-xl); margin-top: 0; font-size: 2.75rem;" class="hp-fade">Transparenter Ablauf</h3>
+
                 <div class="timeline-steps">
-                    <div class="timeline-step">
+                    <div class="timeline-step hp-fade hp-fade-d1">
                         <div class="timeline-number">1</div>
-                        <h4 style="margin-bottom: var(--spacing-sm); color: var(--color-primary); font-size: 1.5rem;">Auftragsannahme & Reservierung</h4>
-                        <p style="color: var(--color-text); font-size: 1.125rem; line-height: 1.7;">
+                        <h4 style="margin-bottom: var(--spacing-sm); font-size: 1.5rem;">Auftragsannahme &amp; Reservierung</h4>
+                        <p style="font-size: 1.125rem; line-height: 1.7;">
                             Sobald ein Abholer einen Auftrag annimmt, wird der vereinbarte Betrag bei ihm reserviert.<br>
                             So ist sichergestellt, dass die Auszahlung nach der Abholung garantiert ist.
                         </p>
                     </div>
                     <div class="timeline-connector"></div>
-                    <div class="timeline-step">
+                    <div class="timeline-step hp-fade hp-fade-d2">
                         <div class="timeline-number">2</div>
-                        <h4 style="margin-bottom: var(--spacing-sm); color: var(--color-primary); font-size: 1.5rem;">Abholung</h4>
-                        <p style="color: var(--color-text); font-size: 1.125rem; line-height: 1.7;">
+                        <h4 style="margin-bottom: var(--spacing-sm); font-size: 1.5rem;">Abholung</h4>
+                        <p style="font-size: 1.125rem; line-height: 1.7;">
                             <br>
                             Der Abholer holt das Pfand zum vereinbarten Zeitpunkt ab.<br>
                             Währenddessen bleibt der Betrag reserviert.
                         </p>
                     </div>
                     <div class="timeline-connector"></div>
-                    <div class="timeline-step">
+                    <div class="timeline-step hp-fade hp-fade-d3">
                         <div class="timeline-number">3</div>
-                        <h4 style="margin-bottom: var(--spacing-sm); color: var(--color-primary); font-size: 1.5rem;">Bestätigung & Auszahlung</h4>
-                        <p style="color: var(--color-text); font-size: 1.125rem; line-height: 1.7;">
+                        <h4 style="margin-bottom: var(--spacing-sm); font-size: 1.5rem;">Bestätigung &amp; Auszahlung</h4>
+                        <p style="font-size: 1.125rem; line-height: 1.7;">
                             Nach der bestätigten Abholung wird der reservierte Betrag freigegeben<br>
                             und entsprechend der festgelegten Aufteilung ausgezahlt.
                         </p>
                     </div>
                 </div>
-                
-                <!-- Flaschenübergabe Bild -->
+
                 <div class="flaschenuebergabe-wrapper" style="display: flex; justify-content: center; margin-top: var(--spacing-xxl);">
                     <img src="/assets/img/Flaschenübergabe.png" alt="Flaschenübergabe" class="flaschenuebergabe-image">
                 </div>
@@ -357,15 +1149,13 @@
 
     <!-- Supabase Configuration - RPC Zugriff mit anon key (RLS-konform) -->
     <script>
-        // Supabase Configuration für RPC-Aufruf
         const SUPABASE_URL = 'https://vyjlmtmyrsrmefeszode.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5amxtdG15cnNybWVmZXN6b2RlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwNzM3ODksImV4cCI6MjA3NDY0OTc4OX0.44wZXXHAwjeT7khvkKIaPHfarNFUJLzcL53SWq_5dn4';
-        
-        // Funktion für Supabase RPC Aufruf
+
         async function callSupabaseRpc(functionName, payload) {
             const url = `${SUPABASE_URL}/rest/v1/rpc/${functionName}`;
             console.log('Supabase RPC:', { url, payload });
-            
+
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -376,68 +1166,60 @@
                 },
                 body: JSON.stringify(payload)
             });
-            
+
             console.log('Supabase Response Status:', response.status);
-            
+
             if (!response.ok) {
                 const errorText = await response.text();
                 let errorData;
-                try {
-                    errorData = JSON.parse(errorText);
-                } catch (e) {
-                    errorData = { message: errorText || response.statusText };
-                }
-                console.error('Supabase Error:', { 
-                    status: response.status, 
-                    statusText: response.statusText,
-                    errorData 
-                });
-                throw { 
-                    code: response.status, 
+                try { errorData = JSON.parse(errorText); }
+                catch (e) { errorData = { message: errorText || response.statusText }; }
+                console.error('Supabase Error:', { status: response.status, statusText: response.statusText, errorData });
+                throw {
+                    code: response.status,
                     message: errorData.message || errorData.error_description || errorData.hint || 'Unknown error',
                     details: errorData
                 };
             }
-            
+
             const result = await response.json();
             console.log('Supabase Success:', result);
             return result;
         }
-        
+
         console.log('Supabase RPC bereit');
     </script>
+
     <!-- Main JavaScript -->
     <script src="/assets/js/main.js"></script>
+
     <!-- Wartelisten-Formular JavaScript -->
     <script>
-        // Wartelisten-Formular: Verbunden mit Supabase
         (function() {
             const waitlistForm = document.getElementById('waitlistForm');
             const waitlistSuccess = document.getElementById('waitlistSuccess');
-            
+
             if (waitlistForm) {
                 waitlistForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
-                    // Validierung
+
                     const roleInput = document.getElementById('waitlist-role');
                     const plzInput = document.getElementById('waitlist-plz');
                     const emailInput = document.getElementById('waitlist-email');
-                    
+
                     const role = roleInput.value.trim();
                     const plz = plzInput.value.trim();
                     const email = emailInput.value.trim();
-                    
-                    // Error Messages
+
                     let errorMessage = '';
-                    
+
                     if (!role) {
                         errorMessage = 'Bitte Rolle auswählen.';
                         roleInput.style.borderColor = '#dc3545';
                     } else {
                         roleInput.style.borderColor = '';
                     }
-                    
+
                     if (!plz) {
                         errorMessage = 'Bitte PLZ eingeben.';
                         plzInput.style.borderColor = '#dc3545';
@@ -447,7 +1229,7 @@
                     } else {
                         plzInput.style.borderColor = '';
                     }
-                    
+
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (!email) {
                         errorMessage = 'Bitte E-Mail eingeben.';
@@ -458,26 +1240,22 @@
                     } else {
                         emailInput.style.borderColor = '';
                     }
-                    
+
                     if (errorMessage) {
                         alert(errorMessage);
                         return;
                     }
-                    
-                    // Konvertiere Rolle zu Datenbank-Format (Pfandgeber/Abholer)
+
                     const roleDb = role === 'pfandgeber' ? 'Pfandgeber' : 'Abholer';
                     const nameValue = document.getElementById('waitlist-name').value.trim() || null;
-                    
-                    // Daten in Supabase speichern - nur via RPC (RLS-konform)
+
                     async function submitToSupabase() {
                         try {
-                            // Zeige Loading-State
                             const submitButton = waitlistForm.querySelector('button[type="submit"]');
                             const originalButtonText = submitButton.textContent;
                             submitButton.disabled = true;
                             submitButton.textContent = 'Wird gespeichert...';
-                            
-                            // RPC: add_waitlist_signup (insert-only flow)
+
                             const data = await callSupabaseRpc('add_waitlist_signup', {
                                 p_role: roleDb,
                                 p_postal_code: plz,
@@ -485,16 +1263,13 @@
                                 p_email: email,
                                 p_source: 'website'
                             });
-                            
-                            // Erwartet: [{ inserted: boolean, waitlist_id: uuid|null }]
+
                             const resultRow = Array.isArray(data) ? data[0] : data;
                             const inserted = !!(resultRow && resultRow.inserted === true);
                             console.log('Warteliste RPC Ergebnis:', resultRow);
-                            
-                            // Formular ausblenden
+
                             waitlistForm.classList.add('hidden');
-                            
-                            // Success-Message anzeigen
+
                             const successText = waitlistSuccess.querySelector('p');
                             if (successText) {
                                 if (inserted) {
@@ -504,23 +1279,15 @@
                                 }
                             }
                             waitlistSuccess.classList.add('active');
-                            
-                            // Scroll zu Success-Message für bessere UX
                             waitlistSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            
-                            // Formular zurücksetzen (optional)
                             waitlistForm.reset();
-                            
+
                         } catch (err) {
                             console.error('Supabase Error:', err);
-                            console.error('Error Details:', err.details);
-                            
-                            // Button zurücksetzen
                             const submitButton = waitlistForm.querySelector('button[type="submit"]');
                             submitButton.disabled = false;
                             submitButton.textContent = 'Auf die Warteliste';
-                            
-                            // Spezielle Fehlermeldungen basierend auf Error-Code
+
                             if (err.code === 400 || err.code === 422) {
                                 alert('Ungültige Eingabe. Bitte überprüfe deine Angaben.\n\nFehler: ' + (err.message || ''));
                             } else if (err.code === 404) {
@@ -530,13 +1297,14 @@
                             }
                         }
                     }
-                    
-                    // Supabase Submit aufrufen
+
                     submitToSupabase();
                 });
             }
         })();
     </script>
+
+    <!-- Instagram Mobile Hero Fix -->
     <script>
         (function fixInstagramMobileHeroViewport() {
             var ua = navigator.userAgent || "";
@@ -571,17 +1339,13 @@
             function maybeRelockForMajorChange() {
                 var viewportHeight = measureViewportHeight();
                 if (!viewportHeight || !lockedHeight) return;
-
-                // Ignore small viewport changes from Instagram toolbar show/hide while scrolling.
                 if (Math.abs(viewportHeight - lockedHeight) < LOCK_UPDATE_THRESHOLD) return;
-
                 lockedHeight = viewportHeight;
                 applyLockedHeight(lockedHeight);
             }
 
             lockHeroToInitialViewport();
 
-            // Re-lock only when there is a major change (rotation / real layout change).
             window.addEventListener("orientationchange", function() {
                 setTimeout(lockHeroToInitialViewport, 180);
             }, { passive: true });
@@ -594,9 +1358,40 @@
             }
         })();
     </script>
+
+    <!-- Scroll Animations: IntersectionObserver + Navbar scroll effect -->
+    <script>
+        (function() {
+            // Navbar: darker on scroll
+            var navbar = document.querySelector('.navbar');
+            if (navbar) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 40) {
+                        navbar.classList.add('hp-scrolled');
+                    } else {
+                        navbar.classList.remove('hp-scrolled');
+                    }
+                }, { passive: true });
+            }
+
+            // Fade-in on scroll via IntersectionObserver
+            var fadeEls = document.querySelectorAll('.hp-fade');
+            if (!fadeEls.length || !('IntersectionObserver' in window)) {
+                fadeEls.forEach(function(el) { el.classList.add('hp-visible'); });
+                return;
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('hp-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            fadeEls.forEach(function(el) { observer.observe(el); });
+        })();
+    </script>
 </body>
 </html>
-
-
-
-
