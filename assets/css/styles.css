@@ -159,7 +159,7 @@ a:focus-visible {
 .navbar {
   position: sticky;
   top: 0;
-  background-color: #12302B !important;
+  background-color: #1A4D47 !important;
   border-bottom: none;
   z-index: 1000;
   box-shadow: var(--shadow-sm);
@@ -1461,10 +1461,8 @@ body.no-scroll {
 }
 
 .mission-image {
-  background-image: url('../img/Background-Tafel.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #1A4D47;
+  background-image: none;
   position: relative;
   min-height: 500px;
   display: flex;
@@ -1654,7 +1652,7 @@ body.no-scroll {
 
 /* Footer */
 .footer {
-  background-color: #12302B !important;
+  background-color: #0F3530 !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1); /* Leicht transparente weiße Linie */
   padding: var(--spacing-xl) var(--spacing-md);
   margin-top: var(--spacing-xxl);
@@ -1748,7 +1746,7 @@ body.no-scroll {
     top: 58px;
     left: -100%;
     flex-direction: column;
-    background-color: #12302B;
+    background-color: #1A4D47;
     width: 100%;
     text-align: center;
     transition: var(--transition);
