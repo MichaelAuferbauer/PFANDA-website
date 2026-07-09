@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(git checkout *)",
-      "Bash(git -C /Users/michaelauferbauer/PFANDIGO-WEBSITE commit -m ' *)"
+      "Bash(git -C /Users/michaelauferbauer/PFANDIGO-WEBSITE commit -m ' *)",
+      "WebSearch"
     ]
   }
 }
