@@ -3,7 +3,9 @@
     "allow": [
       "Bash(git checkout *)",
       "Bash(git -C /Users/michaelauferbauer/PFANDIGO-WEBSITE commit -m ' *)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git -C /Users/michaelauferbauer/PFANDIGO-WEBSITE add index.html)",
+      "Bash(git -C /Users/michaelauferbauer/PFANDIGO-WEBSITE commit --allow-empty -m \"Trigger GitHub Pages rebuild\")"
     ]
   }
 }
