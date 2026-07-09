@@ -320,7 +320,7 @@ a:focus-visible {
   background-image: none !important;
   background-color: var(--color-white);
   justify-content: center;
-  align-items: flex-start !important;
+  align-items: center;
   /* Safety layout: never clip hero content under sticky header */
   min-height: calc(100svh - 78px) !important;
   height: auto !important;
